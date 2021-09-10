@@ -4,4 +4,4 @@ describe('Addition', () => {
     });
 });
 
-export {};
+export { };
