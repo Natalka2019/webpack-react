@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', 'jsx'],
     modules: [
       path.resolve('./src'),
       path.resolve('./node_modules')
