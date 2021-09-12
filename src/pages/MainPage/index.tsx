@@ -1,16 +1,18 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react';
+import styles from './styles.module.scss';
 import smallFood from 'assets/smallFood.png';
 import lemon from 'assets/lemon_icon.png';
-import {SomeComponent} from 'components';
+import { SomeComponent } from 'components';
 
-interface Props { name: string };
+interface Props {
+  name: string;
+}
 
 const MainPage: React.FC<Props> = ({ name }) => {
-
   console.log(name);
   console.log(smallFood);
   console.log(lemon);
+  console.log();
 
   return (
     <div>
@@ -19,10 +21,9 @@ const MainPage: React.FC<Props> = ({ name }) => {
       <img src={lemon} />
       <h2>React is great!!!</h2>
       <p>Some paragraph</p>
-      <SomeComponent/>
+      <SomeComponent />
     </div>
-  )
-}
-
+  );
+};
 
 export default MainPage;

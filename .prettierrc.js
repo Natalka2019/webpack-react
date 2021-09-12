@@ -1,11 +1,3 @@
-// module.exports = {
-//   semi: true,
-//   trailingComma: "all",
-//   singleQuote: true,
-//   printWidth: 120,
-//   tabWidth: 4
-// };
-
 module.exports = {
   printWidth: 120, // max 120 chars in line, code is easy to read
   useTabs: false, // use spaces instead of tabs
