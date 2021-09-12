@@ -21,7 +21,8 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "allowJs": true /* Allow javascript files to be compiled. Useful when migrating JS to TS */,
+    "baseUrl": "src", /*to use absolute path*/
+    "allowJs": true, /* Allow javascript files to be compiled. Useful when migrating JS to TS */
     // "checkJs": true /* Report errors in .js files. Works in tandem with allowJs. */,
   },
   "include": [

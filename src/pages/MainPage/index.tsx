@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./styles.module.scss";
 import smallFood from 'assets/smallFood.png';
 import lemon from 'assets/lemon_icon.png';
+import {SomeComponent} from 'components';
 
 interface Props { name: string };
 
-const App: React.FC<Props> = ({ name }) => {
+const MainPage: React.FC<Props> = ({ name }) => {
 
   console.log(name);
   console.log(smallFood);
@@ -17,9 +18,11 @@ const App: React.FC<Props> = ({ name }) => {
       <img src={smallFood} />
       <img src={lemon} />
       <h2>React is great!!!</h2>
-      <h3>Click hereto see photo of Toronto</h3>
+      <p>Some paragraph</p>
+      <SomeComponent/>
     </div>
   )
 }
 
-export default App;
+
+export default MainPage;

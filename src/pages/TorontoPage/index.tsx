@@ -1,4 +1,8 @@
-const Toronto = () => {
+import React from "react";
+
+const TorontoPage: React.FC = () => {
+
+  console.log('Toronto page');
 
   return (
     <div>
@@ -8,4 +12,4 @@ const Toronto = () => {
   )
 }
 
-export default Toronto;
+export default TorontoPage;

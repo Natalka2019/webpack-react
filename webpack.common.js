@@ -5,7 +5,10 @@ module.exports = {
   entry: "./src/index.tsx",
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    modules: [path.resolve('./src'), path.resolve('./node_modules')]
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
+    ]
   },
   module: {
     rules: [
