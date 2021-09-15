@@ -1,14 +1,10 @@
-const path = require("path");
-
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'jsx'],
-    modules: [
-      path.resolve('./src'),
-      path.resolve('./node_modules')
-    ]
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   module: {
     rules: [
@@ -16,21 +12,17 @@ module.exports = {
         test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
+      // !!! in Webpack 5 Use this instead of file-loader and url-loader
       {
-        test: /\.(woff|woff2|eot|ttf|svg|jpg|png)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8000, // Convert images < 8kb to base64 strings, pass the rest to file-loader
-              name: 'images/[hash]-[name].[ext]'
-            },
-          },
-        ]
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]',
+        },
       },
-    ]
+    ],
   },
 };

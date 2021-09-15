@@ -46,4 +46,5 @@ babel-loader - webpack loader that will help webpack to use babel transpiler. Lo
 [Handling Images](https://medium.com/a-beginners-guide-for-webpack-2/handling-images-e1a2a2c28f8d)  
 [React TypeScript Webpack - Setup From Scratch (1/8)](https://www.youtube.com/watch?v=Elpu7CIuqjY&list=PLC3y8-rFHvwiWPS2RO3BKotLRfgg_8WEo)  
 [How to configure SCSS modules for Webpack](https://www.developerhandbook.com/webpack/how-to-configure-scss-modules-for-webpack/)  
-[https://github.com/Colt/webpack-demo-app/blob/master/webpack.prod.js](https://github.com/Colt/webpack-demo-app/blob/master/webpack.prod.js)
+[https://github.com/Colt/webpack-demo-app/blob/master/webpack.prod.js](https://github.com/Colt/webpack-demo-app/blob/master/webpack.prod.js)  
+[An in-depth guide to performance optimization with webpack](https://blog.logrocket.com/guide-performance-optimization-webpack/)

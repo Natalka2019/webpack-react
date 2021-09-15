@@ -1,16 +1,14 @@
-import React from "react";
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"; // BrowserRouter
-import { MainPage, TorontoPage, ThirdPage } from "pages";
+import React from 'react';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'; // BrowserRouter
+import { MainPage, TorontoPage, ThirdPage, SearchPage } from 'pages';
 import { Provider } from 'react-redux';
 
-
-function App(props:any) {
-
+const App = (props: any) => {
   return (
     <Provider store={props.store}>
       <Router>
-        <div>
-          <nav>
+        <>
+          {/* <nav>
             <ul>
               <li>
                 <Link to="/">MainPage</Link>
@@ -21,11 +19,14 @@ function App(props:any) {
               <li>
                 <Link to="/3">ThirdPage</Link>
               </li>
+              <li>
+                <Link to="/searchpage">SearchPage</Link>
+              </li>
             </ul>
-          </nav>
+          </nav> */}
           <Switch>
-            <Route exact path="/">
-              <MainPage name = "World"/>
+            <Route exact path="/main">
+              <MainPage name="World" />
             </Route>
             <Route path="/toronto">
               <TorontoPage />
@@ -33,11 +34,14 @@ function App(props:any) {
             <Route path="/3">
               <ThirdPage />
             </Route>
+            <Route path="/">
+              <SearchPage />
+            </Route>
           </Switch>
-        </div>
+        </>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;
