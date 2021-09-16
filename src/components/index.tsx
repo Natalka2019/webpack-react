@@ -1,3 +1,5 @@
-import SomeComponent from './SomeComponent';
+import Button from "./Button";
+import Logo from "./Logo";
+import InputField from "./InputField";
 
-export {SomeComponent};
+export { Button, Logo, InputField };

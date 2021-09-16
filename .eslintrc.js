@@ -3,18 +3,23 @@ module.exports = {
     es2020: true,
     browser: true,
   },
-  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
-  parser: '@typescript-eslint/parser',
+  extends: [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
-    '@typescript-eslint/no-var-requires': 0,
-    'react/prop-types': 'off',
+    "@typescript-eslint/no-var-requires": 0,
+    "react/prop-types": "off",
+    // "react/jsx-max-props-per-line": [2, { maximum: 1, when: "always" }],
   },
 };

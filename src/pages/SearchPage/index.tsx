@@ -1,12 +1,16 @@
-import React from 'react';
-import styles from './styles.module.scss';
+import React from "react";
+import styles from "./styles.module.scss";
+import Header from "./components/Header";
+import { Logo } from "components";
 
 const SearchPage: React.FC = () => {
   return (
     <div className={styles.container}>
-      <header className={styles.header}></header>
+      <Header />
       <main className={styles.main}></main>
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        <Logo />
+      </footer>
     </div>
   );
 };

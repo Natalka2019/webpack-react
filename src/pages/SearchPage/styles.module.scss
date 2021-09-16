@@ -1,14 +1,30 @@
+@import "../../variables.scss";
+
 .container {
-  .header {
-    min-height: 200px;
-    background: url('../../assets/netflixBackground.jpg');
-    // background-color: green;
-  }
+  background-color: $color--primary-light-grey;
+  position: relative;
   .main {
     min-height: 200px;
-    background: url('assets/lemon_icon.png');
-    // background-color: green;
+    background: url("assets/lemon_icon.png");
+    background-color: green;
   }
   .footer {
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $color--primary-dark-grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    .main {
+      background-color: fuchsia;
+    }
   }
 }
