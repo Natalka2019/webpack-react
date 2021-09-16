@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+.container {
+  color: $color--primary-white;
+  .imageContainer {
+    width: 200px;
+    height: auto;
+    position: relative;
+
+    &:hover .roundButton {
+      visibility: visible;
+    }
+
+    .image {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+    }
+
+    .roundButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      visibility: hidden;
+    }
+  }
+  .titleYear {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .date {
+      border: 1px solid $color--primary-white;
+      border-radius: 5px;
+      padding: 2px 5px;
+    }
+  }
+  .genre {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

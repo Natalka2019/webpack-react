@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.button {
+  background-color: $color--primary-black;
+  width: 20px;
+  height: 20px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+
+  &:after {
+    content: "•••";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    font-size: 8px;
+    letter-spacing: 2px;
+    margin-top: 1px;
+  }
+}

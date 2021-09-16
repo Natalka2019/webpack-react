@@ -1,0 +1,41 @@
+@import "../../../../variables.scss";
+
+.container {
+  background-color: $color--primary-black;
+  max-width: 1024px;
+  margin: 0 auto 50px auto;
+
+  .filters {
+    max-width: 860px;
+    color: $color--primary-white;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: fuchsia;
+  }
+
+  .quantity {
+    max-width: 860px;
+    color: $color--primary-white;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: aquamarine;
+  }
+
+  .posters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+    grid-gap: 20px;
+    justify-content: center;
+    padding: initial;
+    padding-bottom: 20px;
+  }
+}
+
+@media (min-width: 470px) {
+  .container {
+    .quantity,
+    .filters {
+      padding: 10px 50px;
+    }
+  }
+}

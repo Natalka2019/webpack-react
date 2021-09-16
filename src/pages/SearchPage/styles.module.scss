@@ -3,11 +3,6 @@
 .container {
   background-color: $color--primary-light-grey;
   position: relative;
-  .main {
-    min-height: 200px;
-    background: url("assets/lemon_icon.png");
-    background-color: green;
-  }
   .footer {
     height: 50px;
     position: fixed;
@@ -18,13 +13,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-}
-
-@media (max-width: 400px) {
-  .container {
-    .main {
-      background-color: fuchsia;
-    }
   }
 }

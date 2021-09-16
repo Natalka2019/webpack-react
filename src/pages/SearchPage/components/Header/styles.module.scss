@@ -7,9 +7,11 @@
   background-blend-mode: darken;
   box-sizing: border-box;
   margin-bottom: 10px;
+  max-width: 1024px;
+  margin: 0 auto;
 
   .headerSection {
-    max-width: 1024px;
+    max-width: 860px;
     padding: 20px;
     margin: 0 auto;
   }
