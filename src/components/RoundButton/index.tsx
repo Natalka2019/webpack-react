@@ -6,11 +6,7 @@ interface Props {
 }
 
 const RoundButton: React.FC<Props> = ({ className }) => {
-  return (
-    <button className={`${styles.button} ${className}`}>
-      {/* <span className={styles.dots}>...</span> */}
-    </button>
-  );
+  return <button className={`${styles.button} ${className}`} />;
 };
 
 export default RoundButton;

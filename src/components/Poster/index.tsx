@@ -1,16 +1,9 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import RoundButton from "../RoundButton";
+import { IMovie } from "models";
 
-interface Props {
-  id: string;
-  title: string;
-  genre: string;
-  date: number;
-  imageUrl: string;
-}
-
-const Poster: React.FC<Props> = ({ id, title, genre, date, imageUrl }) => {
+const Poster: React.FC<IMovie> = ({ id, title, genre, date, imageUrl }) => {
   return (
     <div className={styles.container} id={id}>
       <div className={styles.imageContainer}>

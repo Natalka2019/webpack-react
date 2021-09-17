@@ -6,14 +6,23 @@
   background: #000000bf url("assets/netflixBackground.jpg");
   background-blend-mode: darken;
   box-sizing: border-box;
-  margin-bottom: 10px;
   max-width: 1024px;
-  margin: 0 auto;
+  margin: 0 auto 8px auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
 
   .headerSection {
     max-width: 860px;
     padding: 20px;
     margin: 0 auto;
+
+    @media (min-width: 470px) {
+      padding: 20px 50px;
+    }
   }
 
   .top {
@@ -27,59 +36,55 @@
   }
 
   .bottom {
+    @media (min-width: 470px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .title {
       color: $color--primary-white;
       text-transform: uppercase;
       font-size: 1.5em;
       margin-bottom: 10px;
       text-align: center;
+      @media (min-width: 470px) {
+        font-size: 2em;
+        width: 430px;
+        text-align: left;
+      }
     }
 
     .searchContainer {
       display: flex;
       flex-direction: column;
       align-items: center;
+      @media (min-width: 470px) {
+        flex-direction: row;
+      }
 
       .searchInput {
         width: 200px;
         background-color: $color--primary-dark-grey;
         color: $color--primary-white;
         margin-bottom: 10px;
-        outline-color: white;
+
+        &:focus {
+          box-shadow: 0 0 0 2px $color--primary-coral;
+          outline-color: transparent;
+          outline-width: 2px;
+          outline-style: solid;
+        }
+
+        @media (min-width: 470px) {
+          margin-right: 10px;
+          width: 300px;
+        }
       }
       .searchButton {
         width: 120px;
         background-color: $color--primary-coral;
         color: $color--primary-white;
-      }
-    }
-  }
-}
-
-@media (min-width: 470px) {
-  .header {
-    .headerSection {
-      padding: 20px 50px;
-    }
-    .bottom {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .title {
-        font-size: 2em;
-        width: 430px;
-        text-align: left;
-      }
-
-      .searchContainer {
-        flex-direction: row;
-
-        .searchInput {
-          margin-right: 10px;
-          width: 300px;
-        }
-
-        .searchButton {
+        @media (min-width: 470px) {
           margin-bottom: 10px;
         }
       }

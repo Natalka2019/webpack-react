@@ -19,7 +19,7 @@ const InputField: React.FC<Props> = ({
   onChange,
 }) => {
   return (
-    <div className={styles.container}>
+    <>
       <label htmlFor="input">{label}</label>
       <input
         id="input"
@@ -29,7 +29,7 @@ const InputField: React.FC<Props> = ({
         onKeyPress={(e) => onEnter(e)}
         placeholder={placeholder}
       />
-    </div>
+    </>
   );
 };
 
