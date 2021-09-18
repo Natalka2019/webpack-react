@@ -1,30 +1,18 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"; // BrowserRouter
-import { MainPage, TorontoPage, ThirdPage, SearchPage } from "pages";
-import { Provider } from "react-redux";
+import { HashRouter as Router, Switch, Route } from "react-router-dom"; // BrowserRouter
+import { SearchPage } from "pages";
 
-const App = (props: any) => {
+const App = () => {
   return (
-    <Provider store={props.store}>
-      <Router>
-        <>
-          <Switch>
-            <Route exact path="/main">
-              <MainPage name="World" />
-            </Route>
-            <Route path="/toronto">
-              <TorontoPage />
-            </Route>
-            <Route path="/3">
-              <ThirdPage />
-            </Route>
-            <Route path="/">
-              <SearchPage />
-            </Route>
-          </Switch>
-        </>
-      </Router>
-    </Provider>
+    <Router>
+      <>
+        <Switch>
+          <Route path="/">
+            <SearchPage />
+          </Route>
+        </Switch>
+      </>
+    </Router>
   );
 };
 
