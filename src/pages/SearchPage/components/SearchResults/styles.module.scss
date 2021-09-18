@@ -15,24 +15,4 @@
       padding: 10px 50px;
     }
   }
-
-  .quantity {
-    max-width: 860px;
-    color: $color--primary-white;
-    padding: 10px;
-    margin: 0 auto;
-
-    @media (min-width: 470px) {
-      padding: 10px 50px;
-    }
-  }
-
-  .posters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-    grid-gap: 20px;
-    justify-content: center;
-    padding: initial;
-    padding: 20px;
-  }
 }

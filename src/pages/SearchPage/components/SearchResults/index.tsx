@@ -1,11 +1,9 @@
 import React, { useCallback } from "react";
 import styles from "./styles.module.scss";
-import { movies } from "./movies.js";
-import { Poster } from "components";
+import { movies } from "../../movies";
 import { genres } from "./genres.js";
 import FiltersContainer from "../FiltersContainer";
-
-const quantity = 39;
+import MoviesList from "../MoviesList";
 
 const SearchResults: React.FC = () => {
   const onGenre = useCallback((id: string) => {
@@ -17,20 +15,7 @@ const SearchResults: React.FC = () => {
       <div className={styles.filters}>
         <FiltersContainer genres={genres} onGenre={onGenre} />
       </div>
-      <div className={styles.quantity}>{quantity} movies found</div>
-      <div className={styles.posters}>
-        {movies &&
-          movies.map(({ id, title, image, genre, date }) => (
-            <Poster
-              key={id}
-              id={id}
-              title={title}
-              imageUrl={image}
-              genre={genre}
-              date={date}
-            />
-          ))}
-      </div>
+      <MoviesList movies={movies} />
     </main>
   );
 };
