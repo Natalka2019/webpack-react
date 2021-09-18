@@ -8,10 +8,15 @@ import FiltersContainer from "../FiltersContainer";
 const quantity = 39;
 
 const SearchResults: React.FC = () => {
+  const onGenre = (e: any) => {
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.id);
+  };
   return (
     <main className={styles.container}>
       <div className={styles.filters}>
-        <FiltersContainer genres={genres} />
+        <FiltersContainer genres={genres} onGenre={onGenre} />
       </div>
       <div className={styles.quantity}>{quantity} movies found</div>
       <div className={styles.posters}>

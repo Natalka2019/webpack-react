@@ -30,6 +30,7 @@
     justify-content: space-between;
 
     .addButton {
+      border-radius: 3px;
       color: $color--primary-coral;
       background-color: rgba(245, 240, 240, 0.3);
     }
@@ -47,6 +48,7 @@
       font-size: 1.5em;
       margin-bottom: 10px;
       text-align: center;
+      letter-spacing: 0.15em;
       @media (min-width: 470px) {
         font-size: 2em;
         width: 430px;
@@ -81,6 +83,7 @@
         }
       }
       .searchButton {
+        border-radius: 3px;
         width: 120px;
         background-color: $color--primary-coral;
         color: $color--primary-white;

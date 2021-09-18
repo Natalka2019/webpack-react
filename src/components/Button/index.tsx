@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 
 interface Props {
   name: string;
+  id?: string;
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -13,12 +14,14 @@ const Button: React.FC<Props> = ({
   className,
   onClick,
   type = "button",
+  id = "",
 }) => {
   return (
     <button
       className={`${styles.button} ${className}`}
-      onClick={(e) => onClick(e)}
+      onClick={onClick}
       type={type}
+      id={id}
     >
       {name}
     </button>
