@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $color--primary-black;
+  color: $color--primary-white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
