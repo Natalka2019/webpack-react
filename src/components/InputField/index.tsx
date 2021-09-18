@@ -7,8 +7,8 @@ interface Props {
   className?: string;
   placeholder?: string;
   value?: string;
+  inputRef?: any;
   onEnter: (e: KeyboardEvent<HTMLInputElement>) => void;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputField: React.FC<Props> = ({
@@ -17,9 +17,14 @@ const InputField: React.FC<Props> = ({
   type = "text",
   placeholder,
   onEnter,
-  onChange,
-  value = "",
+  inputRef,
 }) => {
+  const [value, setValue] = useState("");
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setValue(e.target.value);
+  };
   return (
     <>
       <label htmlFor="input">{label}</label>
@@ -31,6 +36,7 @@ const InputField: React.FC<Props> = ({
         onKeyPress={(e) => onEnter(e)}
         placeholder={placeholder}
         value={value}
+        ref={inputRef}
       />
     </>
   );
