@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, ChangeEvent } from "react";
+import React, { KeyboardEvent, ChangeEvent, useState } from "react";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -6,6 +6,7 @@ interface Props {
   type?: string;
   className?: string;
   placeholder?: string;
+  value?: string;
   onEnter: (e: KeyboardEvent<HTMLInputElement>) => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -17,6 +18,7 @@ const InputField: React.FC<Props> = ({
   placeholder,
   onEnter,
   onChange,
+  value = "",
 }) => {
   return (
     <>
@@ -28,6 +30,7 @@ const InputField: React.FC<Props> = ({
         type={type}
         onKeyPress={(e) => onEnter(e)}
         placeholder={placeholder}
+        value={value}
       />
     </>
   );

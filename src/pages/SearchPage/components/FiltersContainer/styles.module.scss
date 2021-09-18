@@ -26,6 +26,7 @@
       margin-bottom: 10px;
 
       &:hover,
+      &:focus,
       &:active {
         border: none;
         box-shadow: 0 5px 2px -2px $color--primary-coral;
@@ -35,6 +36,11 @@
         border: none;
         margin-bottom: 0;
       }
+    }
+
+    .selected {
+      border: none;
+      box-shadow: 0 5px 2px -2px $color--primary-coral;
     }
   }
 

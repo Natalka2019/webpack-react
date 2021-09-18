@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styles from "./styles.module.scss";
 import { movies } from "./movies.js";
 import { Poster } from "components";
@@ -8,9 +8,9 @@ import FiltersContainer from "../FiltersContainer";
 const quantity = 39;
 
 const SearchResults: React.FC = () => {
-  const onGenre = (e: any) => {
-    console.log(e.target.id);
-  };
+  const onGenre = useCallback((id: string) => {
+    console.log(id);
+  }, []);
 
   return (
     <main className={styles.container}>

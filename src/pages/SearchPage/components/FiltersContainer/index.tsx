@@ -1,14 +1,22 @@
-import React, { MouseEvent } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./styles.module.scss";
 import { IGenre } from "models";
 import { Button } from "components";
 
 interface Props {
   genres: IGenre[];
-  onGenre: (e: MouseEvent<HTMLButtonElement>) => void;
+  onGenre: (id: string) => void;
 }
 
 const FiltersContainer: React.FC<Props> = ({ genres, onGenre }) => {
+  const [selectedGenre, setSelectedGenre] = useState(genres[0].id);
+  const onGenreChange = useCallback((id: string) => {
+    console.log(id);
+    setSelectedGenre(id);
+    onGenre(id);
+  }, []);
+
+  const selectedGenreClassName = `${styles.genre} ${styles.selected}`;
   return (
     <div className={styles.container}>
       <div className={styles.genres}>
@@ -17,9 +25,11 @@ const FiltersContainer: React.FC<Props> = ({ genres, onGenre }) => {
             <Button
               key={id}
               id={id}
-              className={styles.genre}
+              className={
+                id === selectedGenre ? selectedGenreClassName : styles.genre
+              }
               name={title}
-              onClick={(id) => onGenre(id)}
+              onClick={() => onGenreChange(id)}
             />
           ))}
       </div>
