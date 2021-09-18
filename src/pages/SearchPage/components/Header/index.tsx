@@ -1,9 +1,14 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useEffect } from "react";
 import { Logo, Button, InputField } from "components";
 import styles from "./styles.module.scss";
 
 const Header: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    searchInputRef.current?.focus();
+    console.log("input");
+  }, []);
 
   const onAddMovie = useCallback(() => {
     console.log("Add movie here!");
@@ -33,7 +38,7 @@ const Header: React.FC = () => {
             className={styles.searchInput}
             onEnter={onSearch}
             type="search"
-            inputRef={searchInputRef}
+            ref={searchInputRef}
             placeholder="What do you want to watch?"
           />
           <Button
