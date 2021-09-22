@@ -4,4 +4,5 @@ export default interface IMovie {
   genre: string;
   date: number;
   imageUrl: string;
+  onManageMovie: () => void;
 }

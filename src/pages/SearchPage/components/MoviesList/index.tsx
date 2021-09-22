@@ -20,16 +20,7 @@ const MoviesList: React.FC<Props> = ({ movies }) => {
       </div>
       <div className={styles.posters}>
         {movies &&
-          movies.map(({ id, title, imageUrl, genre, date }) => (
-            <Poster
-              key={id}
-              id={id}
-              title={title}
-              imageUrl={imageUrl}
-              genre={genre}
-              date={date}
-            />
-          ))}
+          movies.map((movie) => <Poster key={movie.id} movie={movie} />)}
       </div>
     </>
   );

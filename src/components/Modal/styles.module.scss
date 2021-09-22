@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.Modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  &__main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color--primary-black;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1001;
+    width: 280px;
+
+    &__header {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      &__button {
+        border: none;
+        background-color: transparent;
+        color: $color--primary-white;
+        cursor: pointer;
+      }
+    }
+
+    &__content {
+      padding: 10px;
+    }
+  }
+}

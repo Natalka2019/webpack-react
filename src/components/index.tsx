@@ -5,6 +5,7 @@ import Poster from "./Poster";
 import RoundButton from "./RoundButton";
 import ErrorBoundary from "./ErrorBoundary";
 import ErrorFallback from "./ErrorFallback";
+import Modal from "./Modal";
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   RoundButton,
   ErrorBoundary,
   ErrorFallback,
+  Modal,
 };
