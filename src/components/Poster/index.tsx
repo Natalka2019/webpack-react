@@ -5,17 +5,17 @@ import { IMovie } from "models";
 
 const Poster: React.FC<IMovie> = ({ id, title, genre, date, imageUrl }) => {
   return (
-    <div className={styles.container} id={id}>
-      <div className={styles.imageContainer}>
-        <img className={styles.image} src={imageUrl} />
-        <RoundButton className={styles.roundButton} />
+    <div className={styles.Poster} id={id}>
+      <div className={styles.Poster__imageContainer}>
+        <img className={styles.Poster__imageContainer__image} src={imageUrl} />
+        <RoundButton className={styles.Poster__imageContainer__roundButton} />
       </div>
-      <div className={styles.info}>
-        <div className={styles.titleYear}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.date}>{date}</div>
+      <div className={styles.Poster__info}>
+        <div className={styles.Poster__info__titleYear}>
+          <div className={styles.Poster__info__titleYear__title}>{title}</div>
+          <div className={styles.Poster__info__titleYear__date}>{date}</div>
         </div>
-        <div className={styles.genre}>{genre}</div>
+        <div className={styles.Poster__info__genre}>{genre}</div>
       </div>
     </div>
   );

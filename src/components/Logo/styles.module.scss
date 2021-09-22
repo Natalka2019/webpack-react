@@ -1,11 +1,11 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
-.logo {
+.Logo {
   color: $color--primary-coral;
   font-weight: 900;
   letter-spacing: 0.05em;
 
-  .logoEnd {
+  &__end {
     font-weight: 400;
   }
 }

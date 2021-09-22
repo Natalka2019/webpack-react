@@ -7,7 +7,6 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     searchInputRef.current?.focus();
-    console.log("input");
   }, []);
 
   const onAddMovie = useCallback(() => {
@@ -22,20 +21,28 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={styles.header}>
-      <div className={`${styles.headerSection} ${styles.top}`}>
+    <header className={styles.Header}>
+      <div
+        className={`${styles.Header__headerSection} ${styles.Header__headerSection_top}`}
+      >
         <Logo />
         <Button
           name="+ ADD MOVIE"
-          className={styles.addButton}
+          className={styles.Header__headerSection_top__addButton}
           onClick={onAddMovie}
         />
       </div>
-      <div className={`${styles.headerSection} ${styles.bottom}`}>
-        <div className={styles.title}>Find your movie</div>
-        <div className={styles.searchContainer}>
+      <div
+        className={`${styles.Header__headerSection} ${styles.Header__headerSection_bottom}`}
+      >
+        <div className={styles.Header__headerSection_bottom__title}>
+          Find your movie
+        </div>
+        <div className={styles.Header__headerSection_bottom__searchContainer}>
           <InputField
-            className={styles.searchInput}
+            className={
+              styles.Header__headerSection_bottom__searchContainer__searchInput
+            }
             onEnter={onSearch}
             type="search"
             ref={searchInputRef}
@@ -43,7 +50,9 @@ const Header: React.FC = () => {
           />
           <Button
             name="SEARCH"
-            className={styles.searchButton}
+            className={
+              styles.Header__headerSection_bottom__searchContainer__searchButton
+            }
             onClick={onSearch}
           />
         </div>

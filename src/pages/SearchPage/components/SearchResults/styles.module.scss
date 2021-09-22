@@ -1,12 +1,12 @@
 @import "../../../../variables.scss";
 
-.container {
+.SearchResults {
   background-color: $color--primary-black;
   max-width: 1024px;
   margin: 208px auto 0;
   padding-bottom: 50px;
 
-  .filters {
+  &__filters {
     max-width: 860px;
     color: $color--primary-white;
     margin: 0 auto;
