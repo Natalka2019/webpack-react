@@ -1,15 +1,11 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { Poster } from "components";
-import { IMovie } from "models";
+import Poster from "../Poster";
+import { movies } from "../../movies";
 
 const quantity = 39;
 
-interface Props {
-  movies: IMovie[];
-}
-
-const MoviesList: React.FC<Props> = ({ movies }) => {
+const MoviesList: React.FC = () => {
   if (!movies || movies.length === 0) {
     return <div className={styles.noData}>Nothing found for this request</div>;
   }

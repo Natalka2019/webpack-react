@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import styles from "./styles.module.scss";
-import { movies } from "../../movies";
 import { genres } from "./genres.js";
 import FiltersContainer from "../FiltersContainer";
 import MoviesList from "../MoviesList";
@@ -15,7 +14,7 @@ const SearchResults: React.FC = () => {
       <div className={styles.SearchResults__filters}>
         <FiltersContainer genres={genres} onGenre={onGenre} />
       </div>
-      <MoviesList movies={movies} />
+      <MoviesList />
     </main>
   );
 };

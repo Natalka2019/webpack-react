@@ -13,7 +13,7 @@ export const movies = [
     genre: "genre2",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://www.themoviedb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg",
   },
   {
     id: "3",
@@ -21,7 +21,7 @@ export const movies = [
     genre: "genre3",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMjA4MTEyMzcwMl5BMl5BanBnXkFtZTgwMTIwODczNTM@._V1_.jpg",
   },
   {
     id: "4",
@@ -29,7 +29,7 @@ export const movies = [
     genre: "genre4",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://www.themoviedb.org/t/p/w500/sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg",
   },
   {
     id: "5",
@@ -37,7 +37,7 @@ export const movies = [
     genre: "genre5",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://www.themoviedb.org/t/p/w500/nzWdHTq53KMQFphullKFaVi6252.jpg",
   },
   {
     id: "6",
@@ -45,7 +45,7 @@ export const movies = [
     genre: "genre6",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNmExMzkwMDYtYTYyMi00MTMwLTg0ZGQtOWJmOTEzYzg2ODgyXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_.jpg",
   },
   {
     id: "7",
@@ -53,7 +53,7 @@ export const movies = [
     genre: "genre7",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/f176d1b4afa915eafb24072134ab98c890ea907639d834b777decb09f89a18e0._RI_V_TTW_.jpg",
   },
   {
     id: "8",
@@ -61,7 +61,7 @@ export const movies = [
     genre: "genre8",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNWMzZTE4NTYtOGRiNi00YzQ2LWJiNjctMzk1NDU4NmY5ZGQwXkEyXkFqcGdeQXVyODIyMzA4NDc@._V1_.jpg",
   },
   {
     id: "9",
@@ -69,7 +69,7 @@ export const movies = [
     genre: "genre9",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTUzNTU1NzQ2Ml5BMl5BanBnXkFtZTcwMDUzNjk4Nw@@._V1_.jpg",
   },
   {
     id: "10",
@@ -77,6 +77,6 @@ export const movies = [
     genre: "genre10",
     date: 2021,
     imageUrl:
-      "https://tvline.com/wp-content/uploads/2021/08/lucifer-final-season-6-poster.jpg",
+      "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
   },
 ];
