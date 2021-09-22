@@ -6,10 +6,10 @@ import { Logo } from "components";
 
 const SearchPage: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.SearchPage}>
       <Header />
       <SearchResults />
-      <footer className={styles.footer}>
+      <footer className={styles.SearchPage__footer}>
         <Logo />
       </footer>
     </div>

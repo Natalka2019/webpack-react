@@ -16,26 +16,28 @@ const FiltersContainer: React.FC<Props> = ({ genres, onGenre }) => {
     onGenre(id);
   }, []);
 
-  const selectedGenreClassName = `${styles.genre} ${styles.selected}`;
+  const selectedGenreClassName = `${styles.FiltersContainer__genres__genre} ${styles.FiltersContainer__genres__genre_selected}`;
   return (
-    <div className={styles.container}>
-      <div className={styles.genres}>
+    <div className={styles.FiltersContainer}>
+      <div className={styles.FiltersContainer__genres}>
         {genres &&
           genres.map(({ id, title }) => (
             <Button
               key={id}
               id={id}
               className={
-                id === selectedGenre ? selectedGenreClassName : styles.genre
+                id === selectedGenre
+                  ? selectedGenreClassName
+                  : styles.FiltersContainer__genres__genre
               }
               name={title}
               onClick={() => onGenreChange(id)}
             />
           ))}
       </div>
-      <div className={styles.sort}>
-        <span className={styles.title}>Sort by</span>
-        <select className={styles.select}>
+      <div className={styles.FiltersContainer__sort}>
+        <span className={styles.FiltersContainer__sort__title}>Sort by</span>
+        <select className={styles.FiltersContainer__sort__select}>
           <option>Release date</option>
           <option>Title</option>
         </select>

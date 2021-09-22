@@ -11,8 +11,8 @@ const SearchResults: React.FC = () => {
   }, []);
 
   return (
-    <main className={styles.container}>
-      <div className={styles.filters}>
+    <main className={styles.SearchResults}>
+      <div className={styles.SearchResults__filters}>
         <FiltersContainer genres={genres} onGenre={onGenre} />
       </div>
       <MoviesList movies={movies} />

@@ -1,6 +1,6 @@
 @import "../../../../variables.scss";
 
-.container {
+.FiltersContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,8 +12,8 @@
     padding: 0;
   }
 
-  .genres {
-    .genre {
+  &__genres {
+    &__genre {
       padding: 0 10px 0 5px;
       width: fit-content;
       text-transform: uppercase;
@@ -32,19 +32,19 @@
         box-shadow: 0 5px 2px -2px $color--primary-coral;
       }
 
+      &_selected {
+        border: none;
+        box-shadow: 0 5px 2px -2px $color--primary-coral;
+      }
+
       @media (min-width: 850px) {
         border: none;
         margin-bottom: 0;
       }
     }
-
-    .selected {
-      border: none;
-      box-shadow: 0 5px 2px -2px $color--primary-coral;
-    }
   }
 
-  .sort {
+  &__sort {
     text-transform: uppercase;
     padding: 10px 5px;
 
@@ -53,12 +53,12 @@
       padding-bottom: 0;
     }
 
-    .title {
+    &__title {
       margin-right: 10px;
       color: $color--primary-light-grey;
     }
 
-    .select {
+    &__select {
       appearance: none;
       width: 200px;
       text-transform: uppercase;

@@ -1,6 +1,6 @@
 @import "../../../../variables.scss";
 
-.header {
+.Header {
   height: 200px;
   box-sizing: border-box;
   background: #000000bf url("assets/netflixBackground.jpg");
@@ -15,7 +15,7 @@
   width: 100%;
   z-index: 2;
 
-  .headerSection {
+  &__headerSection {
     max-width: 860px;
     padding: 20px;
     margin: 0 auto;
@@ -23,72 +23,74 @@
     @media (min-width: 470px) {
       padding: 20px 50px;
     }
-  }
 
-  .top {
-    display: flex;
-    justify-content: space-between;
-
-    .addButton {
-      border-radius: 3px;
-      color: $color--primary-coral;
-      background-color: rgba(245, 240, 240, 0.3);
-    }
-  }
-
-  .bottom {
-    @media (min-width: 470px) {
+    &_top {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .title {
-      color: $color--primary-white;
-      text-transform: uppercase;
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      text-align: center;
-      letter-spacing: 0.15em;
-      @media (min-width: 470px) {
-        font-size: 2em;
-        width: 430px;
-        text-align: left;
-      }
-    }
+      justify-content: space-between;
 
-    .searchContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      @media (min-width: 470px) {
-        flex-direction: row;
-      }
-
-      .searchInput {
-        width: 200px;
-        background-color: $color--primary-dark-grey;
-        color: $color--primary-white;
-        margin-bottom: 10px;
-
-        &:focus {
-          box-shadow: 0 0 0 2px $color--primary-coral;
-          outline-color: transparent;
-          outline-width: 2px;
-          outline-style: solid;
-        }
-
-        @media (min-width: 470px) {
-          margin-right: 10px;
-          width: 300px;
-        }
-      }
-      .searchButton {
+      &__addButton {
         border-radius: 3px;
-        width: 120px;
-        background-color: $color--primary-coral;
+        color: $color--primary-coral;
+        background-color: rgba(245, 240, 240, 0.3);
+      }
+    }
+
+    &_bottom {
+      @media (min-width: 470px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      &__title {
         color: $color--primary-white;
+        text-transform: uppercase;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        text-align: center;
+        letter-spacing: 0.15em;
+
         @media (min-width: 470px) {
+          font-size: 2em;
+          width: 430px;
+          text-align: left;
+        }
+      }
+
+      &__searchContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media (min-width: 470px) {
+          flex-direction: row;
+        }
+
+        &__searchInput {
+          width: 200px;
+          background-color: $color--primary-dark-grey;
+          color: $color--primary-white;
           margin-bottom: 10px;
+
+          &:focus {
+            box-shadow: 0 0 0 2px $color--primary-coral;
+            outline-color: transparent;
+            outline-width: 2px;
+            outline-style: solid;
+          }
+
+          @media (min-width: 470px) {
+            margin-right: 10px;
+            width: 300px;
+          }
+        }
+        &__searchButton {
+          border-radius: 3px;
+          width: 120px;
+          background-color: $color--primary-coral;
+          color: $color--primary-white;
+          @media (min-width: 470px) {
+            margin-bottom: 10px;
+          }
         }
       }
     }
