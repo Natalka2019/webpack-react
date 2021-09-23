@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.DeleteModal {
+  padding: 10px;
+  color: $color--primary-white;
+
+  &__title {
+    letter-spacing: 0.2em;
+  }
+
+  &__question {
+    line-height: 1.8;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    &__button {
+      border-radius: 3px;
+      text-transform: uppercase;
+      background-color: $color--primary-coral;
+      color: $color--primary-white;
+    }
+  }
+}

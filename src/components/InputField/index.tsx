@@ -7,7 +7,7 @@ interface Props {
   className?: string;
   placeholder?: string;
   value?: string;
-  onEnter: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
@@ -15,7 +15,6 @@ const InputField = forwardRef<HTMLInputElement, Props>(
     const [value, setValue] = useState("");
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.value);
       setValue(e.target.value);
     };
     return (
@@ -26,7 +25,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           className={`${styles.input} ${className}`}
           onChange={(e) => onChange(e)}
           type={type}
-          onKeyPress={(e) => onEnter(e)}
+          onKeyPress={onEnter ? (e) => onEnter(e) : undefined}
           placeholder={placeholder}
           value={value}
           ref={ref}
