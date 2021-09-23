@@ -16,7 +16,7 @@ const DeleteModal: React.FC<Props> = ({ id, onConfirm }) => {
       </p>
       <div className={styles.DeleteModal__buttonContainer}>
         <Button
-          className={styles.DeleteModal__buttonContainer__button}
+          className={styles.DeleteModal__button}
           name="Confirm"
           onClick={() => onConfirm(id)}
         />

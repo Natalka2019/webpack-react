@@ -15,11 +15,12 @@
   &__buttonContainer {
     display: flex;
     justify-content: flex-end;
-    &__button {
-      border-radius: 3px;
-      text-transform: uppercase;
-      background-color: $color--primary-coral;
-      color: $color--primary-white;
-    }
+  }
+
+  &__button {
+    border-radius: 3px;
+    text-transform: uppercase;
+    background-color: $color--primary-coral;
+    color: $color--primary-white;
   }
 }

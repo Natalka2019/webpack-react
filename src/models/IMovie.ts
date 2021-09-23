@@ -4,6 +4,6 @@ export default interface IMovie {
   genre: string;
   releaseDate: number;
   overview: string;
-  runtime: string;
+  runTime: string;
   movieUrl: string;
 }

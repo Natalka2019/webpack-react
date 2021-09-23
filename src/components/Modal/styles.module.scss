@@ -23,22 +23,22 @@
     padding: 10px;
     z-index: 1001;
     width: 280px;
+  }
 
-    &__header {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-      &__button {
-        border: none;
-        background-color: transparent;
-        color: $color--primary-white;
-        cursor: pointer;
-      }
-    }
+  &__button {
+    border: none;
+    background-color: transparent;
+    color: $color--primary-white;
+    cursor: pointer;
+  }
 
-    &__content {
-      padding: 10px;
-    }
+  &__content {
+    padding: 10px;
   }
 }

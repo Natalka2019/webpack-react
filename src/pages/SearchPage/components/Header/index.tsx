@@ -28,21 +28,17 @@ const Header: React.FC = () => {
         <Logo />
         <Button
           name="+ ADD MOVIE"
-          className={styles.Header__headerSection_top__addButton}
+          className={styles.Header__addButton}
           onClick={onAddMovie}
         />
       </div>
       <div
         className={`${styles.Header__headerSection} ${styles.Header__headerSection_bottom}`}
       >
-        <div className={styles.Header__headerSection_bottom__title}>
-          Find your movie
-        </div>
-        <div className={styles.Header__headerSection_bottom__searchContainer}>
+        <div className={styles.Header__title}>Find your movie</div>
+        <div className={styles.Header__searchContainer}>
           <InputField
-            className={
-              styles.Header__headerSection_bottom__searchContainer__searchInput
-            }
+            className={styles.Header__searchInput}
             onEnter={onSearch}
             type="search"
             ref={searchInputRef}
@@ -50,9 +46,7 @@ const Header: React.FC = () => {
           />
           <Button
             name="SEARCH"
-            className={
-              styles.Header__headerSection_bottom__searchContainer__searchButton
-            }
+            className={styles.Header__searchButton}
             onClick={onSearch}
           />
         </div>

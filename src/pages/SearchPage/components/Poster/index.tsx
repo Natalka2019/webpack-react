@@ -50,23 +50,18 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
     <>
       <div className={styles.Poster} id={id}>
         <div className={styles.Poster__imageContainer}>
-          <img
-            className={styles.Poster__imageContainer__image}
-            src={movieUrl}
-          />
+          <img className={styles.Poster__image} src={movieUrl} />
           <RoundButton
-            className={styles.Poster__imageContainer__roundButton}
+            className={styles.Poster__roundButton}
             onClick={onManageMovie}
           />
         </div>
         <div className={styles.Poster__info}>
-          <div className={styles.Poster__info__titleYear}>
-            <div className={styles.Poster__info__titleYear__title}>{title}</div>
-            <div className={styles.Poster__info__titleYear__date}>
-              {releaseDate}
-            </div>
+          <div className={styles.Poster__titleYear}>
+            <div className={styles.Poster__title}>{title}</div>
+            <div className={styles.Poster__date}>{releaseDate}</div>
           </div>
-          <div className={styles.Poster__info__genre}>{genre}</div>
+          <div className={styles.Poster__genre}>{genre}</div>
         </div>
       </div>
       <Modal

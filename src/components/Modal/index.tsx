@@ -20,15 +20,12 @@ const Modal: React.FC<Props> = ({
         <div className={styles.Modal}>
           <div className={styles.Modal__overlay} onClick={onCloseModal}></div>
           <div className={styles.Modal__main}>
-            <div className={styles.Modal__main__header}>
-              <button
-                className={styles.Modal__main__header__button}
-                onClick={onCloseModal}
-              >
+            <div className={styles.Modal__header}>
+              <button className={styles.Modal__button} onClick={onCloseModal}>
                 X
               </button>
             </div>
-            <div className={styles.Modal__main__content}>{children}</div>
+            <div className={styles.Modal__content}>{children}</div>
           </div>
         </div>,
         modalRootEl
