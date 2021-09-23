@@ -14,7 +14,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const { id, title, genre, date, imageUrl } = movie;
+  const { id, title, genre, releaseDate, movieUrl } = movie;
   const onManageMovie = () => {
     setIsActivityModalOpen(true);
   };
@@ -52,7 +52,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
         <div className={styles.Poster__imageContainer}>
           <img
             className={styles.Poster__imageContainer__image}
-            src={imageUrl}
+            src={movieUrl}
           />
           <RoundButton
             className={styles.Poster__imageContainer__roundButton}
@@ -62,7 +62,9 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
         <div className={styles.Poster__info}>
           <div className={styles.Poster__info__titleYear}>
             <div className={styles.Poster__info__titleYear__title}>{title}</div>
-            <div className={styles.Poster__info__titleYear__date}>{date}</div>
+            <div className={styles.Poster__info__titleYear__date}>
+              {releaseDate}
+            </div>
           </div>
           <div className={styles.Poster__info__genre}>{genre}</div>
         </div>
