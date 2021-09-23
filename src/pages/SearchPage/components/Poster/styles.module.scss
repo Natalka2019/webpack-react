@@ -2,9 +2,10 @@
 
 .Poster {
   color: $color--primary-white;
+  width: 200px;
+  font-size: 12px;
 
   &__imageContainer {
-    width: 200px;
     height: auto;
     position: relative;
 
@@ -30,15 +31,20 @@
     padding-top: 5px;
   }
 
-  &__titleYear {
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__dateGenre {
     display: flex;
     justify-content: space-between;
   }
 
-  &__title {
-    font-size: 16px;
-    line-height: 24px;
-  }
   &__date {
     border: 1px solid $color--primary-white;
     border-radius: 5px;

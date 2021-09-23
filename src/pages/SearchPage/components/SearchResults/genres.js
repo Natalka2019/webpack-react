@@ -5,15 +5,15 @@ export const genres = [
   },
   {
     id: "2",
-    title: "Documentary",
+    title: "Sci-Fi",
   },
   {
     id: "3",
-    title: "Comedy",
+    title: "Fantasy",
   },
   {
     id: "4",
-    title: "Horror",
+    title: "Drama",
   },
   {
     id: "5",

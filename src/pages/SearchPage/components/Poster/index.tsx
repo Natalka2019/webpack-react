@@ -57,11 +57,11 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
           />
         </div>
         <div className={styles.Poster__info}>
-          <div className={styles.Poster__titleYear}>
-            <div className={styles.Poster__title}>{title}</div>
+          <div className={styles.Poster__title}>{title}</div>
+          <div className={styles.Poster__dateGenre}>
+            <div className={styles.Poster__genre}>{genre}</div>
             <div className={styles.Poster__date}>{releaseDate}</div>
           </div>
-          <div className={styles.Poster__genre}>{genre}</div>
         </div>
       </div>
       {id && (

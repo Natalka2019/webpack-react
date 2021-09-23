@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, ChangeEvent, useState, forwardRef } from "react";
+import React, { KeyboardEvent, ChangeEvent, forwardRef } from "react";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -7,8 +7,9 @@ interface Props {
   labelClassName?: string;
   inputClassName?: string;
   placeholder?: string;
-  value?: string | number | null;
+  value?: string | number;
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
@@ -20,15 +21,11 @@ const InputField = forwardRef<HTMLInputElement, Props>(
       type = "text",
       placeholder,
       onEnter,
-      value,
+      value = "",
+      onChange,
     },
     ref
   ) => {
-    const [inputValue, setValue] = useState(value || "");
-
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
-    };
     return (
       <div className={styles.InputField}>
         <label
@@ -44,7 +41,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           type={type}
           onKeyPress={onEnter ? (e) => onEnter(e) : undefined}
           placeholder={placeholder}
-          value={inputValue}
+          value={value}
           ref={ref}
         />
       </div>

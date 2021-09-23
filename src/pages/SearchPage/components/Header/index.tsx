@@ -1,4 +1,10 @@
-import React, { useCallback, useRef, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useRef,
+  useEffect,
+  useState,
+  ChangeEvent,
+} from "react";
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
 import { IMovie } from "models";
@@ -6,6 +12,12 @@ import { IMovie } from "models";
 const Header: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   const onCloseMovieModal = () => {
     setIsMovieModalOpen(false);
   };
@@ -52,6 +64,8 @@ const Header: React.FC = () => {
             type="search"
             ref={searchInputRef}
             placeholder="What do you want to watch?"
+            value={searchValue}
+            onChange={onSearchChange}
           />
           <Button
             name="SEARCH"
