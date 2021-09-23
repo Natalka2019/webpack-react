@@ -39,7 +39,6 @@
   }
 
   &__addButton {
-    border-radius: 3px;
     color: $color--primary-coral;
     background-color: rgba(245, 240, 240, 0.3);
   }
@@ -70,28 +69,13 @@
   }
 
   &__searchInput {
-    width: 200px;
-    background-color: $color--primary-dark-grey;
-    color: $color--primary-white;
-    margin-bottom: 10px;
-
-    &:focus {
-      box-shadow: 0 0 0 2px $color--primary-coral;
-      outline-color: transparent;
-      outline-width: 2px;
-      outline-style: solid;
-    }
-
     @media (min-width: 470px) {
       margin-right: 10px;
       width: 300px;
     }
   }
   &__searchButton {
-    border-radius: 3px;
     width: 120px;
-    background-color: $color--primary-coral;
-    color: $color--primary-white;
     @media (min-width: 470px) {
       margin-bottom: 10px;
     }

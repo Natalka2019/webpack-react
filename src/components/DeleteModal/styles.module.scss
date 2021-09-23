@@ -1,6 +1,7 @@
 @import "../../variables.scss";
 
 .DeleteModal {
+  width: 280px;
   padding: 10px;
   color: $color--primary-white;
 
@@ -15,12 +16,5 @@
   &__buttonContainer {
     display: flex;
     justify-content: flex-end;
-  }
-
-  &__button {
-    border-radius: 3px;
-    text-transform: uppercase;
-    background-color: $color--primary-coral;
-    color: $color--primary-white;
   }
 }

@@ -2,12 +2,13 @@
 
 .Poster {
   color: $color--primary-white;
+
   &__imageContainer {
     width: 200px;
     height: auto;
     position: relative;
 
-    &:hover &__roundButton {
+    &:hover .Poster__roundButton {
       visibility: visible;
     }
   }

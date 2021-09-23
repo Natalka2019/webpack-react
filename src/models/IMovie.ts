@@ -1,8 +1,8 @@
 export default interface IMovie {
-  id: string;
+  id?: string;
   title: string;
   genre: string;
-  releaseDate: number;
+  releaseDate: string | null;
   overview: string;
   runTime: string;
   movieUrl: string;

@@ -4,33 +4,50 @@ import styles from "./styles.module.scss";
 interface Props {
   label?: string;
   type?: string;
-  className?: string;
+  labelClassName?: string;
+  inputClassName?: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number | null;
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
-  ({ label, className, type = "text", placeholder, onEnter }, ref) => {
-    const [value, setValue] = useState("");
+  (
+    {
+      label,
+      labelClassName,
+      inputClassName,
+      type = "text",
+      placeholder,
+      onEnter,
+      value,
+    },
+    ref
+  ) => {
+    const [inputValue, setValue] = useState(value || "");
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
     };
     return (
-      <>
-        <label htmlFor="input">{label}</label>
+      <div className={styles.InputField}>
+        <label
+          htmlFor="input"
+          className={`${styles.InputField__label} ${labelClassName}`}
+        >
+          {label}
+        </label>
         <input
           id="input"
-          className={`${styles.input} ${className}`}
+          className={`${styles.InputField__input} ${inputClassName}`}
           onChange={(e) => onChange(e)}
           type={type}
           onKeyPress={onEnter ? (e) => onEnter(e) : undefined}
           placeholder={placeholder}
-          value={value}
+          value={inputValue}
           ref={ref}
         />
-      </>
+      </div>
     );
   }
 );

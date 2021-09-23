@@ -1,5 +1,30 @@
-.input {
-  border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
+@import "../../variables.scss";
+
+.InputField {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: $color--primary-coral;
+    font-size: 12px;
+  }
+
+  &__input {
+    width: 200px;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: $color--primary-white;
+    background-color: $color--primary-dark-grey;
+    margin-bottom: 10px;
+
+    &:focus {
+      box-shadow: 0 0 0 2px $color--primary-coral;
+      outline-color: transparent;
+      outline-width: 2px;
+      outline-style: solid;
+    }
+  }
 }

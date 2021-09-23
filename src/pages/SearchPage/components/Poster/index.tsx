@@ -42,8 +42,8 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
     setIsDeleteModalOpen(false);
   };
 
-  const onSubmit = (title: string | "") => {
-    console.log(title);
+  const onSubmit = (movie: IMovie) => {
+    console.log("Poster", movie);
   };
 
   return (
@@ -64,18 +64,33 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
           <div className={styles.Poster__genre}>{genre}</div>
         </div>
       </div>
-      <Modal
-        onCloseModal={onCloseActivityModal}
-        isModalOpen={isActivityModalOpen}
-      >
-        <ActivityModal id={id} onDelete={onDelete} onEdit={onEdit} />
-      </Modal>
-      <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
-        <MovieModal movie={movie} onSubmit={onSubmit} />
-      </Modal>
-      <Modal onCloseModal={onCloseDeleteModal} isModalOpen={isDeleteModalOpen}>
-        <DeleteModal id={id} onConfirm={onDeleteConfirm} />
-      </Modal>
+      {id && (
+        <>
+          <Modal
+            onCloseModal={onCloseActivityModal}
+            isModalOpen={isActivityModalOpen}
+          >
+            <ActivityModal id={id} onDelete={onDelete} onEdit={onEdit} />
+          </Modal>
+          <Modal
+            onCloseModal={onCloseMovieModal}
+            isModalOpen={isMovieModalOpen}
+          >
+            <MovieModal
+              movie={movie}
+              onSubmit={onSubmit}
+              buttonName="Save"
+              modalTitle="Edit movie"
+            />
+          </Modal>
+          <Modal
+            onCloseModal={onCloseDeleteModal}
+            isModalOpen={isDeleteModalOpen}
+          >
+            <DeleteModal id={id} onConfirm={onDeleteConfirm} />
+          </Modal>
+        </>
+      )}
     </>
   );
 };

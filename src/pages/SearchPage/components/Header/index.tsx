@@ -1,16 +1,21 @@
-import React, { useCallback, useRef, useEffect } from "react";
-import { Logo, Button, InputField } from "components";
+import React, { useCallback, useRef, useEffect, useState } from "react";
+import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
+import { IMovie } from "models";
 
 const Header: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
+  const onCloseMovieModal = () => {
+    setIsMovieModalOpen(false);
+  };
 
   useEffect(() => {
     searchInputRef.current?.focus();
   }, []);
 
   const onAddMovie = useCallback(() => {
-    console.log("Add movie here!");
+    setIsMovieModalOpen(true);
   }, []);
 
   const onSearch = useCallback((e: any) => {
@@ -19,6 +24,10 @@ const Header: React.FC = () => {
     }
     console.log(`Search ${searchInputRef.current?.value}!!`);
   }, []);
+
+  const onSubmit = (movie: IMovie) => {
+    console.log("Header", movie);
+  };
 
   return (
     <header className={styles.Header}>
@@ -38,7 +47,7 @@ const Header: React.FC = () => {
         <div className={styles.Header__title}>Find your movie</div>
         <div className={styles.Header__searchContainer}>
           <InputField
-            className={styles.Header__searchInput}
+            inputClassName={styles.Header__searchInput}
             onEnter={onSearch}
             type="search"
             ref={searchInputRef}
@@ -51,6 +60,13 @@ const Header: React.FC = () => {
           />
         </div>
       </div>
+      <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
+        <MovieModal
+          onSubmit={onSubmit}
+          buttonName="Submit"
+          modalTitle="Add movie"
+        />
+      </Modal>
     </header>
   );
 };
