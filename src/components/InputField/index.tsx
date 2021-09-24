@@ -11,6 +11,7 @@ interface Props {
   name?: string;
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  readOnly?: any;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
@@ -25,6 +26,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
       value = "",
       onChange = () => null,
       name,
+      readOnly,
     },
     ref
   ) => {
@@ -46,6 +48,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           value={value}
           ref={ref}
           name={name}
+          readOnly={readOnly}
         />
       </div>
     );

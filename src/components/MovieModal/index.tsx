@@ -56,18 +56,21 @@ const MovieModal: React.FC<Props> = ({
 
   const genresList = genres.filter((genre) => genre !== "All");
 
-  console.log(formValues);
+  if (!movie) {
+    return <div className={styles.noData}>Nothing found for this request</div>;
+  }
 
   return (
     <div className={styles.MovieModal}>
       <div className={styles.MovieModal__title}>{modalTitle}</div>
-      <form>
+      <form className={styles.MovieModal__form}>
         {formValues.id && (
           <InputField
             name="id"
             value={formValues.id}
             label="Movie ID"
             onChange={onInputChange}
+            readOnly
           />
         )}
         <InputField
