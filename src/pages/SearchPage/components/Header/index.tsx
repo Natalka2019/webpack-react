@@ -9,7 +9,11 @@ import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
 import { IMovie } from "models";
 
-const Header: React.FC = () => {
+interface Props {
+  onSubmit: (movie: IMovie) => void;
+}
+
+const Header: React.FC<Props> = ({ onSubmit }) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -37,8 +41,9 @@ const Header: React.FC = () => {
     console.log(`Search ${searchInputRef.current?.value}!!`);
   }, []);
 
-  const onSubmit = (movie: IMovie) => {
-    console.log("Header", movie);
+  const onSubmitNewMovie = (movie: IMovie) => {
+    onSubmit(movie);
+    setIsMovieModalOpen(false);
   };
 
   return (
@@ -76,7 +81,7 @@ const Header: React.FC = () => {
       </div>
       <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
         <MovieModal
-          onSubmit={onSubmit}
+          onSubmit={onSubmitNewMovie}
           buttonName="Submit"
           modalTitle="Add movie"
         />

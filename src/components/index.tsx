@@ -7,6 +7,7 @@ import ErrorFallback from "./ErrorFallback";
 import Modal from "./Modal";
 import MovieModal from "./MovieModal";
 import DeleteModal from "./DeleteModal";
+import SelectField from "./SelectField";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Modal,
   MovieModal,
   DeleteModal,
+  SelectField,
 };

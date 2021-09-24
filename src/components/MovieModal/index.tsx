@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
-import { InputField, Button } from "components";
+import React, { useState, ChangeEvent } from "react";
+import { InputField, Button, SelectField } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
+import { genres } from "../../pages/SearchPage/genres";
 
 interface Props {
   movie?: IMovie;
@@ -16,24 +17,6 @@ const MovieModal: React.FC<Props> = ({
   buttonName,
   modalTitle,
 }) => {
-  const idRef = useRef<HTMLInputElement>(null);
-  const titleRef = useRef<HTMLInputElement>(null);
-  const releaseDateRef = useRef<HTMLInputElement>(null);
-  const movieUrlRef = useRef<HTMLInputElement>(null);
-  const genreRef = useRef<HTMLInputElement>(null);
-  const overviewRef = useRef<HTMLInputElement>(null);
-  const runTimeRef = useRef<HTMLInputElement>(null);
-
-  // const formValues = {
-  //   id: movie?.id || "",
-  //   title: movie?.title || "",
-  //   genre: movie?.genre || "",
-  //   releaseDate: movie?.releaseDate || "",
-  //   overview: movie?.overview || "",
-  //   runTime: movie?.runTime || "",
-  //   movieUrl: movie?.movieUrl || "",
-  // };
-
   const [formValues, setFormValues] = useState({
     id: movie?.id || "",
     title: movie?.title || "",
@@ -44,108 +27,94 @@ const MovieModal: React.FC<Props> = ({
     movieUrl: movie?.movieUrl || "",
   });
 
-  // const movieUpdate = {
-  //   id: idRef.current?.value || "",
-  //   title: titleRef.current?.value || "",
-  //   genre: genreRef.current?.value || "",
-  //   releaseDate: releaseDateRef.current?.value || "",
-  //   overview: overviewRef.current?.value || "",
-  //   runTime: runTimeRef.current?.value || "",
-  //   movieUrl: movieUrlRef.current?.value || "",
-  // };
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
+    setFormValues({
+      ...formValues,
+      genre: e.target.value,
+    });
+  };
 
   const onReset = () => {
-    console.log("Reset");
-    // setFormValues({
-    //   id: movie?.id || "",
-    //   title: movie?.title || "",
-    //   genre: movie?.genre || "",
-    //   releaseDate: movie?.releaseDate || "",
-    //   overview: movie?.overview || "",
-    //   runTime: movie?.runTime || "",
-    //   movieUrl: movie?.movieUrl || "",
-    // });
-  };
-
-  const onSubmitForm = () => {
     setFormValues({
-      id: idRef.current?.value || "",
-      title: titleRef.current?.value || "",
-      genre: genreRef.current?.value || "",
-      releaseDate: releaseDateRef.current?.value || "",
-      overview: overviewRef.current?.value || "",
-      runTime: runTimeRef.current?.value || "",
-      movieUrl: movieUrlRef.current?.value || "",
+      id: movie?.id || "",
+      title: movie?.title || "",
+      genre: movie?.genre || "",
+      releaseDate: movie?.releaseDate || "",
+      overview: movie?.overview || "",
+      runTime: movie?.runTime || "",
+      movieUrl: movie?.movieUrl || "",
     });
-
-    onSubmit({
-      id: idRef.current?.value || "",
-      title: titleRef.current?.value || "",
-      genre: genreRef.current?.value || "",
-      releaseDate: releaseDateRef.current?.value || "",
-      overview: overviewRef.current?.value || "",
-      runTime: runTimeRef.current?.value || "",
-      movieUrl: movieUrlRef.current?.value || "",
-    });
-    console.log(formValues);
   };
 
-  console.log("1", formValues);
-  console.log("2", formValues.title);
-  // console.log(movieUpdate);
-  console.info("3", titleRef.current?.value);
+  const genresList = genres.filter((genre) => genre !== "All");
 
-  useEffect(() => console.log("RENDER"));
+  console.log(formValues);
 
   return (
     <div className={styles.MovieModal}>
       <div className={styles.MovieModal__title}>{modalTitle}</div>
       <form>
-        {modalTitle === "Edit movie" && (
-          <InputField ref={idRef} value={formValues.id} label="Movie ID" />
+        {formValues.id && (
+          <InputField
+            name="id"
+            value={formValues.id}
+            label="Movie ID"
+            onChange={onInputChange}
+          />
         )}
         <InputField
-          ref={titleRef}
+          name="title"
           placeholder="Title here"
-          // value={movie?.title || ""}
           value={formValues.title}
           label="Title"
+          onChange={(e) => onInputChange(e)}
         />
         <InputField
-          ref={releaseDateRef}
+          name="releaseDate"
           type="date"
           placeholder="Select Date"
-          // value={movie?.releaseDate || ""}
           value={formValues.releaseDate}
           label="Release date"
+          onChange={onInputChange}
         />
         <InputField
-          ref={movieUrlRef}
+          name="movieUrl"
           placeholder="Movie URL here"
-          // value={movie?.movieUrl || ""}
           value={formValues.movieUrl}
           label="Movie Url"
+          onChange={onInputChange}
         />
-        <InputField
-          ref={genreRef}
-          placeholder="Select Genre"
-          // value={movie?.genre || ""}
-          value={formValues.genre}
+        <SelectField
+          containerClassName={styles.selectContainer}
+          labelClassName={styles.selectLabel}
+          selectClassName={styles.selectField}
+          optionsList={genresList}
           label="Genre"
+          placeholder="Select genre"
+          selectedValue={formValues.genre}
+          onSelectChange={onSelectChange}
         />
         <InputField
-          ref={overviewRef}
+          name="overview"
           placeholder="Overview here"
-          // value={movie?.overview || ""}
           value={formValues.overview}
           label="Overview"
+          onChange={onInputChange}
         />
         <InputField
-          ref={runTimeRef}
+          name="runTime"
           placeholder="Runtime here"
-          // value={movie?.runTime || ""}
           value={formValues.runTime}
           label="Runtime"
+          onChange={onInputChange}
         />
 
         <div className={styles.MovieModal__buttonsContainer}>
@@ -156,19 +125,8 @@ const MovieModal: React.FC<Props> = ({
           />
           <Button
             name={buttonName}
-            onClick={onSubmitForm}
+            onClick={() => onSubmit(formValues)}
             className={styles.MovieModal__button}
-            // onClick={() =>
-            //   onSubmit({
-            //     id: idRef.current?.value || "",
-            //     title: titleRef.current?.value || "",
-            //     genre: genreRef.current?.value || "",
-            //     releaseDate: releaseDateRef.current?.value || "",
-            //     overview: overviewRef.current?.value || "",
-            //     runTime: runTimeRef.current?.value || "",
-            //     movieUrl: movieUrlRef.current?.value || "",
-            //   })
-            // }
           />
         </div>
       </form>

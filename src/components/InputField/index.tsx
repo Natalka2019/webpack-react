@@ -8,8 +8,9 @@ interface Props {
   inputClassName?: string;
   placeholder?: string;
   value?: string | number;
+  name?: string;
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
@@ -20,9 +21,10 @@ const InputField = forwardRef<HTMLInputElement, Props>(
       inputClassName,
       type = "text",
       placeholder,
-      onEnter,
+      onEnter = () => null,
       value = "",
-      onChange,
+      onChange = () => null,
+      name,
     },
     ref
   ) => {
@@ -39,10 +41,11 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           className={`${styles.InputField__input} ${inputClassName}`}
           onChange={(e) => onChange(e)}
           type={type}
-          onKeyPress={onEnter ? (e) => onEnter(e) : undefined}
+          onKeyPress={(e) => onEnter(e)}
           placeholder={placeholder}
           value={value}
           ref={ref}
+          name={name}
         />
       </div>
     );

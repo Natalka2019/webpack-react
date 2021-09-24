@@ -7,9 +7,10 @@ import ActivityModal from "../ActivityModal";
 interface Props {
   movie: IMovie;
   onDeleteConfirm: (id: string) => void;
+  onSubmitForm: (movie: IMovie) => void;
 }
 
-const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
+const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
   const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -23,16 +24,14 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
     setIsActivityModalOpen(false);
   };
 
-  const onDelete = (id: string) => {
+  const onDelete = () => {
     setIsActivityModalOpen(false);
     setIsDeleteModalOpen(true);
-    console.log(id);
   };
 
-  const onEdit = (id: string) => {
+  const onEdit = () => {
     setIsActivityModalOpen(false);
     setIsMovieModalOpen(true);
-    console.log(id);
   };
 
   const onCloseMovieModal = () => {
@@ -42,8 +41,9 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
     setIsDeleteModalOpen(false);
   };
 
-  const onSubmit = (movie: IMovie) => {
-    console.log("Poster", movie);
+  const onSave = (movie: IMovie) => {
+    onSubmitForm(movie);
+    setIsMovieModalOpen(false);
   };
 
   return (
@@ -78,7 +78,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
           >
             <MovieModal
               movie={movie}
-              onSubmit={onSubmit}
+              onSubmit={onSave}
               buttonName="Save"
               modalTitle="Edit movie"
             />

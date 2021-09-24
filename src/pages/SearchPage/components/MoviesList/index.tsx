@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 import Poster from "../Poster";
-import { movies } from "../../movies";
+import { IMovie } from "models";
 
-const quantity = 39;
+interface Props {
+  moviesList: IMovie[];
+  onDeleteConfirm: (id: string) => void;
+  onSubmit: (movie: IMovie) => void;
+}
 
-const MoviesList: React.FC = () => {
-  const [moviesList, setMoviesList] = useState([...movies]);
-
-  const onDeleteConfirm = (id: string) => {
-    setMoviesList(moviesList.filter((movie) => movie.id !== id));
-  };
-
-  if (!movies || movies.length === 0) {
+const MoviesList: React.FC<Props> = ({
+  moviesList,
+  onDeleteConfirm,
+  onSubmit,
+}) => {
+  if (!moviesList || moviesList.length === 0) {
     return <div className={styles.noData}>Nothing found for this request</div>;
   }
   return (
     <>
       <div className={styles.quantity}>
-        <strong>{quantity}</strong> movies found
+        <strong>{moviesList.length}</strong> movies found
       </div>
       <div className={styles.posters}>
         {moviesList &&
-          moviesList.map((movie) => (
+          moviesList.map((movie: IMovie) => (
             <Poster
               key={movie.id}
               movie={movie}
               onDeleteConfirm={onDeleteConfirm}
+              onSubmitForm={onSubmit}
             />
           ))}
       </div>
