@@ -1,16 +1,37 @@
-import React, { useCallback, useRef, useEffect } from "react";
-import { Logo, Button, InputField } from "components";
+import React, {
+  useCallback,
+  useRef,
+  useEffect,
+  useState,
+  ChangeEvent,
+} from "react";
+import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
+import { IMovie } from "models";
 
-const Header: React.FC = () => {
+interface Props {
+  onSubmit: (movie: IMovie) => void;
+}
+
+const Header: React.FC<Props> = ({ onSubmit }) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const onCloseMovieModal = () => {
+    setIsMovieModalOpen(false);
+  };
 
   useEffect(() => {
     searchInputRef.current?.focus();
   }, []);
 
   const onAddMovie = useCallback(() => {
-    console.log("Add movie here!");
+    setIsMovieModalOpen(true);
   }, []);
 
   const onSearch = useCallback((e: any) => {
@@ -20,6 +41,11 @@ const Header: React.FC = () => {
     console.log(`Search ${searchInputRef.current?.value}!!`);
   }, []);
 
+  const onSubmitNewMovie = (movie: IMovie) => {
+    onSubmit(movie);
+    setIsMovieModalOpen(false);
+  };
+
   return (
     <header className={styles.Header}>
       <div
@@ -28,35 +54,38 @@ const Header: React.FC = () => {
         <Logo />
         <Button
           name="+ ADD MOVIE"
-          className={styles.Header__headerSection_top__addButton}
+          className={styles.Header__addButton}
           onClick={onAddMovie}
         />
       </div>
       <div
         className={`${styles.Header__headerSection} ${styles.Header__headerSection_bottom}`}
       >
-        <div className={styles.Header__headerSection_bottom__title}>
-          Find your movie
-        </div>
-        <div className={styles.Header__headerSection_bottom__searchContainer}>
+        <div className={styles.Header__title}>Find your movie</div>
+        <div className={styles.Header__searchContainer}>
           <InputField
-            className={
-              styles.Header__headerSection_bottom__searchContainer__searchInput
-            }
+            inputClassName={styles.Header__searchInput}
             onEnter={onSearch}
             type="search"
             ref={searchInputRef}
             placeholder="What do you want to watch?"
+            value={searchValue}
+            onChange={onSearchChange}
           />
           <Button
             name="SEARCH"
-            className={
-              styles.Header__headerSection_bottom__searchContainer__searchButton
-            }
+            className={styles.Header__searchButton}
             onClick={onSearch}
           />
         </div>
       </div>
+      <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
+        <MovieModal
+          onSubmit={onSubmitNewMovie}
+          buttonName="Submit"
+          modalTitle="Add movie"
+        />
+      </Modal>
     </header>
   );
 };

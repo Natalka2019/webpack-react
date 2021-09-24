@@ -1,17 +1,23 @@
 import Button from "./Button";
 import Logo from "./Logo";
 import InputField from "./InputField";
-import Poster from "./Poster";
 import RoundButton from "./RoundButton";
 import ErrorBoundary from "./ErrorBoundary";
 import ErrorFallback from "./ErrorFallback";
+import Modal from "./Modal";
+import MovieModal from "./MovieModal";
+import DeleteModal from "./DeleteModal";
+import SelectField from "./SelectField";
 
 export {
   Button,
   Logo,
   InputField,
-  Poster,
   RoundButton,
   ErrorBoundary,
   ErrorFallback,
+  Modal,
+  MovieModal,
+  DeleteModal,
+  SelectField,
 };

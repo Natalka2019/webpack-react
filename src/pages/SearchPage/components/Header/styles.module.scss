@@ -27,12 +27,6 @@
     &_top {
       display: flex;
       justify-content: space-between;
-
-      &__addButton {
-        border-radius: 3px;
-        color: $color--primary-coral;
-        background-color: rgba(245, 240, 240, 0.3);
-      }
     }
 
     &_bottom {
@@ -41,58 +35,49 @@
         flex-direction: column;
         align-items: center;
       }
-      &__title {
-        color: $color--primary-white;
-        text-transform: uppercase;
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        text-align: center;
-        letter-spacing: 0.15em;
+    }
+  }
 
-        @media (min-width: 470px) {
-          font-size: 2em;
-          width: 430px;
-          text-align: left;
-        }
-      }
+  &__addButton {
+    color: $color--primary-coral;
+    background-color: rgba(245, 240, 240, 0.3);
+  }
 
-      &__searchContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  &__title {
+    color: $color--primary-white;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 0.15em;
 
-        @media (min-width: 470px) {
-          flex-direction: row;
-        }
+    @media (min-width: 470px) {
+      font-size: 2em;
+      width: 430px;
+      text-align: left;
+    }
+  }
 
-        &__searchInput {
-          width: 200px;
-          background-color: $color--primary-dark-grey;
-          color: $color--primary-white;
-          margin-bottom: 10px;
+  &__searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-          &:focus {
-            box-shadow: 0 0 0 2px $color--primary-coral;
-            outline-color: transparent;
-            outline-width: 2px;
-            outline-style: solid;
-          }
+    @media (min-width: 470px) {
+      flex-direction: row;
+    }
+  }
 
-          @media (min-width: 470px) {
-            margin-right: 10px;
-            width: 300px;
-          }
-        }
-        &__searchButton {
-          border-radius: 3px;
-          width: 120px;
-          background-color: $color--primary-coral;
-          color: $color--primary-white;
-          @media (min-width: 470px) {
-            margin-bottom: 10px;
-          }
-        }
-      }
+  &__searchInput {
+    @media (min-width: 470px) {
+      margin-right: 10px;
+      width: 300px;
+    }
+  }
+  &__searchButton {
+    width: 120px;
+    @media (min-width: 470px) {
+      margin-bottom: 10px;
     }
   }
 }

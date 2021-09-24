@@ -3,10 +3,16 @@ import styles from "./styles.module.scss";
 
 interface Props {
   className: string;
+  onClick: () => void;
 }
 
-const RoundButton: React.FC<Props> = ({ className }) => {
-  return <button className={`${styles.RoundButton} ${className}`} />;
+const RoundButton: React.FC<Props> = ({ className, onClick }) => {
+  return (
+    <button
+      className={`${styles.RoundButton} ${className}`}
+      onClick={onClick}
+    />
+  );
 };
 
 export default RoundButton;

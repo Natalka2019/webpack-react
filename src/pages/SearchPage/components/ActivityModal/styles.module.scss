@@ -1,0 +1,17 @@
+@import "../../../../variables.scss";
+
+.ActivityModal {
+  box-sizing: border-box;
+  width: 240px;
+  padding: 10px;
+
+  &__button {
+    width: 100px;
+
+    &_delete {
+      background-color: $color--primary-light-grey;
+      color: $color--primary-white;
+      margin-right: 20px;
+    }
+  }
+}

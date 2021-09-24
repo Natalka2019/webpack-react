@@ -1,37 +1,56 @@
-import React, { KeyboardEvent, ChangeEvent, useState, forwardRef } from "react";
+import React, { KeyboardEvent, ChangeEvent, forwardRef } from "react";
 import styles from "./styles.module.scss";
 
 interface Props {
   label?: string;
   type?: string;
-  className?: string;
+  labelClassName?: string;
+  inputClassName?: string;
   placeholder?: string;
-  value?: string;
-  onEnter: (e: KeyboardEvent<HTMLInputElement>) => void;
+  value?: string | number;
+  name?: string;
+  onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  readOnly?: any;
 }
 
 const InputField = forwardRef<HTMLInputElement, Props>(
-  ({ label, className, type = "text", placeholder, onEnter }, ref) => {
-    const [value, setValue] = useState("");
-
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.value);
-      setValue(e.target.value);
-    };
+  (
+    {
+      label,
+      labelClassName,
+      inputClassName,
+      type = "text",
+      placeholder,
+      onEnter = () => null,
+      value = "",
+      onChange = () => null,
+      name,
+      readOnly,
+    },
+    ref
+  ) => {
     return (
-      <>
-        <label htmlFor="input">{label}</label>
+      <div className={styles.InputField}>
+        <label
+          htmlFor="input"
+          className={`${styles.InputField__label} ${labelClassName}`}
+        >
+          {label}
+        </label>
         <input
           id="input"
-          className={`${styles.input} ${className}`}
+          className={`${styles.InputField__input} ${inputClassName}`}
           onChange={(e) => onChange(e)}
           type={type}
           onKeyPress={(e) => onEnter(e)}
           placeholder={placeholder}
           value={value}
           ref={ref}
+          name={name}
+          readOnly={readOnly}
         />
-      </>
+      </div>
     );
   }
 );

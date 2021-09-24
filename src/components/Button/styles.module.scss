@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .Button {
   width: 120px;
   height: 26px;
@@ -5,4 +7,8 @@
   letter-spacing: 0.08em;
   border: none;
   cursor: pointer;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background-color: $color--primary-coral;
+  color: $color--primary-white;
 }

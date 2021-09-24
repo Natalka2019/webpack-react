@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+.DeleteModal {
+  width: 280px;
+  padding: 10px;
+  color: $color--primary-white;
+
+  &__title {
+    letter-spacing: 0.2em;
+  }
+
+  &__question {
+    line-height: 1.8;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
