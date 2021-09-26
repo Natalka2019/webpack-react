@@ -91,7 +91,6 @@ const MovieModal: React.FC<Props> = ({
           label="Genre"
           placeholder="Select genre"
           selectedValue={formValues.genre}
-          // onSelectChange={onSelectChange}
           onChange={onChange}
           name="genre"
         />

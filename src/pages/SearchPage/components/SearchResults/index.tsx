@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
-import { genres } from "../../genres.js";
+import { genres } from "../../genres";
 import FiltersContainer from "../FiltersContainer";
 import MoviesList from "../MoviesList";
 import { IMovie } from "models";
