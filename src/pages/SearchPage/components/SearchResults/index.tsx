@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
-import { genres } from "../../genres.js";
+import { genres } from "../../genres";
 import FiltersContainer from "../FiltersContainer";
 import MoviesList from "../MoviesList";
 import { IMovie } from "models";
@@ -10,6 +10,7 @@ interface Props {
   onDeleteConfirm: (id: string) => void;
   onSubmit: (movie: IMovie) => void;
   onGenre: (title: string) => void;
+  onSortChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const SearchResults: React.FC<Props> = ({
@@ -17,11 +18,16 @@ const SearchResults: React.FC<Props> = ({
   onDeleteConfirm,
   onSubmit,
   onGenre,
+  onSortChange,
 }) => {
   return (
     <main className={styles.SearchResults}>
       <div className={styles.SearchResults__filters}>
-        <FiltersContainer genres={genres} onGenre={onGenre} />
+        <FiltersContainer
+          genres={genres}
+          onGenre={onGenre}
+          onSortChange={onSortChange}
+        />
       </div>
       <MoviesList
         moviesList={moviesList}
