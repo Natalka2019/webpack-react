@@ -27,18 +27,10 @@ const MovieModal: React.FC<Props> = ({
     movieUrl: movie?.movieUrl || "",
   });
 
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value,
-    });
-  };
-
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
-    setFormValues({
-      ...formValues,
-      genre: e.target.value,
     });
   };
 
@@ -56,10 +48,6 @@ const MovieModal: React.FC<Props> = ({
 
   const genresList = genres.filter((genre) => genre !== "All");
 
-  if (!movie) {
-    return <div className={styles.noData}>Nothing found for this request</div>;
-  }
-
   return (
     <div className={styles.MovieModal}>
       <div className={styles.MovieModal__title}>{modalTitle}</div>
@@ -69,7 +57,7 @@ const MovieModal: React.FC<Props> = ({
             name="id"
             value={formValues.id}
             label="Movie ID"
-            onChange={onInputChange}
+            onChange={onChange}
             readOnly
           />
         )}
@@ -78,7 +66,7 @@ const MovieModal: React.FC<Props> = ({
           placeholder="Title here"
           value={formValues.title}
           label="Title"
-          onChange={(e) => onInputChange(e)}
+          onChange={(e) => onChange(e)}
         />
         <InputField
           name="releaseDate"
@@ -86,14 +74,14 @@ const MovieModal: React.FC<Props> = ({
           placeholder="Select Date"
           value={formValues.releaseDate}
           label="Release date"
-          onChange={onInputChange}
+          onChange={onChange}
         />
         <InputField
           name="movieUrl"
           placeholder="Movie URL here"
           value={formValues.movieUrl}
           label="Movie Url"
-          onChange={onInputChange}
+          onChange={onChange}
         />
         <SelectField
           containerClassName={styles.selectContainer}
@@ -103,21 +91,23 @@ const MovieModal: React.FC<Props> = ({
           label="Genre"
           placeholder="Select genre"
           selectedValue={formValues.genre}
-          onSelectChange={onSelectChange}
+          // onSelectChange={onSelectChange}
+          onChange={onChange}
+          name="genre"
         />
         <InputField
           name="overview"
           placeholder="Overview here"
           value={formValues.overview}
           label="Overview"
-          onChange={onInputChange}
+          onChange={onChange}
         />
         <InputField
           name="runTime"
           placeholder="Runtime here"
           value={formValues.runTime}
           label="Runtime"
-          onChange={onInputChange}
+          onChange={onChange}
         />
 
         <div className={styles.MovieModal__buttonsContainer}>
