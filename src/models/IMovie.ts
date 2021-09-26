@@ -2,7 +2,7 @@ export default interface IMovie {
   id?: string;
   title: string;
   genre: string;
-  releaseDate: string | null;
+  releaseDate: string | "";
   overview: string;
   runTime: string;
   movieUrl: string;

@@ -10,7 +10,7 @@ interface Props {
   placeholder?: string;
   selectedValue?: string;
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-  name: string;
+  name?: string;
 }
 
 const SelectField: React.FC<Props> = ({
