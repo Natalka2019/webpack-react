@@ -8,7 +8,9 @@ const SearchPage: React.FC = () => {
   return (
     <div className={styles.SearchPage}>
       <Header />
-      <SearchResults />
+      <div className={styles.SearchPage__searchResults}>
+        <SearchResults />
+      </div>
       <Footer />
     </div>
   );

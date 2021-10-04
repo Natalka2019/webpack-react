@@ -19,6 +19,9 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const { id, title, genre, releaseDate, movieUrl } = movie;
+  const date = new Date(releaseDate);
+  const releaseYear = date.getFullYear();
+
   const onManageMovie = () => {
     setIsActivityModalOpen(true);
   };
@@ -71,7 +74,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
           <div className={styles.Poster__title}>{title}</div>
           <div className={styles.Poster__dateGenre}>
             <div className={styles.Poster__genre}>{genre}</div>
-            <div className={styles.Poster__date}>{releaseDate}</div>
+            <div className={styles.Poster__date}>{releaseYear}</div>
           </div>
         </div>
       </div>
