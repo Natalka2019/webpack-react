@@ -1,8 +1,8 @@
 import React, { useCallback, useState, ChangeEvent } from "react";
 import styles from "./styles.module.scss";
 import { Button, SelectField } from "components";
-
-const sortOptions = ["Release date", "Title", "Genre"];
+import { sortOptions } from "common";
+import clsx from "clsx";
 
 interface Props {
   genres: string[];
@@ -21,7 +21,10 @@ const FiltersContainer: React.FC<Props> = ({
     onGenre(title);
   }, []);
 
-  const selectedGenreClassName = `${styles.FiltersContainer__genre} ${styles.FiltersContainer__genre_selected}`;
+  const selectedGenreClassName = clsx(
+    styles.FiltersContainer__genre,
+    styles.FiltersContainer__genre_selected
+  );
   return (
     <div className={styles.FiltersContainer}>
       <div className={styles.FiltersContainer__genres}>
@@ -41,7 +44,7 @@ const FiltersContainer: React.FC<Props> = ({
       </div>
       <div className={styles.FiltersContainer__sort}>
         <SelectField
-          optionsList={sortOptions}
+          optionsList={Object.values(sortOptions)}
           label="Sort by"
           onChange={onSortChange}
         />

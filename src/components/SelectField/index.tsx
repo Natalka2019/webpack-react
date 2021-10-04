@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface Props {
   optionsList: string[];
@@ -25,12 +26,12 @@ const SelectField: React.FC<Props> = ({
   name,
 }) => {
   return (
-    <div className={`${styles.SelectField} ${containerClassName}`}>
-      <span className={`${styles.SelectField__label} ${labelClassName}`}>
+    <div className={clsx(styles.SelectField, containerClassName)}>
+      <span className={clsx(styles.SelectField__label, labelClassName)}>
         {label}
       </span>
       <select
-        className={`${styles.SelectField__select} ${selectClassName}`}
+        className={clsx(styles.SelectField__select, selectClassName)}
         onChange={(e) => onChange(e)}
         value={selectedValue}
         name={name}

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface Props {
   className: string;
@@ -8,10 +9,7 @@ interface Props {
 
 const RoundButton: React.FC<Props> = ({ className, onClick }) => {
   return (
-    <button
-      className={`${styles.RoundButton} ${className}`}
-      onClick={onClick}
-    />
+    <button className={clsx(styles.RoundButton, className)} onClick={onClick} />
   );
 };
 

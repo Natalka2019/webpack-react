@@ -8,6 +8,7 @@ import React, {
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
 import { IMovie } from "models";
+import clsx from "clsx";
 
 interface Props {
   onSubmit: (movie: IMovie) => void;
@@ -49,7 +50,10 @@ const Header: React.FC<Props> = ({ onSubmit }) => {
   return (
     <header className={styles.Header}>
       <div
-        className={`${styles.Header__headerSection} ${styles.Header__headerSection_top}`}
+        className={clsx(
+          styles.Header__headerSection,
+          styles.Header__headerSection_top
+        )}
       >
         <Logo />
         <Button
@@ -59,7 +63,10 @@ const Header: React.FC<Props> = ({ onSubmit }) => {
         />
       </div>
       <div
-        className={`${styles.Header__headerSection} ${styles.Header__headerSection_bottom}`}
+        className={clsx(
+          styles.Header__headerSection,
+          styles.Header__headerSection_bottom
+        )}
       >
         <div className={styles.Header__title}>Find your movie</div>
         <div className={styles.Header__searchContainer}>

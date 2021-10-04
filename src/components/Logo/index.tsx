@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
   return (
     <div className={styles.Logo}>
       netflix
-      <span className={`${styles.Logo__end}`}>roulette</span>
+      <span className={styles.Logo__end}>roulette</span>
     </div>
   );
 };

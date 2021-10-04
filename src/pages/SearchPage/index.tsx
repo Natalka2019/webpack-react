@@ -6,6 +6,8 @@ import { Logo } from "components";
 import { movies } from "./movies";
 import { IMovie } from "models";
 import { sortFunction } from "utilities";
+import { sortOptions } from "common";
+import { v4 as uuidv4 } from "uuid";
 
 const SearchPage: React.FC = () => {
   const [moviesList, setMoviesList] = useState<IMovie[]>([
@@ -19,13 +21,12 @@ const SearchPage: React.FC = () => {
   const onSubmit = useCallback(
     (movie: IMovie) => {
       let updatedMoviesList: IMovie[] = [];
-      if (movie.id !== "") {
+      if (movie.id) {
         updatedMoviesList = moviesList.map((el) =>
           el.id === movie.id ? { ...el, ...movie } : el
         );
       } else {
-        let id = moviesList.length;
-        movie.id = String(++id);
+        movie.id = uuidv4();
         updatedMoviesList = [...moviesList, movie];
       }
       setMoviesList(updatedMoviesList);
@@ -45,19 +46,19 @@ const SearchPage: React.FC = () => {
     const sort = e.target.value;
     const updatedMoviesList: IMovie[] = [...moviesList];
 
-    if (sort === "Title") {
+    if (sort === sortOptions.title) {
       updatedMoviesList.sort((a, b) =>
         sortFunction(a.title.toLowerCase(), b.title.toLowerCase())
       );
     }
 
-    if (sort === "Genre") {
+    if (sort === sortOptions.genre) {
       updatedMoviesList.sort((a, b) =>
         sortFunction(a.genre.toLowerCase(), b.genre.toLowerCase())
       );
     }
 
-    if (sort === "Release date") {
+    if (sort === sortOptions.releaseDate) {
       updatedMoviesList.sort((a, b) =>
         sortFunction(a.releaseDate, b.releaseDate)
       );

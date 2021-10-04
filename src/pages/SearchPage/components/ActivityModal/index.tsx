@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { Button } from "components";
+import clsx from "clsx";
 
 interface Props {
   id?: string;
@@ -16,7 +17,10 @@ const ActivityModal: React.FC<Props> = ({ id, onDelete, onEdit }) => {
     <div className={styles.ActivityModal}>
       <Button
         name="Delete"
-        className={`${styles.ActivityModal__button} ${styles.ActivityModal__button_delete}`}
+        className={clsx(
+          styles.ActivityModal__button,
+          styles.ActivityModal__button_delete
+        )}
         onClick={() => onDelete(id)}
       />
       <Button
