@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import { InputField, Button, SelectField } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
-import { genres } from "../../pages/SearchPage/genres";
+import { genres } from "../../mockData/genres";
 import clsx from "clsx";
 
 interface Props {

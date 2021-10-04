@@ -1,0 +1,119 @@
+@import "../../../../variables.scss";
+
+.MovieDetails {
+  box-sizing: border-box;
+  background: #000000bf url("assets/netflixBackground.jpg");
+  background-blend-mode: darken;
+  box-sizing: border-box;
+  max-width: 1024px;
+  margin: 0 auto 8px auto;
+
+  &__section {
+    max-width: 860px;
+    padding: 20px;
+    margin: 0 auto;
+
+    @media (min-width: 470px) {
+      padding: 20px 50px;
+    }
+
+    &_top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &_bottom {
+      color: $color--primary-white;
+      font-size: 12px;
+
+      @media (min-width: 470px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__searchIcon {
+    color: $color--primary-coral;
+    transform: rotate(90deg);
+  }
+
+  &__imageContainer {
+    width: 250px;
+
+    @media (min-width: 470px) {
+      width: 600px;
+      margin-right: 20px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__info {
+    padding-top: 10px;
+
+    @media (min-width: 600px) {
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-self: flex-start;
+    }
+  }
+
+  &__titleRating {
+    display: flex;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 10px;
+
+    @media (min-width: 470px) {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightgreen;
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $color--primary-white;
+    border-radius: 50%;
+  }
+
+  &__genre {
+    margin-bottom: 10px;
+
+    @media (min-width: 470px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__dateRuntime {
+    display: flex;
+    color: $color--primary-coral;
+    margin-bottom: 10px;
+
+    @media (min-width: 470px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__date {
+    margin-right: 10px;
+  }
+}

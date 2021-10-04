@@ -1,3 +1,4 @@
 import SearchPage from "./SearchPage";
+import MoviePage from "./MoviePage";
 
-export { SearchPage };
+export { SearchPage, MoviePage };

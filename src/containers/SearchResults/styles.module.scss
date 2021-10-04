@@ -1,9 +1,10 @@
-@import "../../../../variables.scss";
+@import "../../variables.scss";
 
 .SearchResults {
   background-color: $color--primary-black;
   max-width: 1024px;
-  margin: 208px auto 0;
+  // margin: 208px auto 0;
+  margin: 0 auto;
   padding-bottom: 50px;
 
   &__filters {

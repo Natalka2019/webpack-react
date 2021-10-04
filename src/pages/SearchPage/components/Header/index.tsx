@@ -10,11 +10,12 @@ import styles from "./styles.module.scss";
 import { IMovie } from "models";
 import clsx from "clsx";
 
-interface Props {
-  onSubmit: (movie: IMovie) => void;
-}
+// interface Props {
+//   onSubmit: (movie: IMovie) => void;
+// }
 
-const Header: React.FC<Props> = ({ onSubmit }) => {
+// const Header: React.FC<Props> = ({ onSubmit }) => {
+const Header: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -43,7 +44,7 @@ const Header: React.FC<Props> = ({ onSubmit }) => {
   }, []);
 
   const onSubmitNewMovie = (movie: IMovie) => {
-    onSubmit(movie);
+    // onSubmit(movie);
     setIsMovieModalOpen(false);
   };
 

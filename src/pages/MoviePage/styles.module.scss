@@ -1,10 +1,6 @@
 @import "../../variables.scss";
 
-.SearchPage {
+.MoviePage {
   background-color: $color--primary-light-grey;
   position: relative;
-
-  &__searchResults {
-    margin-top: 208px;
-  }
 }
