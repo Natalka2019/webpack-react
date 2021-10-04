@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import MovieModal from "./MovieModal";
 import DeleteModal from "./DeleteModal";
 import SelectField from "./SelectField";
+import Footer from "./Footer";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   MovieModal,
   DeleteModal,
   SelectField,
+  Footer,
 };

@@ -3,17 +3,4 @@
 .SearchPage {
   background-color: $color--primary-light-grey;
   position: relative;
-
-  &__footer {
-    height: 50px;
-    margin-top: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: $color--primary-dark-grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 }
