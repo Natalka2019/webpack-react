@@ -21,13 +21,16 @@
   },
   "homepage": "https://github.com/Natalka2019/webpack-react",
   "dependencies": {
+    "@types/uuid": "^8.3.1",
+    "clsx": "^1.1.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.15.4",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "redux": "^4.1.1"
+    "redux": "^4.1.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

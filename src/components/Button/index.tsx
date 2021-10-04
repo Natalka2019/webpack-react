@@ -1,5 +1,6 @@
 import React, { MouseEvent } from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface Props {
   name: string;
@@ -18,7 +19,7 @@ const Button: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={`${styles.Button} ${className}`}
+      className={clsx(styles.Button, className)}
       onClick={onClick}
       type={type}
       id={id}

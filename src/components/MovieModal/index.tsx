@@ -3,6 +3,7 @@ import { InputField, Button, SelectField } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
 import { genres } from "../../pages/SearchPage/genres";
+import clsx from "clsx";
 
 interface Props {
   movie?: IMovie;
@@ -113,7 +114,10 @@ const MovieModal: React.FC<Props> = ({
           <Button
             name="Reset"
             onClick={onReset}
-            className={`${styles.MovieModal__button} ${styles.MovieModal__button_reset}`}
+            className={clsx(
+              styles.MovieModal__button,
+              styles.MovieModal__button_reset
+            )}
           />
           <Button
             name={buttonName}

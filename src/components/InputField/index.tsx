@@ -1,5 +1,6 @@
 import React, { KeyboardEvent, ChangeEvent, forwardRef } from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface Props {
   label?: string;
@@ -34,13 +35,13 @@ const InputField = forwardRef<HTMLInputElement, Props>(
       <div className={styles.InputField}>
         <label
           htmlFor="input"
-          className={`${styles.InputField__label} ${labelClassName}`}
+          className={clsx(styles.InputField__label, labelClassName)}
         >
           {label}
         </label>
         <input
           id="input"
-          className={`${styles.InputField__input} ${inputClassName}`}
+          className={clsx(styles.InputField__input, inputClassName)}
           onChange={(e) => onChange(e)}
           type={type}
           onKeyPress={(e) => onEnter(e)}
