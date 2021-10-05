@@ -36,13 +36,18 @@
   &__searchIcon {
     color: $color--primary-coral;
     transform: rotate(90deg);
+    cursor: pointer;
   }
 
   &__imageContainer {
-    width: 250px;
+    max-width: 250px;
+
+    @media (min-width: 600px) {
+      height: 450px;
+    }
 
     @media (min-width: 470px) {
-      width: 600px;
+      max-width: 300px;
       margin-right: 20px;
     }
   }
@@ -69,7 +74,7 @@
 
   &__title {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 30px;
     margin-bottom: 5px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -89,8 +94,8 @@
     align-items: center;
     color: lightgreen;
     font-size: 12px;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border: 1px solid $color--primary-white;
     border-radius: 50%;
   }
@@ -114,6 +119,6 @@
   }
 
   &__date {
-    margin-right: 10px;
+    margin-right: 30px;
   }
 }
