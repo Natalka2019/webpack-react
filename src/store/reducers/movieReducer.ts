@@ -10,11 +10,19 @@ interface State {
     success: string | null;
     error: string | null;
   };
+  movie: IMovie | null;
+  getMovieStatus: {
+    loading: boolean;
+    success: string | null;
+    error: string | null;
+  };
 }
 
 const initialState: State = {
   movies: [],
   getMoviesStatus: helpers.getDefaultState(),
+  movie: null,
+  getMovieStatus: helpers.getDefaultState(),
 };
 
 const movieReducer: Reducer<State> = (state = initialState, action) => {
@@ -44,6 +52,33 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
       return {
         ...state,
         getMoviesStatus: helpers.getDefaultState(),
+      };
+    }
+    case types.GET_MOVIE: {
+      return {
+        ...state,
+        getMovieStatus: helpers.getRequestState(),
+      };
+    }
+    case types.GET_MOVIE_SUCCESS: {
+      const { payload } = action;
+      return {
+        ...state,
+        movie: payload,
+        getMovieStatus: helpers.getSuccessState("Success!"),
+      };
+    }
+    case types.GET_MOVIE_FAILURE: {
+      const { payload } = action;
+      return {
+        ...state,
+        getMovieStatus: helpers.getErrorState(payload),
+      };
+    }
+    case types.CLEAR_GET_MOVIE_STATUS: {
+      return {
+        ...state,
+        getMovieStatus: helpers.getDefaultState(),
       };
     }
     default:

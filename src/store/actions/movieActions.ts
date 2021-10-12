@@ -18,3 +18,22 @@ export const getMoviesFailure = (payload: any) => ({
 export const clearGetMoviesStatus = () => ({
   type: types.CLEAR_GET_MOVIES_STATUS,
 });
+
+export const getMovie = (payload: number) => ({
+  type: types.GET_MOVIE,
+  payload,
+});
+
+export const getMovieSuccess = (payload: IMovie) => ({
+  type: types.GET_MOVIE_SUCCESS,
+  payload,
+});
+
+export const getMovieFailure = (payload: any) => ({
+  type: types.GET_MOVIE_FAILURE,
+  payload,
+});
+
+export const clearGetMovieStatus = () => ({
+  type: types.CLEAR_GET_MOVIE_STATUS,
+});
