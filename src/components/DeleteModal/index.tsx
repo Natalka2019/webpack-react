@@ -3,8 +3,8 @@ import styles from "./styles.module.scss";
 import { Button } from "components";
 
 interface Props {
-  id: string;
-  onConfirm: (id: string) => void;
+  id: number;
+  onConfirm: (id: number) => void;
 }
 
 const DeleteModal: React.FC<Props> = ({ id, onConfirm }) => {

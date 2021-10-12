@@ -8,7 +8,7 @@ import Routes from "../../routes";
 
 interface Props {
   movie: IMovie;
-  onDeleteConfirm: (id: string) => void;
+  onDeleteConfirm: (id: number) => void;
   onSubmitForm: (movie: IMovie) => void;
 }
 
@@ -18,8 +18,8 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const { id, title, genre, releaseDate, movieUrl } = movie;
-  const date = new Date(releaseDate);
+  const { id, title, genres, release_date, poster_path } = movie;
+  const date = new Date(release_date);
   const releaseYear = date.getFullYear();
 
   const onManageMovie = () => {
@@ -58,11 +58,11 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
 
   return (
     <>
-      <div className={styles.Poster} id={id}>
+      <div className={styles.Poster}>
         <div className={styles.Poster__imageContainer}>
           <img
             className={styles.Poster__image}
-            src={movieUrl}
+            src={poster_path}
             onClick={onImage}
           />
           <RoundButton
@@ -73,7 +73,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
         <div className={styles.Poster__info}>
           <div className={styles.Poster__title}>{title}</div>
           <div className={styles.Poster__dateGenre}>
-            <div className={styles.Poster__genre}>{genre}</div>
+            <div className={styles.Poster__genre}>{genres.join(", ")}</div>
             <div className={styles.Poster__date}>{releaseYear}</div>
           </div>
         </div>

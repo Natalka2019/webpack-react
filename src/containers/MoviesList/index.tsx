@@ -5,7 +5,7 @@ import { IMovie } from "models";
 
 interface Props {
   moviesList: IMovie[];
-  onDeleteConfirm: (id: string) => void;
+  onDeleteConfirm: (id: number) => void;
   onSubmit: (movie: IMovie) => void;
 }
 

@@ -4,9 +4,9 @@ import { Button } from "components";
 import clsx from "clsx";
 
 interface Props {
-  id?: string;
-  onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
+  id?: number | undefined;
+  onDelete: (id: number | undefined) => void;
+  onEdit: (id: number | undefined) => void;
 }
 
 const ActivityModal: React.FC<Props> = ({ id, onDelete, onEdit }) => {
