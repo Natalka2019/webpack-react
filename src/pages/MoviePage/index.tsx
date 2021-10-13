@@ -88,7 +88,6 @@ const MoviePage: React.FC = () => {
             styles.MoviePage__movieDetails__section_bottom
           )}
         >
-          {/* {movie && <MovieDetails movie={movie} />} */}
           {movieSection}
         </div>
       </div>

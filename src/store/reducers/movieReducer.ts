@@ -39,7 +39,7 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
       const { payload } = action;
       return {
         ...state,
-        movies: payload.data,
+        movies: [...state.movies, ...payload.data],
         moviesTotal: payload.totalAmount,
         getMoviesStatus: helpers.getSuccessState("Success!"),
       };

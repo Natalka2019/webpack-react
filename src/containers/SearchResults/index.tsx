@@ -12,28 +12,28 @@ import { IMovie } from "models";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
 
-const MOVIES_PER_PAGE = 12;
+// const MOVIES_PER_PAGE = 12;
 
 const SearchResults: React.FC = () => {
-  const dispatch = useDispatch();
-  const [offset, setOffset] = useState(0);
+  // const dispatch = useDispatch();
+  // const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    dispatch(
-      actions.movieActions.getMovies({ offset, limit: MOVIES_PER_PAGE })
-    );
-  }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     actions.movieActions.getMovies({ offset, limit: MOVIES_PER_PAGE })
+  //   );
+  // }, []);
 
-  const moviesList = useSelector(
-    (state: RootState) => state.movieReducer.movies
-  );
+  // const moviesList = useSelector(
+  //   (state: RootState) => state.movieReducer.movies
+  // );
 
-  const moviesTotal = useSelector(
-    (state: RootState) => state.movieReducer.moviesTotal
-  );
+  // const moviesTotal = useSelector(
+  //   (state: RootState) => state.movieReducer.moviesTotal
+  // );
 
-  console.log(moviesList);
-  console.log(moviesTotal);
+  // console.log(moviesList);
+  // console.log(moviesTotal);
 
   // const [moviesList, setMoviesList] = useState<IMovie[]>([
   //   ...movies.sort((a, b) => sortFunction(a.releaseDate, b.releaseDate)),
@@ -59,7 +59,8 @@ const SearchResults: React.FC = () => {
       // }
       // setMoviesList(updatedMoviesList);
     },
-    [moviesList]
+    []
+    // [moviesList]
   );
 
   const onGenre = useCallback((title: string) => {
@@ -106,7 +107,7 @@ const SearchResults: React.FC = () => {
         />
       </div>
       <MoviesList
-        moviesList={moviesList}
+        // moviesList={moviesList}
         onDeleteConfirm={onDeleteConfirm}
         onSubmit={onSubmit}
       />
