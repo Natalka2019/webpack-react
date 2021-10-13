@@ -23,7 +23,7 @@ interface State {
 const defaultMoviesRequestParams = {
   search: "",
   limit: 12,
-  offset: 2970,
+  offset: 0,
   sortBy: "release_date",
   sortOrder: "desc",
   searchBy: "title",

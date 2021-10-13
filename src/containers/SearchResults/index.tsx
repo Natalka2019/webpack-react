@@ -106,11 +106,7 @@ const SearchResults: React.FC = () => {
           onSortChange={onSortChange}
         />
       </div>
-      <MoviesList
-        // moviesList={moviesList}
-        onDeleteConfirm={onDeleteConfirm}
-        onSubmit={onSubmit}
-      />
+      <MoviesList onDeleteConfirm={onDeleteConfirm} onSubmit={onSubmit} />
     </main>
   );
 };

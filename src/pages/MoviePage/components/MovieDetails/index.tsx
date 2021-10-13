@@ -44,7 +44,9 @@ const MovieDetails: React.FC<Props> = ({ movie }) => {
         <div className={styles.MovieDetails__genre}>{genres.join(", ")}</div>
         <div className={styles.MovieDetails__dateRuntime}>
           <div className={styles.MovieDetails__date}>{releaseYear}</div>
-          <div className={styles.MovieDetails_runtime}>{runtime} min</div>
+          <div className={styles.MovieDetails_runtime}>
+            {runtime ? `${runtime} min` : ""}
+          </div>
         </div>
         <div className={styles.MovieDetails__overview}>{overview}</div>
       </div>

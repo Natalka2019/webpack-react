@@ -6,6 +6,7 @@ import * as actions from "store/actions";
 import { RootState } from "store/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   onDeleteConfirm: (id: number) => void;
@@ -14,11 +15,18 @@ interface Props {
 
 const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const moviesRequestParams = useSelector(
     (state: RootState) => state.movieReducer.moviesRequestParams
   );
 
   useEffect(() => {
+    if (
+      location.pathname.includes("movie") &&
+      moviesRequestParams.offset !== 0
+    ) {
+      return;
+    }
     dispatch(actions.movieActions.getMovies());
   }, []);
 
@@ -40,7 +48,7 @@ const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
   };
 
   console.log(moviesList);
-  console.log(moviesTotal);
+
   if (moviesList.length === 0) {
     return <div className={styles.noData}>Nothing found for this request</div>;
   }
