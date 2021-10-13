@@ -1,11 +1,21 @@
 import * as types from "../actionTypes";
 import { IMovie } from "models";
 
-export const getMovies = () => ({
+export const getMovies = (payload: {
+  offset?: number;
+  limit?: number;
+  search?: string;
+}) => ({
   type: types.GET_MOVIES,
+  payload,
 });
 
-export const getMoviesSuccess = (payload: IMovie[]) => ({
+export const getMoviesSuccess = (payload: {
+  data: IMovie[];
+  limit: number;
+  offset: number;
+  totalAmount: number;
+}) => ({
   type: types.GET_MOVIES_SUCCESS,
   payload,
 });

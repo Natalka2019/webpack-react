@@ -12,18 +12,28 @@ import { IMovie } from "models";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
 
+const MOVIES_PER_PAGE = 12;
+
 const SearchResults: React.FC = () => {
   const dispatch = useDispatch();
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    dispatch(actions.movieActions.getMovies());
+    dispatch(
+      actions.movieActions.getMovies({ offset, limit: MOVIES_PER_PAGE })
+    );
   }, []);
 
   const moviesList = useSelector(
     (state: RootState) => state.movieReducer.movies
   );
 
+  const moviesTotal = useSelector(
+    (state: RootState) => state.movieReducer.moviesTotal
+  );
+
   console.log(moviesList);
+  console.log(moviesTotal);
 
   // const [moviesList, setMoviesList] = useState<IMovie[]>([
   //   ...movies.sort((a, b) => sortFunction(a.releaseDate, b.releaseDate)),

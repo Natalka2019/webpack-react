@@ -5,10 +5,12 @@ import React, {
   useState,
   ChangeEvent,
 } from "react";
+import { useDispatch } from "react-redux";
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
 import { IMovie } from "models";
 import clsx from "clsx";
+import * as actions from "store/actions";
 
 // interface Props {
 //   onSubmit: (movie: IMovie) => void;
@@ -16,6 +18,7 @@ import clsx from "clsx";
 
 // const Header: React.FC<Props> = ({ onSubmit }) => {
 const Header: React.FC = () => {
+  const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -36,12 +39,15 @@ const Header: React.FC = () => {
     setIsMovieModalOpen(true);
   }, []);
 
-  const onSearch = useCallback((e: any) => {
-    if (e.key && e.key !== "Enter") {
-      return null;
-    }
-    console.log(`Search ${searchInputRef.current?.value}!!`);
-  }, []);
+  const onSearch = useCallback(
+    (e: any) => {
+      if (e.key && e.key !== "Enter") {
+        return null;
+      }
+      dispatch(actions.movieActions.getMovies({ search: searchValue }));
+    },
+    [searchValue]
+  );
 
   const onSubmitNewMovie = (movie: IMovie) => {
     // onSubmit(movie);

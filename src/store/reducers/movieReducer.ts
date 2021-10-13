@@ -5,6 +5,7 @@ import { IMovie } from "models";
 
 interface State {
   movies: IMovie[];
+  moviesTotal: number;
   getMoviesStatus: {
     loading: boolean;
     success: string | null;
@@ -20,6 +21,7 @@ interface State {
 
 const initialState: State = {
   movies: [],
+  moviesTotal: 0,
   getMoviesStatus: helpers.getDefaultState(),
   movie: null,
   getMovieStatus: helpers.getDefaultState(),
@@ -37,7 +39,8 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
       const { payload } = action;
       return {
         ...state,
-        movies: payload,
+        movies: payload.data,
+        moviesTotal: payload.totalAmount,
         getMoviesStatus: helpers.getSuccessState("Success!"),
       };
     }
