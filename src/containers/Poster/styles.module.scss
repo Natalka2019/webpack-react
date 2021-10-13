@@ -46,14 +46,19 @@
     justify-content: space-between;
   }
 
-  &__date {
-    border: 1px solid $color--primary-white;
-    border-radius: 5px;
-    padding: 2px 5px;
-  }
-
   &__genre {
     font-size: 12px;
     line-height: 18px;
+    margin-right: 10px;
+  }
+
+  &__date {
+    border: 1px solid $color--primary-white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 18px;
   }
 }
