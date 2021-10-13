@@ -1,13 +1,18 @@
 import * as types from "../actionTypes";
 import { IMovie } from "models";
 
-export const getMovies = (payload: {
-  offset?: number;
-  limit?: number;
+interface IMoviesRequestParamsUpdate {
   search?: string;
-}) => ({
+  limit?: number;
+  offset?: number;
+  sortBy?: string;
+  sortOrder?: string;
+  searchBy?: string;
+  filter?: string[];
+}
+
+export const getMovies = () => ({
   type: types.GET_MOVIES,
-  payload,
 });
 
 export const getMoviesSuccess = (payload: {
@@ -46,4 +51,11 @@ export const getMovieFailure = (payload: any) => ({
 
 export const clearGetMovieStatus = () => ({
   type: types.CLEAR_GET_MOVIE_STATUS,
+});
+
+export const updateMoviesRequestParams = (
+  payload: IMoviesRequestParamsUpdate
+) => ({
+  type: types.UPDATE_MOVIES_REQUEST_PARAMS,
+  payload,
 });

@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
 import * as types from "../actionTypes";
 import * as helpers from "../helpers";
-import { IMovie } from "models";
+import { IMovie, IMoviesRequestParams } from "models";
 
 interface State {
   movies: IMovie[];
@@ -17,7 +17,18 @@ interface State {
     success: string | null;
     error: string | null;
   };
+  moviesRequestParams: IMoviesRequestParams;
 }
+
+const defaultMoviesRequestParams = {
+  search: "",
+  limit: 12,
+  offset: 2970,
+  sortBy: "release_date",
+  sortOrder: "desc",
+  searchBy: "title",
+  filter: [],
+};
 
 const initialState: State = {
   movies: [],
@@ -25,6 +36,7 @@ const initialState: State = {
   getMoviesStatus: helpers.getDefaultState(),
   movie: null,
   getMovieStatus: helpers.getDefaultState(),
+  moviesRequestParams: defaultMoviesRequestParams,
 };
 
 const movieReducer: Reducer<State> = (state = initialState, action) => {
@@ -37,9 +49,13 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
     }
     case types.GET_MOVIES_SUCCESS: {
       const { payload } = action;
+      console.log(payload.data);
       return {
         ...state,
-        movies: [...state.movies, ...payload.data],
+        movies:
+          state.moviesRequestParams.offset > 0
+            ? [...state.movies, ...payload.data]
+            : payload.data,
         moviesTotal: payload.totalAmount,
         getMoviesStatus: helpers.getSuccessState("Success!"),
       };
@@ -82,6 +98,13 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
       return {
         ...state,
         getMovieStatus: helpers.getDefaultState(),
+      };
+    }
+    case types.UPDATE_MOVIES_REQUEST_PARAMS: {
+      const { payload } = action;
+      return {
+        ...state,
+        moviesRequestParams: { ...state.moviesRequestParams, ...payload },
       };
     }
     default:

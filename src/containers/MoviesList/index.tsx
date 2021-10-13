@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import Poster from "../Poster";
 import { IMovie } from "models";
@@ -7,8 +7,6 @@ import { RootState } from "store/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const MOVIES_PER_PAGE = 12;
-
 interface Props {
   onDeleteConfirm: (id: number) => void;
   onSubmit: (movie: IMovie) => void;
@@ -16,13 +14,13 @@ interface Props {
 
 const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
   const dispatch = useDispatch();
-  const [offset, setOffset] = useState(0);
+  const moviesRequestParams = useSelector(
+    (state: RootState) => state.movieReducer.moviesRequestParams
+  );
 
   useEffect(() => {
-    dispatch(
-      actions.movieActions.getMovies({ offset, limit: MOVIES_PER_PAGE })
-    );
-  }, [offset]);
+    dispatch(actions.movieActions.getMovies());
+  }, []);
 
   const moviesList = useSelector(
     (state: RootState) => state.movieReducer.movies
@@ -33,7 +31,12 @@ const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
   );
 
   const fetchNextPart = () => {
-    setOffset((prev) => prev + MOVIES_PER_PAGE);
+    dispatch(
+      actions.movieActions.updateMoviesRequestParams({
+        offset: moviesRequestParams.offset + moviesRequestParams.limit,
+      })
+    );
+    dispatch(actions.movieActions.getMovies());
   };
 
   console.log(moviesList);
@@ -42,29 +45,31 @@ const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
     return <div className={styles.noData}>Nothing found for this request</div>;
   }
   return (
-    <>
+    <div className={styles.MoviesList}>
       <div className={styles.quantity}>
         <strong>{moviesList.length}</strong> movies found
       </div>
 
       <InfiniteScroll
-        className={styles.posters}
         dataLength={moviesList.length}
         next={fetchNextPart}
-        hasMore={moviesList.length < moviesTotal}
+        hasMore={moviesRequestParams.offset < moviesTotal}
         loader={<h4 className={styles.loadingMessage}>Loading...</h4>}
+        endMessage={<h4 className={styles.endMessage}>The End.</h4>}
       >
-        {moviesList &&
-          moviesList.map((movie: IMovie) => (
-            <Poster
-              key={movie.id}
-              movie={movie}
-              onDeleteConfirm={onDeleteConfirm}
-              onSubmitForm={onSubmit}
-            />
-          ))}
+        <div className={styles.posters}>
+          {moviesList &&
+            moviesList.map((movie: IMovie) => (
+              <Poster
+                key={movie.id}
+                movie={movie}
+                onDeleteConfirm={onDeleteConfirm}
+                onSubmitForm={onSubmit}
+              />
+            ))}
+        </div>
       </InfiniteScroll>
-    </>
+    </div>
   );
 };
 

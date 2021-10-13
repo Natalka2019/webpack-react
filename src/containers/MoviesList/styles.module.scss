@@ -35,7 +35,9 @@
   padding: 20px;
 }
 
-.loadingMessage {
+.loadingMessage,
+.endMessage {
+  width: 100%;
   color: white;
   display: flex;
   justify-content: center;

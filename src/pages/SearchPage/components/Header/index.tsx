@@ -44,7 +44,13 @@ const Header: React.FC = () => {
       if (e.key && e.key !== "Enter") {
         return null;
       }
-      dispatch(actions.movieActions.getMovies({ search: searchValue }));
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          search: searchValue,
+          offset: 0,
+        })
+      );
+      dispatch(actions.movieActions.getMovies());
     },
     [searchValue]
   );

@@ -1,8 +1,9 @@
-import { put, call, takeEvery, all } from "redux-saga/effects";
+import { put, call, takeEvery, all, select } from "redux-saga/effects";
 import * as types from "../actionTypes";
 import * as api from "../../api";
 import * as actions from "../actions";
-import { IMovie } from "models";
+import { IMovie, IMoviesRequestParams } from "models";
+import { RootState } from "store/reducers";
 
 interface MoviesResponse {
   config: any;
@@ -27,15 +28,15 @@ interface MovieResponse {
   statusTest: string;
 }
 
-export function* getMovies({
-  payload,
-}: {
-  type: string;
-  payload: { offset?: number; limit?: number; search?: string };
-}) {
-  const { offset = 0, limit = 12, search = "" } = payload;
+const moviesRequestParams = (state: RootState) =>
+  state.movieReducer.moviesRequestParams;
 
-  const requestParams = `offset=${offset}&limit=${limit}&search=${search}&searchBy=title`;
+export function* getMovies() {
+  const params: IMoviesRequestParams = yield select(moviesRequestParams);
+
+  const { search, limit, offset, sortBy, sortOrder, searchBy, filter } = params;
+
+  const requestParams = `offset=${offset}&limit=${limit}&search=${search}&searchBy=${searchBy}&sortBy=${sortBy}&sortOrder=${sortOrder}&filter=${filter}`;
   try {
     const response: MoviesResponse = yield call(
       api.movies.getMovies,
