@@ -39,35 +39,10 @@ const SearchResults: React.FC = () => {
     // [moviesList]
   );
 
-  const onSortChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    const sort = e.target.value;
-    console.log(sort);
-    // const updatedMoviesList: IMovie[] = [...moviesList];
-
-    // if (sort === sortOptions.title) {
-    //   updatedMoviesList.sort((a, b) =>
-    //     sortFunction(a.title.toLowerCase(), b.title.toLowerCase())
-    //   );
-    // }
-
-    // if (sort === sortOptions.genre) {
-    //   updatedMoviesList.sort((a, b) =>
-    //     sortFunction(a.genre.toLowerCase(), b.genre.toLowerCase())
-    //   );
-    // }
-
-    // if (sort === sortOptions.releaseDate) {
-    //   updatedMoviesList.sort((a, b) =>
-    //     sortFunction(a.release_date, b.release_date)
-    //   );
-    // }
-
-    // setMoviesList(updatedMoviesList);
-  }, []);
   return (
     <main className={styles.SearchResults}>
       <div className={styles.SearchResults__filters}>
-        <FiltersContainer genres={genres} onSortChange={onSortChange} />
+        <FiltersContainer genres={genres} />
       </div>
       <MoviesList onDeleteConfirm={onDeleteConfirm} onSubmit={onSubmit} />
     </main>
