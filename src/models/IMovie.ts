@@ -1,10 +1,14 @@
 export default interface IMovie {
-  id?: string;
+  id?: number | undefined;
   title: string;
-  genre: string;
-  rating: number;
-  releaseDate: string | "";
+  tagline?: string;
+  vote_average?: number;
+  vote_count?: number;
+  release_date: string;
+  poster_path: string;
   overview: string;
-  runTime: string;
-  movieUrl: string;
+  budget?: number;
+  revenue?: number;
+  runtime: string;
+  genres: string[];
 }

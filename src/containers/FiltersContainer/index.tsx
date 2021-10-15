@@ -1,24 +1,57 @@
-import React, { useCallback, useState, ChangeEvent } from "react";
+import React, { useCallback, ChangeEvent } from "react";
 import styles from "./styles.module.scss";
 import { Button, SelectField } from "components";
 import { sortOptions } from "common";
 import clsx from "clsx";
+import * as actions from "store/actions";
+import { RootState } from "store/reducers";
+import { useDispatch, useSelector } from "react-redux";
 
 interface Props {
   genres: string[];
-  onGenre: (title: string) => void;
-  onSortChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const FiltersContainer: React.FC<Props> = ({
-  genres,
-  onGenre,
-  onSortChange,
-}) => {
-  const [selectedGenre, setSelectedGenre] = useState(genres[0]);
+const FiltersContainer: React.FC<Props> = ({ genres }) => {
+  const dispatch = useDispatch();
+  const moviesRequestParams = useSelector(
+    (state: RootState) => state.movieReducer.moviesRequestParams
+  );
+
   const onGenreChange = useCallback((title: string) => {
-    setSelectedGenre(title);
-    onGenre(title);
+    if (title === "All") {
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          filter: ["All"],
+        })
+      );
+    } else {
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          filter: [title],
+        })
+      );
+    }
+    dispatch(
+      actions.movieActions.updateMoviesRequestParams({
+        offset: 0,
+      })
+    );
+    dispatch(actions.movieActions.getMovies());
+  }, []);
+
+  const onSortChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    const sort = e.target.value.split("_");
+    const sortBy = sort.slice(0, sort.length - 1).join("_");
+    const sortOrder = sort[sort.length - 1];
+
+    dispatch(
+      actions.movieActions.updateMoviesRequestParams({
+        offset: 0,
+        sortBy: sortBy,
+        sortOrder: sortOrder,
+      })
+    );
+    dispatch(actions.movieActions.getMovies());
   }, []);
 
   const selectedGenreClassName = clsx(
@@ -33,7 +66,7 @@ const FiltersContainer: React.FC<Props> = ({
             <Button
               key={genre}
               className={
-                genre === selectedGenre
+                moviesRequestParams.filter.includes(genre)
                   ? selectedGenreClassName
                   : styles.FiltersContainer__genre
               }
@@ -44,7 +77,7 @@ const FiltersContainer: React.FC<Props> = ({
       </div>
       <div className={styles.FiltersContainer__sort}>
         <SelectField
-          optionsList={Object.values(sortOptions)}
+          optionsList={sortOptions}
           label="Sort by"
           onChange={onSortChange}
         />

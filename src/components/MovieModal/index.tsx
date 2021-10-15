@@ -19,13 +19,13 @@ const MovieModal: React.FC<Props> = ({
   modalTitle,
 }) => {
   const [formValues, setFormValues] = useState({
-    id: movie?.id || "",
+    id: movie?.id || undefined,
     title: movie?.title || "",
-    genre: movie?.genre || "",
-    releaseDate: movie?.releaseDate || "",
+    genres: movie?.genres || [],
+    release_date: movie?.release_date || "",
     overview: movie?.overview || "",
-    runTime: movie?.runTime || "",
-    movieUrl: movie?.movieUrl || "",
+    runtime: movie?.runtime || "",
+    poster_path: movie?.poster_path || "",
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -37,13 +37,13 @@ const MovieModal: React.FC<Props> = ({
 
   const onReset = () => {
     setFormValues({
-      id: movie?.id || "",
+      id: movie?.id || undefined,
       title: movie?.title || "",
-      genre: movie?.genre || "",
-      releaseDate: movie?.releaseDate || "",
+      genres: movie?.genres || [],
+      release_date: movie?.release_date || "",
       overview: movie?.overview || "",
-      runTime: movie?.runTime || "",
-      movieUrl: movie?.movieUrl || "",
+      runtime: movie?.runtime || "",
+      poster_path: movie?.poster_path || "",
     });
   };
 
@@ -73,14 +73,14 @@ const MovieModal: React.FC<Props> = ({
           name="releaseDate"
           type="date"
           placeholder="Select Date"
-          value={formValues.releaseDate}
+          value={formValues.release_date}
           label="Release date"
           onChange={onChange}
         />
         <InputField
           name="movieUrl"
           placeholder="Movie URL here"
-          value={formValues.movieUrl}
+          value={formValues.poster_path}
           label="Movie Url"
           onChange={onChange}
         />
@@ -91,7 +91,7 @@ const MovieModal: React.FC<Props> = ({
           optionsList={genresList}
           label="Genre"
           placeholder="Select genre"
-          selectedValue={formValues.genre}
+          // selectedValue={formValues.genres}
           onChange={onChange}
           name="genre"
         />
@@ -105,7 +105,7 @@ const MovieModal: React.FC<Props> = ({
         <InputField
           name="runTime"
           placeholder="Runtime here"
-          value={formValues.runTime}
+          value={formValues.runtime}
           label="Runtime"
           onChange={onChange}
         />

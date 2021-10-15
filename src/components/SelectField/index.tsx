@@ -2,8 +2,13 @@ import React, { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
+interface IOption {
+  value: string;
+  label: string;
+}
+
 interface Props {
-  optionsList: string[];
+  optionsList: IOption[];
   label: string;
   containerClassName?: string;
   labelClassName?: string;
@@ -43,8 +48,8 @@ const SelectField: React.FC<Props> = ({
         )}
         {optionsList &&
           optionsList.map((option) => (
-            <option key={option} value={option}>
-              {option}
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
       </select>

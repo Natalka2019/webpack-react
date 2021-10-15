@@ -1,60 +1,24 @@
 @import "../../../../variables.scss";
 
 .MovieDetails {
-  box-sizing: border-box;
-  background: #000000bf url("assets/netflixBackground.jpg");
-  background-blend-mode: darken;
-  box-sizing: border-box;
-  max-width: 1024px;
-  margin: 0 auto 8px auto;
-
-  &__section {
-    max-width: 860px;
-    padding: 20px;
-    margin: 0 auto;
-
-    @media (min-width: 470px) {
-      padding: 20px 50px;
-    }
-
-    &_top {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &_bottom {
-      color: $color--primary-white;
-      font-size: 12px;
-
-      @media (min-width: 470px) {
-        display: flex;
-        align-items: center;
-      }
-    }
-  }
-
-  &__searchIcon {
-    color: $color--primary-coral;
-    transform: rotate(90deg);
-    cursor: pointer;
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
   }
 
   &__imageContainer {
-    max-width: 250px;
-
-    @media (min-width: 600px) {
-      height: 450px;
-    }
+    width: 250px;
+    margin-bottom: 20px;
 
     @media (min-width: 470px) {
-      max-width: 300px;
       margin-right: 20px;
     }
-  }
 
-  &__image {
-    width: 100%;
-    height: auto;
+    &__image {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
   }
 
   &__info {
@@ -68,7 +32,7 @@
     }
   }
 
-  &__titleRating {
+  &__titleVote {
     display: flex;
   }
 
@@ -88,7 +52,7 @@
     }
   }
 
-  &__rating {
+  &__vote {
     display: flex;
     justify-content: center;
     align-items: center;

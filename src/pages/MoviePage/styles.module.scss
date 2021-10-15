@@ -1,6 +1,56 @@
 @import "../../variables.scss";
 
+.loaderContainer,
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  line-height: 1.5em;
+  text-align: center;
+
+  &.MuiCircularProgress-colorPrimary {
+    color: white !important;
+  }
+}
+
 .MoviePage {
   background-color: $color--primary-light-grey;
   position: relative;
+
+  &__movieDetails {
+    box-sizing: border-box;
+    background: #000000bf url("assets/netflixBackground.jpg");
+    background-blend-mode: darken;
+    box-sizing: border-box;
+    max-width: 1024px;
+    margin: 0 auto 8px auto;
+
+    &__section {
+      max-width: 860px;
+      padding: 20px;
+      margin: 0 auto;
+
+      @media (min-width: 470px) {
+        padding: 20px 50px;
+      }
+
+      &_top {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &_bottom {
+        color: $color--primary-white;
+        font-size: 12px;
+      }
+    }
+
+    &__searchIcon {
+      color: $color--primary-coral;
+      transform: rotate(90deg);
+      cursor: pointer;
+    }
+  }
 }
