@@ -27,7 +27,7 @@ const defaultMoviesRequestParams = {
   sortBy: "release_date",
   sortOrder: "desc",
   searchBy: "title",
-  filter: [],
+  filter: ["All"],
 };
 
 const initialState: State = {
@@ -102,6 +102,26 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
     }
     case types.UPDATE_MOVIES_REQUEST_PARAMS: {
       const { payload } = action;
+
+      if (payload.filter) {
+        const updatedFilter = payload.filter.includes("All")
+          ? ["All"]
+          : Array.from(
+              new Set([
+                ...state.moviesRequestParams.filter.filter(
+                  (el) => el !== "All"
+                ),
+                ...payload.filter,
+              ])
+            );
+        return {
+          ...state,
+          moviesRequestParams: {
+            ...state.moviesRequestParams,
+            filter: updatedFilter,
+          },
+        };
+      }
       return {
         ...state,
         moviesRequestParams: { ...state.moviesRequestParams, ...payload },

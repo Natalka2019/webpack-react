@@ -34,13 +34,26 @@ const moviesRequestParams = (state: RootState) =>
 export function* getMovies() {
   const params: IMoviesRequestParams = yield select(moviesRequestParams);
 
-  const { search, limit, offset, sortBy, sortOrder, searchBy, filter } = params;
+  const { search, searchBy, filter, ...basicQuery } = params;
 
-  const requestParams = `offset=${offset}&limit=${limit}&search=${search}&searchBy=${searchBy}&sortBy=${sortBy}&sortOrder=${sortOrder}&filter=${filter}`;
+  let queryString: string = Object.keys(basicQuery)
+    .map((key) => `${key}=${encodeURIComponent((basicQuery as any)[key])}`)
+    .join("&");
+
+  if (search) {
+    queryString = `${queryString}&search=${search}&searchBy=${searchBy}`;
+  }
+
+  if (!filter.includes("All")) {
+    queryString = `${queryString}&filter=${filter.join("%2C%20")}`;
+  }
+
+  console.log(queryString);
+
   try {
     const response: MoviesResponse = yield call(
       api.movies.getMovies,
-      requestParams
+      queryString
     );
     console.log(response);
     yield put(actions.movieActions.getMoviesSuccess(response.data));

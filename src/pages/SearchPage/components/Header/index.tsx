@@ -60,6 +60,16 @@ const Header: React.FC = () => {
     setIsMovieModalOpen(false);
   };
 
+  useEffect(() => {
+    return function clearSearchRequest() {
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          search: "",
+        })
+      );
+    };
+  }, []);
+
   return (
     <header className={styles.Header}>
       <div

@@ -15,30 +15,6 @@ import { RootState } from "store/reducers";
 // const MOVIES_PER_PAGE = 12;
 
 const SearchResults: React.FC = () => {
-  // const dispatch = useDispatch();
-  // const [offset, setOffset] = useState(0);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     actions.movieActions.getMovies({ offset, limit: MOVIES_PER_PAGE })
-  //   );
-  // }, []);
-
-  // const moviesList = useSelector(
-  //   (state: RootState) => state.movieReducer.movies
-  // );
-
-  // const moviesTotal = useSelector(
-  //   (state: RootState) => state.movieReducer.moviesTotal
-  // );
-
-  // console.log(moviesList);
-  // console.log(moviesTotal);
-
-  // const [moviesList, setMoviesList] = useState<IMovie[]>([
-  //   ...movies.sort((a, b) => sortFunction(a.releaseDate, b.releaseDate)),
-  // ]);
-
   const onDeleteConfirm = useCallback((id: number) => {
     // setMoviesList(moviesList.filter((movie) => movie.id !== id));
 
@@ -62,15 +38,6 @@ const SearchResults: React.FC = () => {
     []
     // [moviesList]
   );
-
-  const onGenre = useCallback((title: string) => {
-    console.log(title);
-    // if (title !== "All") {
-    //   setMoviesList(moviesList.filter((movie) => movie.genre === title));
-    // } else {
-    //   setMoviesList(moviesList.filter((movie) => movie));
-    // }
-  }, []);
 
   const onSortChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     const sort = e.target.value;
@@ -100,11 +67,7 @@ const SearchResults: React.FC = () => {
   return (
     <main className={styles.SearchResults}>
       <div className={styles.SearchResults__filters}>
-        <FiltersContainer
-          genres={genres}
-          onGenre={onGenre}
-          onSortChange={onSortChange}
-        />
+        <FiltersContainer genres={genres} onSortChange={onSortChange} />
       </div>
       <MoviesList onDeleteConfirm={onDeleteConfirm} onSubmit={onSubmit} />
     </main>
