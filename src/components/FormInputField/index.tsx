@@ -43,6 +43,7 @@ const FormInputField: FC<Props> = ({
         className={clsx(styles.InputField__input, inputClassName)}
         readOnly={readOnly}
         {...register(name, { required })}
+        onFocus={(event) => event.target.select()}
       />
       {error && <div className={styles.InputField__error}>{error}</div>}
     </div>

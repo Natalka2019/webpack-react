@@ -5,7 +5,8 @@ import styles from "./styles.module.scss";
 import { genres } from "../../mockData/genres";
 import clsx from "clsx";
 import { useForm, Controller } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
+import * as actions from "store/actions";
+import { useDispatch } from "react-redux";
 
 interface Props {
   movie?: IMovie;
@@ -20,6 +21,7 @@ const MovieModal: React.FC<Props> = ({
   modalTitle,
   onModalClose,
 }) => {
+  const dispatch = useDispatch();
   const initialValues = {
     id: movie?.id || undefined,
     title: movie?.title || "",
@@ -32,7 +34,7 @@ const MovieModal: React.FC<Props> = ({
       }) || [],
     release_date: movie?.release_date || "",
     overview: movie?.overview || "",
-    runtime: movie?.runtime || "",
+    runtime: movie?.runtime || undefined,
     poster_path: movie?.poster_path || "",
   };
   const {
@@ -53,12 +55,13 @@ const MovieModal: React.FC<Props> = ({
       console.log(values);
       const movie = {
         ...values,
-        id: uuidv4(),
+        runtime: Number(values.runtime),
         genres: values.genres.map(
           (genre: { value: string; label: string }) => genre.value
         ),
       };
       console.log(movie);
+      dispatch(actions.movieActions.addEditMovie(movie));
       onModalClose();
     } else {
       reset(initialValues);

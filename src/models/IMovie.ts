@@ -13,6 +13,6 @@ export default interface IMovie {
   overview: string;
   budget?: number;
   revenue?: number;
-  runtime: string;
+  runtime: number;
   genres: string[];
 }

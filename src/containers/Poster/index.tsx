@@ -6,13 +6,15 @@ import ActivityModal from "../ActivityModal";
 import Routes from "../../routes";
 import posterSubstitution from "assets/sad_icon.png";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as actions from "store/actions";
 interface Props {
   movie: IMovie;
-  onDeleteConfirm: (id: number) => void;
 }
 
-const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
+const Poster: React.FC<Props> = ({ movie }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -48,6 +50,11 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
 
   const onImage = () => {
     history.push(`${Routes.MOVIE}/${movie.id}`);
+  };
+
+  const onDeleteConfirm = (id: number) => {
+    setIsDeleteModalOpen(false);
+    dispatch(actions.movieActions.deleteMovie(id));
   };
 
   const poster =

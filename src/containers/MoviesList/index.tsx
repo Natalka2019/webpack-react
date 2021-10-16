@@ -7,11 +7,7 @@ import { RootState } from "store/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-  onDeleteConfirm: (id: number) => void;
-}
-
-const MoviesList: React.FC<Props> = ({ onDeleteConfirm }) => {
+const MoviesList: React.FC = () => {
   const dispatch = useDispatch();
   const moviesRequestParams = useSelector(
     (state: RootState) => state.movieReducer.moviesRequestParams
@@ -62,11 +58,7 @@ const MoviesList: React.FC<Props> = ({ onDeleteConfirm }) => {
         <div className={styles.posters}>
           {moviesList &&
             moviesList.map((movie: IMovie) => (
-              <Poster
-                key={movie.id}
-                movie={movie}
-                onDeleteConfirm={onDeleteConfirm}
-              />
+              <Poster key={movie.id} movie={movie} />
             ))}
         </div>
       </InfiniteScroll>
