@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
-import { FormInputField, Button, SelectField } from "components";
+import React from "react";
+import { FormInputField, Button, SelectComponent } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
 import { genres } from "../../mockData/genres";
@@ -23,7 +23,13 @@ const MovieModal: React.FC<Props> = ({
   const initialValues = {
     id: movie?.id || undefined,
     title: movie?.title || "",
-    genres: movie?.genres || [],
+    genres:
+      movie?.genres.map((genre) => {
+        return {
+          value: genre,
+          label: genre,
+        };
+      }) || [],
     release_date: movie?.release_date || "",
     overview: movie?.overview || "",
     runtime: movie?.runtime || "",
@@ -38,14 +44,20 @@ const MovieModal: React.FC<Props> = ({
   } = useForm({ defaultValues: initialValues });
 
   const onSubmit = (
-    { values, closeModal }: { values?: IMovie; closeModal: boolean },
+    { values, closeModal }: { values?: any; closeModal: boolean },
     e: any
   ) => {
     e.preventDefault();
 
     if (closeModal) {
       console.log(values);
-      const movie = { ...values, id: uuidv4() };
+      const movie = {
+        ...values,
+        id: uuidv4(),
+        genres: values.genres.map(
+          (genre: { value: string; label: string }) => genre.value
+        ),
+      };
       console.log(movie);
       onModalClose();
     } else {
@@ -85,27 +97,32 @@ const MovieModal: React.FC<Props> = ({
           placeholder="Select Date"
           register={register}
           label="Release date"
+          error={errors.release_date?.message}
         />
         <FormInputField
           name="poster_path"
           placeholder="Movie URL here"
           register={register}
           label="Movie Url"
+          error={errors.poster_path?.message}
         />
         <Controller
           name="genres"
           control={control}
           render={({ field: { ref, ...rest }, fieldState }) => (
-            <SelectField
+            <SelectComponent
               {...rest}
               {...fieldState}
-              optionsList={genresList}
+              options={genresList}
               name="genres"
-              containerClassName={styles.selectContainer}
-              labelClassName={styles.selectLabel}
-              selectClassName={styles.selectField}
+              initialValue={initialValues.genres}
+              // containerClassName={styles.selectContainer}
+              // labelClassName={styles.selectLabel}
+              // selectClassName={styles.selectField}
               label="Genre"
               placeholder="Select genre"
+              error={errors.genres?.join(",")}
+              isMulti={true}
               // selectedValue={formValues.genres}
             />
           )}
@@ -116,12 +133,14 @@ const MovieModal: React.FC<Props> = ({
           placeholder="Overview here"
           register={register}
           label="Overview"
+          error={errors.overview?.message}
         />
         <FormInputField
           name="runtime"
           placeholder="Runtime here"
           register={register}
           label="Runtime"
+          error={errors.runtime?.message}
         />
 
         <div className={styles.MovieModal__buttonsContainer}>

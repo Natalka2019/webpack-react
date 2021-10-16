@@ -10,6 +10,7 @@ import DeleteModal from "./DeleteModal";
 import SelectField from "./SelectField";
 import Footer from "./Footer";
 import FormInputField from "./FormInputField";
+import SelectComponent from "./SelectComponent";
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   SelectField,
   Footer,
   FormInputField,
+  SelectComponent,
 };
