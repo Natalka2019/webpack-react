@@ -3,16 +3,16 @@ import styles from "./styles.module.scss";
 import { RoundButton, Modal, MovieModal, DeleteModal } from "components";
 import { IMovie } from "models";
 import ActivityModal from "../ActivityModal";
-import { Link } from "react-router-dom";
 import Routes from "../../routes";
 import posterSubstitution from "assets/sad_icon.png";
+import { useHistory } from "react-router-dom";
 interface Props {
   movie: IMovie;
   onDeleteConfirm: (id: number) => void;
-  onSubmitForm: (movie: IMovie) => void;
 }
 
-const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
+const Poster: React.FC<Props> = ({ movie, onDeleteConfirm }) => {
+  const history = useHistory();
   const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -46,9 +46,8 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
     setIsDeleteModalOpen(false);
   };
 
-  const onSave = (movie: IMovie) => {
-    onSubmitForm(movie);
-    setIsMovieModalOpen(false);
+  const onImage = () => {
+    history.push(`${Routes.MOVIE}/${movie.id}`);
   };
 
   const poster =
@@ -60,16 +59,18 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
   return (
     <>
       <div className={styles.Poster}>
-        <Link
-          to={`${Routes.MOVIE}/${movie.id}`}
-          className={styles.Poster__imageContainer}
-        >
-          <img className={styles.Poster__image} src={poster} />
+        <div className={styles.Poster__imageContainer}>
+          <img
+            className={styles.Poster__image}
+            src={poster}
+            onClick={onImage}
+          />
           <RoundButton
             className={styles.Poster__roundButton}
             onClick={onManageMovie}
           />
-        </Link>
+        </div>
+
         <div className={styles.Poster__info}>
           <div className={styles.Poster__title}>{title}</div>
           <div className={styles.Poster__dateGenre}>
@@ -92,7 +93,7 @@ const Poster: React.FC<Props> = ({ movie, onDeleteConfirm, onSubmitForm }) => {
           >
             <MovieModal
               movie={movie}
-              onSubmit={onSave}
+              onModalClose={onCloseMovieModal}
               buttonName="Save"
               modalTitle="Edit movie"
             />

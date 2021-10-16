@@ -9,10 +9,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   onDeleteConfirm: (id: number) => void;
-  onSubmit: (movie: IMovie) => void;
 }
 
-const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
+const MoviesList: React.FC<Props> = ({ onDeleteConfirm }) => {
   const dispatch = useDispatch();
   const moviesRequestParams = useSelector(
     (state: RootState) => state.movieReducer.moviesRequestParams
@@ -67,7 +66,6 @@ const MoviesList: React.FC<Props> = ({ onDeleteConfirm, onSubmit }) => {
                 key={movie.id}
                 movie={movie}
                 onDeleteConfirm={onDeleteConfirm}
-                onSubmitForm={onSubmit}
               />
             ))}
         </div>

@@ -5,39 +5,39 @@ import { sortOptions } from "common";
 import clsx from "clsx";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
+import { genres } from "../../mockData/genres";
 import { useDispatch, useSelector } from "react-redux";
 
-interface Props {
-  genres: string[];
-}
-
-const FiltersContainer: React.FC<Props> = ({ genres }) => {
+const FiltersContainer: React.FC = () => {
   const dispatch = useDispatch();
   const moviesRequestParams = useSelector(
     (state: RootState) => state.movieReducer.moviesRequestParams
   );
 
-  const onGenreChange = useCallback((title: string) => {
-    if (title === "All") {
+  const onGenreChange = useCallback(
+    (genre: { value: string; label: string }) => {
+      if (genre.value === "All") {
+        dispatch(
+          actions.movieActions.updateMoviesRequestParams({
+            filter: ["All"],
+          })
+        );
+      } else {
+        dispatch(
+          actions.movieActions.updateMoviesRequestParams({
+            filter: [genre.value],
+          })
+        );
+      }
       dispatch(
         actions.movieActions.updateMoviesRequestParams({
-          filter: ["All"],
+          offset: 0,
         })
       );
-    } else {
-      dispatch(
-        actions.movieActions.updateMoviesRequestParams({
-          filter: [title],
-        })
-      );
-    }
-    dispatch(
-      actions.movieActions.updateMoviesRequestParams({
-        offset: 0,
-      })
-    );
-    dispatch(actions.movieActions.getMovies());
-  }, []);
+      dispatch(actions.movieActions.getMovies());
+    },
+    []
+  );
 
   const onSortChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     const sort = e.target.value.split("_");
@@ -64,13 +64,13 @@ const FiltersContainer: React.FC<Props> = ({ genres }) => {
         {genres &&
           genres.map((genre) => (
             <Button
-              key={genre}
+              key={genre.value}
               className={
-                moviesRequestParams.filter.includes(genre)
+                moviesRequestParams.filter.includes(genre.value)
                   ? selectedGenreClassName
                   : styles.FiltersContainer__genre
               }
-              name={genre}
+              name={genre.label}
               onClick={() => onGenreChange(genre)}
             />
           ))}
