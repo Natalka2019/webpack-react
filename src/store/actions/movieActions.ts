@@ -59,3 +59,33 @@ export const updateMoviesRequestParams = (
   type: types.UPDATE_MOVIES_REQUEST_PARAMS,
   payload,
 });
+
+export const addEditMovie = (payload: IMovie) => ({
+  type: types.ADD_EDIT_MOVIE,
+  payload,
+});
+
+export const addEditMovieSuccess = (payload: IMovie) => ({
+  type: types.ADD_EDIT_MOVIE_SUCCESS,
+  payload,
+});
+
+export const addEditMovieFailure = (payload: any) => ({
+  type: types.ADD_EDIT_MOVIE_FAILURE,
+  payload,
+});
+
+export const deleteMovie = (payload: number) => ({
+  type: types.DELETE_MOVIE,
+  payload,
+});
+
+export const deleteMovieSuccess = (payload: any) => ({
+  type: types.DELETE_MOVIE_SUCCESS,
+  payload,
+});
+
+export const deleteMovieFailure = (payload: any) => ({
+  type: types.DELETE_MOVIE_FAILURE,
+  payload,
+});

@@ -74,9 +74,40 @@ export function* getMovie({ payload }: { type: string; payload: number }) {
   }
 }
 
+export function* addEditMovie({ payload }: { type: string; payload: IMovie }) {
+  try {
+    let response: MovieResponse;
+
+    if (payload.id) {
+      response = yield call(api.movies.editMovie, payload);
+    } else {
+      response = yield call(api.movies.addMovie, payload);
+    }
+
+    console.log(response);
+    yield put(actions.movieActions.addEditMovieSuccess(response.data));
+  } catch (error) {
+    console.log(error);
+    yield put(actions.movieActions.addEditMovieFailure(error));
+  }
+}
+
+export function* deleteMovie({ payload }: { type: string; payload: number }) {
+  try {
+    const response: MovieResponse = yield call(api.movies.deleteMovie, payload);
+    console.log(response);
+    yield put(actions.movieActions.deleteMovieSuccess(response.data));
+  } catch (error) {
+    console.log(error);
+    yield put(actions.movieActions.deleteMovieFailure(error));
+  }
+}
+
 export default function* watch() {
   yield all([
     takeEvery(types.GET_MOVIES, getMovies),
     takeEvery(types.GET_MOVIE, getMovie),
+    takeEvery(types.ADD_EDIT_MOVIE, addEditMovie),
+    takeEvery(types.DELETE_MOVIE, deleteMovie),
   ]);
 }

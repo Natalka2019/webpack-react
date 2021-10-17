@@ -7,7 +7,8 @@ interface Props {
   id?: string;
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  isDisabled?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const Button: React.FC<Props> = ({
   onClick,
   type = "button",
   id = "",
+  isDisabled,
 }) => {
   return (
     <button
@@ -23,6 +25,7 @@ const Button: React.FC<Props> = ({
       onClick={onClick}
       type={type}
       id={id}
+      disabled={isDisabled}
     >
       {name}
     </button>

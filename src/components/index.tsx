@@ -9,6 +9,8 @@ import MovieModal from "./MovieModal";
 import DeleteModal from "./DeleteModal";
 import SelectField from "./SelectField";
 import Footer from "./Footer";
+import FormInputField from "./FormInputField";
+import SelectComponent from "./SelectComponent";
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   DeleteModal,
   SelectField,
   Footer,
+  FormInputField,
+  SelectComponent,
 };

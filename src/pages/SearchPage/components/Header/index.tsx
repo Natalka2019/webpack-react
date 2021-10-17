@@ -8,15 +8,9 @@ import React, {
 import { useDispatch } from "react-redux";
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
-import { IMovie } from "models";
 import clsx from "clsx";
 import * as actions from "store/actions";
 
-// interface Props {
-//   onSubmit: (movie: IMovie) => void;
-// }
-
-// const Header: React.FC<Props> = ({ onSubmit }) => {
 const Header: React.FC = () => {
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -54,11 +48,6 @@ const Header: React.FC = () => {
     },
     [searchValue]
   );
-
-  const onSubmitNewMovie = (movie: IMovie) => {
-    // onSubmit(movie);
-    setIsMovieModalOpen(false);
-  };
 
   useEffect(() => {
     return function clearSearchRequest() {
@@ -111,7 +100,7 @@ const Header: React.FC = () => {
       </div>
       <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
         <MovieModal
-          onSubmit={onSubmitNewMovie}
+          onModalClose={onCloseMovieModal}
           buttonName="Submit"
           modalTitle="Add movie"
         />

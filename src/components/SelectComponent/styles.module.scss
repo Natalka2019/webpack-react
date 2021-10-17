@@ -1,0 +1,14 @@
+@import "../../variables.scss";
+
+.SelectComponent {
+  &__label {
+    text-transform: uppercase;
+    color: $color--primary-coral;
+    font-size: 12px;
+  }
+
+  &__error {
+    color: red;
+    padding-top: 3px;
+  }
+}

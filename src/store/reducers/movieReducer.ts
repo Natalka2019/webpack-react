@@ -3,21 +3,21 @@ import * as types from "../actionTypes";
 import * as helpers from "../helpers";
 import { IMovie, IMoviesRequestParams } from "models";
 
-interface State {
+interface IRequestStatus {
+  loading: boolean;
+  success: string | null;
+  error: string | null;
+}
+
+interface IState {
   movies: IMovie[];
   moviesTotal: number;
-  getMoviesStatus: {
-    loading: boolean;
-    success: string | null;
-    error: string | null;
-  };
+  getMoviesStatus: IRequestStatus;
   movie: IMovie | null;
-  getMovieStatus: {
-    loading: boolean;
-    success: string | null;
-    error: string | null;
-  };
+  getMovieStatus: IRequestStatus;
   moviesRequestParams: IMoviesRequestParams;
+  addEditMovieStatus: IRequestStatus;
+  deleteMovieStatus: IRequestStatus;
 }
 
 const defaultMoviesRequestParams = {
@@ -30,16 +30,18 @@ const defaultMoviesRequestParams = {
   filter: ["All"],
 };
 
-const initialState: State = {
+const initialState: IState = {
   movies: [],
   moviesTotal: 0,
   getMoviesStatus: helpers.getDefaultState(),
   movie: null,
   getMovieStatus: helpers.getDefaultState(),
   moviesRequestParams: defaultMoviesRequestParams,
+  addEditMovieStatus: helpers.getDefaultState(),
+  deleteMovieStatus: helpers.getDefaultState(),
 };
 
-const movieReducer: Reducer<State> = (state = initialState, action) => {
+const movieReducer: Reducer<IState> = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_MOVIES: {
       return {
@@ -125,6 +127,46 @@ const movieReducer: Reducer<State> = (state = initialState, action) => {
       return {
         ...state,
         moviesRequestParams: { ...state.moviesRequestParams, ...payload },
+      };
+    }
+    case types.ADD_EDIT_MOVIE: {
+      return {
+        ...state,
+        addEditMovieStatus: helpers.getRequestState(),
+      };
+    }
+    case types.ADD_EDIT_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        addEditMovieStatus: helpers.getSuccessState(
+          "Action completed successfully!"
+        ),
+      };
+    }
+    case types.ADD_EDIT_MOVIE_FAILURE: {
+      const { payload } = action;
+      return {
+        ...state,
+        addEditMovieStatus: helpers.getErrorState(payload),
+      };
+    }
+    case types.DELETE_MOVIE: {
+      return {
+        ...state,
+        deleteMovieStatus: helpers.getRequestState(),
+      };
+    }
+    case types.DELETE_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        deleteMovieStatus: helpers.getSuccessState("Deleted successfully!"),
+      };
+    }
+    case types.DELETE_MOVIE_FAILURE: {
+      const { payload } = action;
+      return {
+        ...state,
+        deleteMovieStatus: helpers.getErrorState(payload),
       };
     }
     default:

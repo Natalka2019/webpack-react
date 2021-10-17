@@ -1,3 +1,7 @@
+interface IOption {
+  value: string;
+  label: string;
+}
 export default interface IMovie {
   id?: number | undefined;
   title: string;
@@ -9,6 +13,6 @@ export default interface IMovie {
   overview: string;
   budget?: number;
   revenue?: number;
-  runtime: string;
+  runtime: number;
   genres: string[];
 }
