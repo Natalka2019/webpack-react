@@ -18,6 +18,7 @@ interface IState {
   moviesRequestParams: IMoviesRequestParams;
   addEditMovieStatus: IRequestStatus;
   deleteMovieStatus: IRequestStatus;
+  movieModalStatus: boolean;
 }
 
 const defaultMoviesRequestParams = {
@@ -39,6 +40,7 @@ const initialState: IState = {
   moviesRequestParams: defaultMoviesRequestParams,
   addEditMovieStatus: helpers.getDefaultState(),
   deleteMovieStatus: helpers.getDefaultState(),
+  movieModalStatus: false,
 };
 
 const movieReducer: Reducer<IState> = (state = initialState, action) => {
@@ -51,7 +53,6 @@ const movieReducer: Reducer<IState> = (state = initialState, action) => {
     }
     case types.GET_MOVIES_SUCCESS: {
       const { payload } = action;
-      console.log(payload.data);
       return {
         ...state,
         movies:
@@ -167,6 +168,12 @@ const movieReducer: Reducer<IState> = (state = initialState, action) => {
       return {
         ...state,
         deleteMovieStatus: helpers.getErrorState(payload),
+      };
+    }
+    case types.MOVIE_MODAL_STATUS_TOGGLE: {
+      return {
+        ...state,
+        movieModalStatus: action.payload,
       };
     }
     default:

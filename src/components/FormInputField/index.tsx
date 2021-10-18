@@ -27,6 +27,7 @@ const FormInputField: FC<Props> = ({
   required,
   readOnly,
 }) => {
+  console.log("form Input field render");
   return (
     <div className={styles.InputField}>
       <label

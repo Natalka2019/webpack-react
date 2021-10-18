@@ -12,15 +12,9 @@ interface Props {
   movie?: IMovie;
   buttonName: string;
   modalTitle: string;
-  onModalClose: () => void;
 }
 
-const MovieModal: React.FC<Props> = ({
-  movie,
-  buttonName,
-  modalTitle,
-  onModalClose,
-}) => {
+const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
   const dispatch = useDispatch();
   const initialValues = {
     id: movie?.id || undefined,
@@ -55,6 +49,7 @@ const MovieModal: React.FC<Props> = ({
       console.log(values);
       const movie = {
         ...values,
+        id: Number(values.id),
         runtime: Number(values.runtime),
         genres: values.genres.map(
           (genre: { value: string; label: string }) => genre.value
@@ -62,7 +57,6 @@ const MovieModal: React.FC<Props> = ({
       };
       console.log(movie);
       dispatch(actions.movieActions.addEditMovie(movie));
-      onModalClose();
     } else {
       reset(initialValues);
     }
@@ -119,9 +113,6 @@ const MovieModal: React.FC<Props> = ({
               options={genresList}
               name="genres"
               initialValue={initialValues.genres}
-              // containerClassName={styles.selectContainer}
-              // labelClassName={styles.selectLabel}
-              // selectClassName={styles.selectField}
               label="Genre"
               placeholder="Select genre"
               error={errors.genres?.join(",")}
