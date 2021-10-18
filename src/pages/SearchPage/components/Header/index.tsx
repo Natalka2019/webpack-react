@@ -5,24 +5,28 @@ import React, {
   useState,
   ChangeEvent,
 } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 import * as actions from "store/actions";
+import { RootState } from "store/reducers";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+
+  const movieModalStatus = useSelector(
+    (state: RootState) => state.movieReducer.movieModalStatus
+  );
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
   const onCloseMovieModal = () => {
-    setIsMovieModalOpen(false);
+    dispatch(actions.movieActions.movieModalStatusToggle(false));
   };
 
   useEffect(() => {
@@ -30,7 +34,7 @@ const Header: React.FC = () => {
   }, []);
 
   const onAddMovie = useCallback(() => {
-    setIsMovieModalOpen(true);
+    dispatch(actions.movieActions.movieModalStatusToggle(true));
   }, []);
 
   const onSearch = useCallback(
@@ -98,12 +102,8 @@ const Header: React.FC = () => {
           />
         </div>
       </div>
-      <Modal onCloseModal={onCloseMovieModal} isModalOpen={isMovieModalOpen}>
-        <MovieModal
-          onModalClose={onCloseMovieModal}
-          buttonName="Submit"
-          modalTitle="Add movie"
-        />
+      <Modal onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus}>
+        <MovieModal buttonName="Submit" modalTitle="Add movie" />
       </Modal>
     </header>
   );

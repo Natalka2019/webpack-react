@@ -89,3 +89,8 @@ export const deleteMovieFailure = (payload: any) => ({
   type: types.DELETE_MOVIE_FAILURE,
   payload,
 });
+
+export const movieModalStatusToggle = (payload: boolean) => ({
+  type: types.MOVIE_MODAL_STATUS_TOGGLE,
+  payload,
+});

@@ -5,6 +5,8 @@ import { SearchPage, MoviePage } from "pages";
 import { ErrorBoundary } from "components";
 import Routes from "./routes";
 import appStore from "./store";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
               <MoviePage />
             </Route>
           </Switch>
+          <ToastContainer />
         </Router>
       </ErrorBoundary>
     </Provider>

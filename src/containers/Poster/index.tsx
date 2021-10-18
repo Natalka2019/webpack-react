@@ -6,8 +6,9 @@ import ActivityModal from "../ActivityModal";
 import Routes from "../../routes";
 import posterSubstitution from "assets/sad_icon.png";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "store/actions";
+import { RootState } from "store/reducers";
 interface Props {
   movie: IMovie;
 }
@@ -16,15 +17,23 @@ const Poster: React.FC<Props> = ({ movie }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
-  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
 
   const { id, title, genres, release_date, poster_path } = movie;
   const date = new Date(release_date);
   const releaseYear = date.getFullYear();
 
+  const deleteMovieStatus = useSelector(
+    (state: RootState) => state.movieReducer.deleteMovieStatus
+  );
+  const movieModalStatus = useSelector(
+    (state: RootState) => state.movieReducer.movieModalStatus
+  );
+
   const onManageMovie = () => {
     setIsActivityModalOpen(true);
+    setSelectedMovie(movie);
   };
 
   const onCloseActivityModal = () => {
@@ -38,11 +47,11 @@ const Poster: React.FC<Props> = ({ movie }) => {
 
   const onEdit = () => {
     setIsActivityModalOpen(false);
-    setIsMovieModalOpen(true);
+    dispatch(actions.movieActions.movieModalStatusToggle(true));
   };
 
   const onCloseMovieModal = () => {
-    setIsMovieModalOpen(false);
+    dispatch(actions.movieActions.movieModalStatusToggle(false));
   };
   const onCloseDeleteModal = () => {
     setIsDeleteModalOpen(false);
@@ -52,9 +61,14 @@ const Poster: React.FC<Props> = ({ movie }) => {
     history.push(`${Routes.MOVIE}/${movie.id}`);
   };
 
-  const onDeleteConfirm = (id: number) => {
-    setIsDeleteModalOpen(false);
-    dispatch(actions.movieActions.deleteMovie(id));
+  const onDeleteConfirm = () => {
+    if (selectedMovie?.id) {
+      dispatch(actions.movieActions.deleteMovie(selectedMovie.id));
+    }
+
+    if (deleteMovieStatus.success) {
+      setIsDeleteModalOpen(false);
+    }
   };
 
   const poster =
@@ -63,6 +77,7 @@ const Poster: React.FC<Props> = ({ movie }) => {
       ? posterSubstitution
       : poster_path;
 
+  console.log("Poster", movieModalStatus);
   return (
     <>
       <div className={styles.Poster}>
@@ -86,7 +101,7 @@ const Poster: React.FC<Props> = ({ movie }) => {
           </div>
         </div>
       </div>
-      {id && (
+      {selectedMovie && (
         <>
           <Modal
             onCloseModal={onCloseActivityModal}
@@ -96,11 +111,10 @@ const Poster: React.FC<Props> = ({ movie }) => {
           </Modal>
           <Modal
             onCloseModal={onCloseMovieModal}
-            isModalOpen={isMovieModalOpen}
+            isModalOpen={movieModalStatus}
           >
             <MovieModal
-              movie={movie}
-              onModalClose={onCloseMovieModal}
+              movie={selectedMovie}
               buttonName="Save"
               modalTitle="Edit movie"
             />
@@ -109,7 +123,7 @@ const Poster: React.FC<Props> = ({ movie }) => {
             onCloseModal={onCloseDeleteModal}
             isModalOpen={isDeleteModalOpen}
           >
-            <DeleteModal id={id} onConfirm={onDeleteConfirm} />
+            <DeleteModal onConfirm={onDeleteConfirm} />
           </Modal>
         </>
       )}

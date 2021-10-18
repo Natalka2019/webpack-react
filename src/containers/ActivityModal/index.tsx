@@ -5,8 +5,8 @@ import clsx from "clsx";
 
 interface Props {
   id?: number | undefined;
-  onDelete: (id: number | undefined) => void;
-  onEdit: (id: number | undefined) => void;
+  onDelete: () => void;
+  onEdit: () => void;
 }
 
 const ActivityModal: React.FC<Props> = ({ id, onDelete, onEdit }) => {
@@ -21,12 +21,12 @@ const ActivityModal: React.FC<Props> = ({ id, onDelete, onEdit }) => {
           styles.ActivityModal__button,
           styles.ActivityModal__button_delete
         )}
-        onClick={() => onDelete(id)}
+        onClick={() => onDelete()}
       />
       <Button
         name="Edit"
         className={styles.ActivityModal__button}
-        onClick={() => onEdit(id)}
+        onClick={() => onEdit()}
       />
     </div>
   );

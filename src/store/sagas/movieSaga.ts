@@ -4,6 +4,7 @@ import * as api from "../../api";
 import * as actions from "../actions";
 import { IMovie, IMoviesRequestParams } from "models";
 import { RootState } from "store/reducers";
+import { toast } from "react-toastify";
 
 interface MoviesResponse {
   config: any;
@@ -30,6 +31,7 @@ interface MovieResponse {
 
 const moviesRequestParams = (state: RootState) =>
   state.movieReducer.moviesRequestParams;
+const movie = (state: RootState) => state.movieReducer.movie;
 
 export function* getMovies() {
   const params: IMoviesRequestParams = yield select(moviesRequestParams);
@@ -48,28 +50,28 @@ export function* getMovies() {
     queryString = `${queryString}&filter=${filter.join("%2C%20")}`;
   }
 
-  console.log(queryString);
-
   try {
     const response: MoviesResponse = yield call(
       api.movies.getMovies,
       queryString
     );
-    console.log(response);
     yield put(actions.movieActions.getMoviesSuccess(response.data));
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
     yield put(actions.movieActions.getMoviesFailure(error));
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
   }
 }
 
 export function* getMovie({ payload }: { type: string; payload: number }) {
   try {
     const response: MovieResponse = yield call(api.movies.getMovie, payload);
-    console.log(response);
     yield put(actions.movieActions.getMovieSuccess(response.data));
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
     yield put(actions.movieActions.getMovieFailure(error));
   }
 }
@@ -84,10 +86,22 @@ export function* addEditMovie({ payload }: { type: string; payload: IMovie }) {
       response = yield call(api.movies.addMovie, payload);
     }
 
-    console.log(response);
     yield put(actions.movieActions.addEditMovieSuccess(response.data));
-  } catch (error) {
-    console.log(error);
+    yield put(actions.movieActions.movieModalStatusToggle(false));
+    yield put(actions.movieActions.getMovies());
+
+    const movieDetails: IMovie = yield select(movie);
+    if (movieDetails?.id && movieDetails?.id === response.data.id) {
+      yield put(actions.movieActions.getMovie(movieDetails?.id));
+    }
+
+    toast.success(`Movie successfully saved!`, {
+      theme: "dark",
+    });
+  } catch (error: any) {
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
     yield put(actions.movieActions.addEditMovieFailure(error));
   }
 }
@@ -95,10 +109,14 @@ export function* addEditMovie({ payload }: { type: string; payload: IMovie }) {
 export function* deleteMovie({ payload }: { type: string; payload: number }) {
   try {
     const response: MovieResponse = yield call(api.movies.deleteMovie, payload);
-    console.log(response);
     yield put(actions.movieActions.deleteMovieSuccess(response.data));
-  } catch (error) {
-    console.log(error);
+    toast.success(`Movie has been deleted!`, {
+      theme: "dark",
+    });
+  } catch (error: any) {
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
     yield put(actions.movieActions.deleteMovieFailure(error));
   }
 }

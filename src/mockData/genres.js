@@ -5,14 +5,3 @@ export const genres = [
   { value: "Adventure", label: "Adventure" },
   { value: "Action", label: "Action" },
 ];
-
-// export const genres = [
-//   "All",
-//   // "Science Fiction",
-//   "Fantasy",
-//   "Drama",
-//   "Adventure",
-//   "Action",
-//   // "Documentary",
-//   // "Family",
-// ];
