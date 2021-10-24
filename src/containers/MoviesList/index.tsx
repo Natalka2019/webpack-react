@@ -37,8 +37,6 @@ const MoviesList: React.FC = () => {
     dispatch(actions.movieActions.getMovies());
   };
 
-  console.log(moviesList);
-
   if (moviesList.length === 0) {
     return <div className={styles.noData}>Nothing found for this request</div>;
   }

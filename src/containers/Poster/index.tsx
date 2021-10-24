@@ -4,7 +4,6 @@ import { RoundButton, Modal, MovieModal, DeleteModal } from "components";
 import { IMovie } from "models";
 import ActivityModal from "../ActivityModal";
 import Routes from "../../routes";
-import posterSubstitution from "assets/sad_icon.png";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "store/actions";
@@ -71,20 +70,13 @@ const Poster: React.FC<Props> = ({ movie }) => {
     }
   };
 
-  const poster =
-    poster_path ===
-    "https://image.tmdb.org/t/p/w500/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg"
-      ? posterSubstitution
-      : poster_path;
-
-  console.log("Poster", movieModalStatus);
   return (
     <>
       <div className={styles.Poster}>
         <div className={styles.Poster__imageContainer}>
           <img
             className={styles.Poster__image}
-            src={poster}
+            src={poster_path}
             onClick={onImage}
           />
           <RoundButton

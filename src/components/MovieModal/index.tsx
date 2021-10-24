@@ -7,6 +7,8 @@ import clsx from "clsx";
 import { useForm, Controller } from "react-hook-form";
 import * as actions from "store/actions";
 import { useDispatch } from "react-redux";
+import validationSchema from "./validationSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface Props {
   movie?: IMovie;
@@ -26,9 +28,9 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
           label: genre,
         };
       }) || [],
-    release_date: movie?.release_date || "",
+    release_date: movie?.release_date || null,
     overview: movie?.overview || "",
-    runtime: movie?.runtime || undefined,
+    runtime: movie?.runtime || "",
     poster_path: movie?.poster_path || "",
   };
   const {
@@ -37,25 +39,27 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
     formState: { errors },
     reset,
     control,
-  } = useForm({ defaultValues: initialValues });
+  } = useForm({
+    defaultValues: initialValues,
+    resolver: yupResolver(validationSchema),
+    mode: "onChange",
+  });
 
   const onSubmit = (
     { values, closeModal }: { values?: any; closeModal: boolean },
     e: any
   ) => {
     e.preventDefault();
-
     if (closeModal) {
-      console.log(values);
       const movie = {
         ...values,
-        id: Number(values.id),
+        id: values.id ? Number(values.id) : undefined,
+        release_date: values.release_date.toISOString().split("T")[0],
         runtime: Number(values.runtime),
         genres: values.genres.map(
           (genre: { value: string; label: string }) => genre.value
         ),
       };
-      console.log(movie);
       dispatch(actions.movieActions.addEditMovie(movie));
     } else {
       reset(initialValues);
@@ -115,9 +119,8 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
               initialValue={initialValues.genres}
               label="Genre"
               placeholder="Select genre"
-              error={errors.genres?.join(",")}
+              error={(errors.genres as any)?.message}
               isMulti={true}
-              // selectedValue={formValues.genres}
             />
           )}
         />
@@ -151,7 +154,7 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
             name={buttonName}
             type="submit"
             className={styles.MovieModal__button}
-            isDisabled={false}
+            isDisabled={Object.keys(errors).length > 0}
           />
         </div>
       </form>
