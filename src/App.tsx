@@ -1,12 +1,18 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux"; // BrowserRouter
-import { SearchPage, MoviePage } from "pages";
+import { SearchPage } from "pages";
 import { ErrorBoundary } from "components";
 import Routes from "./routes";
 import appStore from "./store";
+import { injectStyle } from "react-toastify/dist/inject-style";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+const MoviePage = React.lazy(() => import("pages/MoviePage"));
+
+if (typeof window !== "undefined") {
+  injectStyle();
+}
 
 const App = () => {
   return (
