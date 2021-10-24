@@ -32,8 +32,6 @@ const MoviePage: React.FC = () => {
     (state: RootState) => state.movieReducer.movie
   );
 
-  console.log(movie);
-
   const onSearch = () => {
     history.push(Routes.ROOT);
   };

@@ -23,6 +23,15 @@ const Header: React.FC = () => {
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+    if (e.target.value === "") {
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          search: "",
+          offset: 0,
+        })
+      );
+      dispatch(actions.movieActions.getMovies());
+    }
   };
 
   const onCloseMovieModal = () => {

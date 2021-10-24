@@ -48,7 +48,6 @@ const SelectComponent: FC<Props> = ({
   onInputChange,
   menuPlacement = "auto",
 }) => {
-  console.log("Select component render", value);
   return (
     <div className={clsx(styles.SelectComponent, className)}>
       {label != null && (

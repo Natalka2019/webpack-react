@@ -1,6 +1,7 @@
 @import "../../variables.scss";
 
 .SelectComponent {
+  margin-bottom: 5px;
   &__label {
     text-transform: uppercase;
     color: $color--primary-coral;
@@ -9,6 +10,6 @@
 
   &__error {
     color: red;
-    padding-top: 3px;
+    padding-bottom: 3px;
   }
 }

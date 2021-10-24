@@ -11,4 +11,8 @@
   text-transform: uppercase;
   background-color: $color--primary-coral;
   color: $color--primary-white;
+
+  &[disabled] {
+    background-color: $color--primary-dark-grey;
+  }
 }

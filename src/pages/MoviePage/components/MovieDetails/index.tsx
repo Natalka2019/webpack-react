@@ -38,7 +38,7 @@ const MovieDetails: React.FC<Props> = ({ movie }) => {
         <div className={styles.MovieDetails__titleVote}>
           <div className={styles.MovieDetails__title}>{title}</div>
           <div className={styles.MovieDetails__vote}>
-            {vote_average?.toFixed(1)}
+            {vote_average?.toFixed(1) || "0.0"}
           </div>
         </div>
         <div className={styles.MovieDetails__genre}>{genres.join(", ")}</div>
