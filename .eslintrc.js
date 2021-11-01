@@ -20,6 +20,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-var-requires": 0,
     "react/prop-types": "off",
-    // "react/jsx-max-props-per-line": [2, { maximum: 1, when: "always" }],
+    eqeqeq: ["error", "always"],
   },
 };

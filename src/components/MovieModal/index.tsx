@@ -2,7 +2,7 @@ import React from "react";
 import { FormInputField, Button, SelectComponent } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
-import { genres } from "../../mockData/genres";
+import { genres, genresTypes } from "common";
 import clsx from "clsx";
 import { useForm, Controller } from "react-hook-form";
 import * as actions from "store/actions";
@@ -66,7 +66,7 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
     }
   };
 
-  const genresList = genres.filter((genre) => genre.value !== "All");
+  const genresList = genres.filter((genre) => genre.value !== genresTypes.All);
 
   return (
     <div className={styles.MovieModal}>

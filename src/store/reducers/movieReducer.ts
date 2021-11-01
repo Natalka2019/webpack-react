@@ -2,6 +2,7 @@ import { Reducer } from "redux";
 import * as types from "../actionTypes";
 import * as helpers from "../helpers";
 import { IMovie, IMoviesRequestParams } from "models";
+import { genresTypes } from "common";
 
 interface IRequestStatus {
   loading: boolean;
@@ -28,7 +29,7 @@ const defaultMoviesRequestParams = {
   sortBy: "release_date",
   sortOrder: "desc",
   searchBy: "title",
-  filter: ["All"],
+  filter: [genresTypes.All],
 };
 
 const initialState: IState = {
@@ -107,12 +108,12 @@ const movieReducer: Reducer<IState> = (state = initialState, action) => {
       const { payload } = action;
 
       if (payload.filter) {
-        const updatedFilter = payload.filter.includes("All")
-          ? ["All"]
+        const updatedFilter = payload.filter.includes(genresTypes.All)
+          ? [genresTypes.All]
           : Array.from(
               new Set([
                 ...state.moviesRequestParams.filter.filter(
-                  (el) => el !== "All"
+                  (el) => el !== genresTypes.All
                 ),
                 ...payload.filter,
               ])

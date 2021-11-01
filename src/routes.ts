@@ -1,6 +1,6 @@
 const Routes = {
   ROOT: "/",
-  MOVIE: "/movie",
+  MOVIE: "/film",
 };
 
 export default Routes;
