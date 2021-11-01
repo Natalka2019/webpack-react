@@ -13,13 +13,6 @@ const MoviesList: React.FC = () => {
     (state: RootState) => state.movieReducer.moviesRequestParams
   );
 
-  useEffect(() => {
-    if (moviesRequestParams.offset !== 0) {
-      return;
-    }
-    dispatch(actions.movieActions.getMovies());
-  }, []);
-
   const moviesList = useSelector(
     (state: RootState) => state.movieReducer.movies
   );
@@ -38,7 +31,7 @@ const MoviesList: React.FC = () => {
   };
 
   if (moviesList.length === 0) {
-    return <div className={styles.noData}>Nothing found for this request</div>;
+    return <div className={styles.noData}>No movies found</div>;
   }
   return (
     <div className={styles.MoviesList}>

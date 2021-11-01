@@ -11,15 +11,45 @@ import styles from "./styles.module.scss";
 import clsx from "clsx";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
+import { useHistory, useLocation } from "react-router-dom";
+import Routes from "../../routes";
 
-const Header: React.FC = () => {
+const SearchHeader: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState("");
+  const searchParams = new URLSearchParams();
+
+  // http://localhost:3000/#/?search=avengers
 
   const movieModalStatus = useSelector(
     (state: RootState) => state.movieReducer.movieModalStatus
   );
+
+  useEffect(() => {
+    const searchString = history.location.search.split("=");
+    const searchParam = searchString[searchString.length - 1];
+
+    if (searchParam) {
+      setSearchValue(searchParam);
+
+      dispatch(
+        actions.movieActions.updateMoviesRequestParams({
+          search: searchParam,
+          offset: 0,
+        })
+      );
+      dispatch(actions.movieActions.getMovies());
+      searchParams.append("search", searchParam);
+      history.push({
+        search: searchParams.toString(),
+      });
+    } else {
+      dispatch(actions.movieActions.clearMoviesList());
+    }
+  }, [history.location.search]);
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -30,7 +60,12 @@ const Header: React.FC = () => {
           offset: 0,
         })
       );
-      dispatch(actions.movieActions.getMovies());
+      dispatch(actions.movieActions.clearMoviesList());
+      searchParams.delete("search");
+      history.push({
+        pathname: Routes.ROOT,
+        search: searchParams.toString(),
+      });
     }
   };
 
@@ -58,6 +93,19 @@ const Header: React.FC = () => {
         })
       );
       dispatch(actions.movieActions.getMovies());
+
+      if (searchValue !== "") {
+        searchParams.append("search", searchValue);
+      } else {
+        searchParams.delete("search");
+      }
+
+      history.push({
+        pathname: Routes.SEARCH,
+        search: searchParams.toString(),
+      });
+
+      console.log(history);
     },
     [searchValue]
   );
@@ -118,4 +166,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default SearchHeader;

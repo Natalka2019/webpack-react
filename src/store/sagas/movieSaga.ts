@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import { IMovie, IMoviesRequestParams } from "models";
 import { RootState } from "store/reducers";
 import { toast } from "react-toastify";
+import { genresTypes } from "common";
 
 interface MoviesResponse {
   config: any;
@@ -46,7 +47,7 @@ export function* getMovies() {
     queryString = `${queryString}&search=${search}&searchBy=${searchBy}`;
   }
 
-  if (!filter.includes("All")) {
+  if (!filter.includes(genresTypes.All)) {
     queryString = `${queryString}&filter=${filter.join("%2C%20")}`;
   }
 

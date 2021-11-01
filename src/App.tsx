@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 const SearchPage = lazy(() => import("pages/SearchPage"));
 const MoviePage = lazy(() => import("pages/MoviePage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
+const MoviesPage = lazy(() => import("pages/MoviesPage"));
 
 if (typeof window !== "undefined") {
   injectStyle();
@@ -23,6 +24,9 @@ const App = () => {
           <Router>
             <Switch>
               <Route exact path={Routes.ROOT}>
+                <MoviesPage />
+              </Route>
+              <Route exact path={Routes.SEARCH}>
                 <SearchPage />
               </Route>
               <Route path={`${Routes.MOVIE}/:id`}>
