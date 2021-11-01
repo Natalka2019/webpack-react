@@ -5,7 +5,7 @@ import { sortOptions } from "common";
 import clsx from "clsx";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
-import { genres } from "../../mockData/genres";
+import { genres, genresTypes } from "common";
 import { useDispatch, useSelector } from "react-redux";
 
 const FiltersContainer: React.FC = () => {
@@ -16,10 +16,10 @@ const FiltersContainer: React.FC = () => {
 
   const onGenreChange = useCallback(
     (genre: { value: string; label: string }) => {
-      if (genre.value === "All") {
+      if (genre.value === genresTypes.All) {
         dispatch(
           actions.movieActions.updateMoviesRequestParams({
-            filter: ["All"],
+            filter: [genresTypes.All],
           })
         );
       } else {
