@@ -29,7 +29,7 @@ const defaultMoviesRequestParams = {
   sortBy: "release_date",
   sortOrder: "desc",
   searchBy: "title",
-  filter: [genresTypes.All],
+  filter: [],
 };
 
 const initialState: IState = {
@@ -175,6 +175,13 @@ const movieReducer: Reducer<IState> = (state = initialState, action) => {
       return {
         ...state,
         movieModalStatus: action.payload,
+      };
+    }
+    case types.CLEAR_MOVIES_LIST: {
+      return {
+        ...state,
+        movies: [],
+        moviesRequestParams: defaultMoviesRequestParams,
       };
     }
     default:

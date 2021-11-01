@@ -94,3 +94,7 @@ export const movieModalStatusToggle = (payload: boolean) => ({
   type: types.MOVIE_MODAL_STATUS_TOGGLE,
   payload,
 });
+
+export const clearMoviesList = () => ({
+  type: types.CLEAR_MOVIES_LIST,
+});

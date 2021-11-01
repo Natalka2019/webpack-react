@@ -3,11 +3,11 @@ import styles from "./styles.module.scss";
 import { SearchResults, SearchHeader } from "containers";
 import { Footer } from "components";
 
-const SearchPage: React.FC = () => {
+const MoviesPage: React.FC = () => {
   return (
-    <div className={styles.SearchPage}>
+    <div className={styles.MoviesPage}>
       <SearchHeader />
-      <div className={styles.SearchPage__searchResults}>
+      <div className={styles.MoviesPage__searchResults}>
         <SearchResults />
       </div>
       <Footer />
@@ -15,4 +15,4 @@ const SearchPage: React.FC = () => {
   );
 };
 
-export default SearchPage;
+export default MoviesPage;
