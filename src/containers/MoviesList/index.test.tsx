@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { shallow, ShallowWrapper } from "enzyme";
+import { shallow, ShallowWrapper, mount } from "enzyme";
 import MoviesList from "./index";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
@@ -15,32 +15,45 @@ const mockStore = configureMockStore([sagaMiddleware]);
 
 describe(" MoviesList", () => {
   test("Do not render MoviesList if moviesList.length === 0", () => {
-    const movies = [];
     const store = mockStore({
       movieReducer: { movies: [] },
     });
-    // // if (movies.length === 0) {
-    // //   const wrapper: ShallowWrapper<typeof MoviesList> = shallow(
-    // //     <MoviesList />
-    const wrapper = shallow(
+    const wrapper = mount(
       <Provider store={store}>
         <MoviesList />
       </Provider>
     );
-    //   );
-    //  expect(wrapper.find("MoviesList").children()).toHaveLength(1);
-    // expect(wrapper.find("MoviesList").children()).toBe(true);
-    // expect(wrapper.find("MoviesList").html()).toEqual("Hello");
-    expect(wrapper.find(".noData").getElement()).toEqual("Hello");
+    expect(wrapper.find(".noData").exists()).toBeTruthy();
   });
-  // test("Render MoviesList if moviesList.length !== 0", () => {
-  //   const movies = [1, 2, 3];
+  test("Render MoviesList if moviesList.length !== 0", () => {
+    const store = mockStore({
+      movieReducer: {
+        movies: [
+          {
+            id: 4,
+            title: "Fringe",
+            genres: ["Sci-Fi"],
+            vote_average: 8.4,
+            release_date: "2008-01-01",
+            overview:
+              "An F.B.I. agent is forced to work with an institutionalized scientist and his son in order to rationalize a brewing storm of unexplained phenomena.",
+            runtime: 5000,
+            poster_path:
+              "https://www.themoviedb.org/t/p/w500/sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg",
+          },
+        ],
+        moviesRequestParams: { offset: 0 },
+      },
+    });
 
-  //   if (movies.length !== 0) {
-  //     const wrapper: ShallowWrapper<typeof MoviesList> = shallow(
-  //       <MoviesList />
-  //     );
-  //     expect(wrapper.isEmptyRender()).toEqual(false);
-  //   }
-  // });
+    const wrapper = mount(
+      <Provider store={store}>
+        <MoviesList />
+      </Provider>
+    );
+
+    expect(wrapper.find(".noData").exists()).toBeFalsy();
+
+    expect(wrapper.find(".MoviesList").exists()).toBeTruthy();
+  });
 });

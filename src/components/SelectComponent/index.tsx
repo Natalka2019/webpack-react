@@ -13,18 +13,18 @@ interface Props {
   initialValue?: IOption[];
   value?: IOption[];
   options: IOption[];
-  label: string;
+  label?: string;
   onChange: () => void;
   isLoading?: boolean;
   isSearchable?: boolean;
   isClearable?: boolean;
   className?: string;
-  placeholder: string;
+  placeholder?: string;
   isDisabled?: boolean;
   isMulti?: boolean;
   error?: string;
   onBlur?: () => void;
-  name: string;
+  name?: string;
   onInputChange?: () => void;
   menuPlacement?: MenuPlacement | undefined;
 }
@@ -50,7 +50,8 @@ const SelectComponent: FC<Props> = ({
 }) => {
   return (
     <div className={clsx(styles.SelectComponent, className)}>
-      {label !== null && (
+      {/* {label !== null && ( */}
+      {label && (
         <label className={styles.SelectComponent__label}>{label}</label>
       )}
       <Select
