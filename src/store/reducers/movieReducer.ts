@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import * as types from "../actionTypes";
 import * as helpers from "../helpers";
 import { IMovie, IMoviesRequestParams } from "models";
-import { genresTypes } from "common";
+import { genresTypes } from "../../common";
 
 interface IRequestStatus {
   loading: boolean;

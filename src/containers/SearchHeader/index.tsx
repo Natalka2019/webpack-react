@@ -11,18 +11,15 @@ import styles from "./styles.module.scss";
 import clsx from "clsx";
 import * as actions from "store/actions";
 import { RootState } from "store/reducers";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Routes from "../../routes";
 
 const SearchHeader: React.FC = () => {
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState("");
   const searchParams = new URLSearchParams();
-
-  // http://localhost:3000/#/?search=avengers
 
   const movieModalStatus = useSelector(
     (state: RootState) => state.movieReducer.movieModalStatus

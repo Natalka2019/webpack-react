@@ -1,7 +1,3 @@
-interface IOption {
-  value: string;
-  label: string;
-}
 export default interface IMovie {
   id?: number | undefined;
   title: string;
