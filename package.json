@@ -4,7 +4,7 @@
   "description": "Webpack and react",
   "private": true,
   "jest": {
-    "verbose": true,
+    "verbose": false,
     "collectCoverageFrom": [
       "**/*.{ts,tsx}",
       "!**/node_modules/**"
@@ -64,6 +64,7 @@
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-saga": "^1.1.3",
+    "sinon": "^12.0.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },

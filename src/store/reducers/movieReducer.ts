@@ -32,7 +32,7 @@ const defaultMoviesRequestParams = {
   filter: [],
 };
 
-const initialState: IState = {
+export const initialState: IState = {
   movies: [],
   moviesTotal: 0,
   getMoviesStatus: helpers.getDefaultState(),
