@@ -78,10 +78,12 @@ const Poster: React.FC<Props> = ({ movie }) => {
             className={styles.Poster__image}
             src={poster_path}
             onClick={onImage}
+            id="posterImage"
           />
           <RoundButton
             className={styles.Poster__roundButton}
             onClick={onManageMovie}
+            id="roundButton"
           />
         </div>
 
@@ -98,24 +100,28 @@ const Poster: React.FC<Props> = ({ movie }) => {
           <Modal
             onCloseModal={onCloseActivityModal}
             isModalOpen={isActivityModalOpen}
+            id="activityModalWrapper"
           >
             <ActivityModal id={id} onDelete={onDelete} onEdit={onEdit} />
           </Modal>
           <Modal
             onCloseModal={onCloseMovieModal}
             isModalOpen={movieModalStatus}
+            id="movieModalWrapper"
           >
             <MovieModal
               movie={selectedMovie}
               buttonName="Save"
               modalTitle="Edit movie"
+              id="movieModal"
             />
           </Modal>
           <Modal
             onCloseModal={onCloseDeleteModal}
             isModalOpen={isDeleteModalOpen}
+            id="deleteModalWrapper"
           >
-            <DeleteModal onConfirm={onDeleteConfirm} />
+            <DeleteModal onConfirm={onDeleteConfirm} id="deleteModal" />
           </Modal>
         </>
       )}

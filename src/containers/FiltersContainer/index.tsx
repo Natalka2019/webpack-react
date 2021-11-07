@@ -72,6 +72,7 @@ const FiltersContainer: React.FC = () => {
           optionsList={sortOptions}
           label="Sort by"
           onChange={onSortChange}
+          name="sortSelect"
         />
       </div>
     </div>

@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import createSagaMiddleware from "redux-saga";
 import { Button } from "components";
+import { act } from "react-test-renderer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -59,30 +60,24 @@ describe("MovieModal", () => {
     );
     expect(wrapper.find({ name: "id" }).exists()).toBeFalsy();
   });
-  // test("onSubmit triggered", () => {
-  //   const handleSubmit = jest.fn();
-  //   wrapper = mount(
-  //     <Provider store={store}>
-  //       <MovieModal buttonName={buttonName} modalTitle={modalTitle} />
-  //     </Provider>
-  //   );
+  test("reset triggered", () => {
+    wrapper = mount(
+      <Provider store={store}>
+        <MovieModal buttonName={buttonName} modalTitle={modalTitle} />
+      </Provider>
+    );
 
-  //   const button = wrapper.find({ type: "submit" }).at(0);
-  //   expect(button.simulate("click"));
-  //   // expect(wrapper.find(".MovieModal__form").simulate("submit"));
-  //   // wrapper.find({ type: "submit" }).at(0).click();
-  //   // expect(wrapper.find({ type: "submit" }).at(0).getElement()).toEqual(null);
-  //   expect(handleSubmit).toHaveBeenCalled();
-  // });
-  // test("Render activity modal if id provided", () => {
-  //   const wrapper: ShallowWrapper<typeof ActivityModal> = shallow(
-  //     <ActivityModal onDelete={onDelete} onEdit={onEdit} id={id} />
-  //   );
-  //   expect(wrapper.isEmptyRender()).toEqual(false);
-  //   expect(wrapper.find("div").children()).toHaveLength(2);
-  //   expect(wrapper.find({ name: "Delete" }).simulate("click"));
-  //   expect(onDelete).toHaveBeenCalled();
-  //   expect(wrapper.find({ name: "Edit" }).simulate("click"));
-  //   expect(onEdit).toHaveBeenCalled();
-  // });
+    const mockEvent = { preventDefault: jest.fn() };
+
+    expect(wrapper.find({ name: "Reset" }).props().onClick(mockEvent));
+  });
+  test("submit triggered", () => {
+    wrapper = mount(
+      <Provider store={store}>
+        <MovieModal buttonName={buttonName} modalTitle={modalTitle} />
+      </Provider>
+    );
+
+    expect(wrapper.find({ id: "movieModalForm" }).props().onSubmit());
+  });
 });

@@ -42,7 +42,16 @@ describe(" MoviesList", () => {
               "https://www.themoviedb.org/t/p/w500/sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg",
           },
         ],
-        moviesRequestParams: { offset: 0 },
+        moviesRequestParams: {
+          search: "",
+          limit: 12,
+          offset: 0,
+          sortBy: "release_date",
+          sortOrder: "desc",
+          searchBy: "title",
+          filter: [],
+        },
+        moviesTotal: 30,
       },
     });
 
