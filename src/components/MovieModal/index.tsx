@@ -14,9 +14,10 @@ interface Props {
   movie?: IMovie;
   buttonName: string;
   modalTitle: string;
+  id?: string;
 }
 
-const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
+const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle, id }) => {
   const dispatch = useDispatch();
   const initialValues = {
     id: movie?.id || undefined,
@@ -69,13 +70,14 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle }) => {
   const genresList = genres.filter((genre) => genre.value !== genresTypes.All);
 
   return (
-    <div className={styles.MovieModal}>
+    <div className={styles.MovieModal} id={id}>
       <div className={styles.MovieModal__title}>{modalTitle}</div>
       <form
         className={styles.MovieModal__form}
         onSubmit={handleSubmit((values, e) =>
           onSubmit({ values, closeModal: true }, e)
         )}
+        id="movieModalForm"
       >
         {initialValues.id && (
           <FormInputField

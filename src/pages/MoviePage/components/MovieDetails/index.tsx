@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { IMovie } from "models";
-import posterSubstitution from "assets/netflixBackground.jpg";
 
 interface Props {
   movie: IMovie;
@@ -20,18 +19,12 @@ const MovieDetails: React.FC<Props> = ({ movie }) => {
   const date = new Date(release_date);
   const releaseYear = date.getFullYear();
 
-  const poster =
-    poster_path ===
-    "https://image.tmdb.org/t/p/w500/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg"
-      ? posterSubstitution
-      : poster_path;
-
   return (
     <div className={styles.MovieDetails}>
       <div className={styles.MovieDetails__imageContainer}>
         <img
           className={styles.MovieDetails__imageContainer__image}
-          src={poster}
+          src={poster_path}
         />
       </div>
       <div className={styles.MovieDetails__section__info}>

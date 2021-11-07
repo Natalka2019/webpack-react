@@ -1,4 +1,4 @@
-import { genresTypes } from "common";
+import genresTypes from "./genresTypes";
 
 const genres = [
   { value: genresTypes.All, label: "All" },
