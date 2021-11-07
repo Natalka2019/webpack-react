@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { shallow, mount, ReactWrapper } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import MoviePage from "./index";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
@@ -16,10 +16,6 @@ const mockStore = configureMockStore([sagaMiddleware]);
 
 describe("MoviePage", () => {
   let wrapper: ReactWrapper;
-
-  // afterEach(() => {
-  //   wrapper.unmount();
-  // });
 
   test("get movie loading", () => {
     const store = mockStore({

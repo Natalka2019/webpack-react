@@ -127,6 +127,7 @@ const SearchHeader: React.FC = () => {
       >
         <Logo />
         <Button
+          id="addMovie"
           name="+ ADD MOVIE"
           className={styles.Header__addButton}
           onClick={onAddMovie}
@@ -150,6 +151,7 @@ const SearchHeader: React.FC = () => {
             onChange={onSearchChange}
           />
           <Button
+            id="search"
             name="SEARCH"
             className={styles.Header__searchButton}
             onClick={onSearch}
