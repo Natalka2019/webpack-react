@@ -72,8 +72,7 @@ describe("movieSaga", () => {
         overview:
           "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
         runtime: 181,
-        poster_path:
-          "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+        poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
       },
       headers: "headers",
       request: "request",
@@ -140,8 +139,7 @@ describe("movieSaga", () => {
             overview:
               "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
             runtime: 181,
-            poster_path:
-              "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+            poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
           },
         ],
         limit: 12,
@@ -230,8 +228,7 @@ describe("movieSaga", () => {
       overview:
         "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
       runtime: 181,
-      poster_path:
-        "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+      poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
     };
     const addMovieResponse = {
       config: "config",
@@ -244,8 +241,7 @@ describe("movieSaga", () => {
         overview:
           "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
         runtime: 181,
-        poster_path:
-          "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+        poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
       },
 
       headers: "headers",
@@ -296,8 +292,7 @@ describe("movieSaga", () => {
       overview:
         "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
       runtime: 181,
-      poster_path:
-        "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+      poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
     };
     const addMovieResponse = {
       config: "config",
@@ -310,8 +305,7 @@ describe("movieSaga", () => {
         overview:
           "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
         runtime: 181,
-        poster_path:
-          "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+        poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
       },
 
       headers: "headers",
@@ -331,8 +325,7 @@ describe("movieSaga", () => {
           overview:
             "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
           runtime: 181,
-          poster_path:
-            "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+          poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
         },
       },
     };
@@ -374,8 +367,7 @@ describe("movieSaga", () => {
       overview:
         "Death, who takes the form of a young man, asks a media mogul to act as a guide to teach him about life on Earth, and in the process, he falls in love with his guide's daughter.",
       runtime: 181,
-      poster_path:
-        "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
+      poster_path: "https://www.themoviedb.org/t/p/original/baH1LWTmKooo35s9YXkGabDJJaG.jpg",
     };
     const error = new Error("Not found");
 

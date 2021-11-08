@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux"; // BrowserRouter
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 import { ErrorBoundary } from "components";
 import Routes from "./routes";
 import appStore from "./store";

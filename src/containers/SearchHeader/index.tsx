@@ -101,8 +101,6 @@ const SearchHeader: React.FC = () => {
         pathname: Routes.SEARCH,
         search: searchParams.toString(),
       });
-
-      console.log(history);
     },
     [searchValue]
   );

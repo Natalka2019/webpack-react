@@ -70,10 +70,10 @@ export function* getMovie({ payload }: { type: string; payload: number }) {
     const response: MovieResponse = yield call(api.movies.getMovie, payload);
     yield put(actions.movieActions.getMovieSuccess(response.data));
   } catch (error: any) {
-    // toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
-    //   theme: "dark",
-    // });
     yield put(actions.movieActions.getMovieFailure(error));
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
   }
 }
 
@@ -86,8 +86,6 @@ export function* addEditMovie({ payload }: { type: string; payload: IMovie }) {
     } else {
       response = yield call(api.movies.addMovie, payload);
     }
-
-    console.log(response);
 
     yield put(actions.movieActions.addEditMovieSuccess(response.data));
     yield put(actions.movieActions.movieModalStatusToggle(false));
@@ -102,10 +100,10 @@ export function* addEditMovie({ payload }: { type: string; payload: IMovie }) {
       theme: "dark",
     });
   } catch (error: any) {
-    // toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
-    //   theme: "dark",
-    // });
     yield put(actions.movieActions.addEditMovieFailure(error));
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
   }
 }
 
@@ -117,10 +115,10 @@ export function* deleteMovie({ payload }: { type: string; payload: number }) {
       theme: "dark",
     });
   } catch (error: any) {
-    // toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
-    //   theme: "dark",
-    // });
     yield put(actions.movieActions.deleteMovieFailure(error));
+    toast.error(`Error: ${error.response.data.messages.join(" ,")}`, {
+      theme: "dark",
+    });
   }
 }
 
