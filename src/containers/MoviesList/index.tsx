@@ -9,17 +9,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const MoviesList: React.FC = () => {
   const dispatch = useDispatch();
-  const moviesRequestParams = useSelector(
-    (state: RootState) => state.movieReducer.moviesRequestParams
-  );
+  const moviesRequestParams = useSelector((state: RootState) => state.movieReducer.moviesRequestParams);
 
-  const moviesList = useSelector(
-    (state: RootState) => state.movieReducer.movies
-  );
+  const moviesList = useSelector((state: RootState) => state.movieReducer.movies);
 
-  const moviesTotal = useSelector(
-    (state: RootState) => state.movieReducer.moviesTotal
-  );
+  const moviesTotal = useSelector((state: RootState) => state.movieReducer.moviesTotal);
 
   const fetchNextPart = () => {
     dispatch(
@@ -47,10 +41,7 @@ const MoviesList: React.FC = () => {
         endMessage={<h4 className={styles.endMessage}>The End.</h4>}
       >
         <div className={styles.posters}>
-          {moviesList &&
-            moviesList.map((movie: IMovie) => (
-              <Poster key={movie.id} movie={movie} />
-            ))}
+          {moviesList && moviesList.map((movie: IMovie) => <Poster key={movie.id} movie={movie} />)}
         </div>
       </InfiniteScroll>
     </div>

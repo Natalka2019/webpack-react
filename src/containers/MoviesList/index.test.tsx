@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { shallow, ShallowWrapper, mount } from "enzyme";
+import { mount } from "enzyme";
 import MoviesList from "./index";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
@@ -38,8 +38,7 @@ describe(" MoviesList", () => {
             overview:
               "An F.B.I. agent is forced to work with an institutionalized scientist and his son in order to rationalize a brewing storm of unexplained phenomena.",
             runtime: 5000,
-            poster_path:
-              "https://www.themoviedb.org/t/p/w500/sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg",
+            poster_path: "https://www.themoviedb.org/t/p/w500/sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg",
           },
         ],
         moviesRequestParams: {
