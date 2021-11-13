@@ -3,13 +3,11 @@
  */
 
 import React from "react";
-import { shallow, ShallowWrapper, mount, ReactWrapper } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import MovieModal from "./index";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import createSagaMiddleware from "redux-saga";
-import { Button } from "components";
-import { act } from "react-test-renderer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -38,16 +36,11 @@ describe("MovieModal", () => {
       overview:
         "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
       runtime: 155,
-      poster_path:
-        "https://www.themoviedb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg",
+      poster_path: "https://www.themoviedb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg",
     };
     wrapper = mount(
       <Provider store={store}>
-        <MovieModal
-          buttonName={buttonName}
-          modalTitle={modalTitle}
-          movie={movie}
-        />
+        <MovieModal buttonName={buttonName} modalTitle={modalTitle} movie={movie} />
       </Provider>
     );
     expect(wrapper.find({ name: "id" }).exists()).toBeTruthy();
