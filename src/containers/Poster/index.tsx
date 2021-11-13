@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 import { RoundButton, Modal, MovieModal, DeleteModal } from "components";
 import { IMovie } from "models";
@@ -15,20 +15,16 @@ interface Props {
 const Poster: React.FC<Props> = ({ movie }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
+  const [isActivityModalOpen, setIsActivityModalOpen] = React.useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
+  const [selectedMovie, setSelectedMovie] = React.useState<IMovie | null>(null);
 
   const { id, title, genres, release_date, poster_path } = movie;
   const date = new Date(release_date);
   const releaseYear = date.getFullYear();
 
-  const deleteMovieStatus = useSelector(
-    (state: RootState) => state.movieReducer.deleteMovieStatus
-  );
-  const movieModalStatus = useSelector(
-    (state: RootState) => state.movieReducer.movieModalStatus
-  );
+  const deleteMovieStatus = useSelector((state: RootState) => state.movieReducer.deleteMovieStatus);
+  const movieModalStatus = useSelector((state: RootState) => state.movieReducer.movieModalStatus);
 
   const onManageMovie = () => {
     setIsActivityModalOpen(true);
@@ -74,17 +70,8 @@ const Poster: React.FC<Props> = ({ movie }) => {
     <>
       <div className={styles.Poster}>
         <div className={styles.Poster__imageContainer}>
-          <img
-            className={styles.Poster__image}
-            src={poster_path}
-            onClick={onImage}
-            id="posterImage"
-          />
-          <RoundButton
-            className={styles.Poster__roundButton}
-            onClick={onManageMovie}
-            id="roundButton"
-          />
+          <img className={styles.Poster__image} src={poster_path} onClick={onImage} id="posterImage" />
+          <RoundButton className={styles.Poster__roundButton} onClick={onManageMovie} id="roundButton" />
         </div>
 
         <div className={styles.Poster__info}>
@@ -97,30 +84,13 @@ const Poster: React.FC<Props> = ({ movie }) => {
       </div>
       {selectedMovie && (
         <>
-          <Modal
-            onCloseModal={onCloseActivityModal}
-            isModalOpen={isActivityModalOpen}
-            id="activityModalWrapper"
-          >
+          <Modal onCloseModal={onCloseActivityModal} isModalOpen={isActivityModalOpen} id="activityModalWrapper">
             <ActivityModal id={id} onDelete={onDelete} onEdit={onEdit} />
           </Modal>
-          <Modal
-            onCloseModal={onCloseMovieModal}
-            isModalOpen={movieModalStatus}
-            id="movieModalWrapper"
-          >
-            <MovieModal
-              movie={selectedMovie}
-              buttonName="Save"
-              modalTitle="Edit movie"
-              id="movieModal"
-            />
+          <Modal onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus} id="movieModalWrapper">
+            <MovieModal movie={selectedMovie} buttonName="Save" modalTitle="Edit movie" id="movieModal" />
           </Modal>
-          <Modal
-            onCloseModal={onCloseDeleteModal}
-            isModalOpen={isDeleteModalOpen}
-            id="deleteModalWrapper"
-          >
+          <Modal onCloseModal={onCloseDeleteModal} isModalOpen={isDeleteModalOpen} id="deleteModalWrapper">
             <DeleteModal onConfirm={onDeleteConfirm} id="deleteModal" />
           </Modal>
         </>

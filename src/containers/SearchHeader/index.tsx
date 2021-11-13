@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useRef,
-  useEffect,
-  useState,
-  ChangeEvent,
-} from "react";
+import React, { useCallback, useRef, useEffect, useState, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Logo, Button, InputField, Modal, MovieModal } from "components";
 import styles from "./styles.module.scss";
@@ -18,12 +12,10 @@ const SearchHeader: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = React.useState("");
   const searchParams = new URLSearchParams();
 
-  const movieModalStatus = useSelector(
-    (state: RootState) => state.movieReducer.movieModalStatus
-  );
+  const movieModalStatus = useSelector((state: RootState) => state.movieReducer.movieModalStatus);
 
   useEffect(() => {
     const searchString = history.location.search.split("=");
@@ -117,26 +109,11 @@ const SearchHeader: React.FC = () => {
 
   return (
     <header className={styles.Header}>
-      <div
-        className={clsx(
-          styles.Header__headerSection,
-          styles.Header__headerSection_top
-        )}
-      >
+      <div className={clsx(styles.Header__headerSection, styles.Header__headerSection_top)}>
         <Logo />
-        <Button
-          id="addMovie"
-          name="+ ADD MOVIE"
-          className={styles.Header__addButton}
-          onClick={onAddMovie}
-        />
+        <Button id="addMovie" name="+ ADD MOVIE" className={styles.Header__addButton} onClick={onAddMovie} />
       </div>
-      <div
-        className={clsx(
-          styles.Header__headerSection,
-          styles.Header__headerSection_bottom
-        )}
-      >
+      <div className={clsx(styles.Header__headerSection, styles.Header__headerSection_bottom)}>
         <div className={styles.Header__title}>Find your movie</div>
         <div className={styles.Header__searchContainer}>
           <InputField
@@ -148,15 +125,10 @@ const SearchHeader: React.FC = () => {
             value={searchValue}
             onChange={onSearchChange}
           />
-          <Button
-            id="search"
-            name="SEARCH"
-            className={styles.Header__searchButton}
-            onClick={onSearch}
-          />
+          <Button id="search" name="SEARCH" className={styles.Header__searchButton} onClick={onSearch} />
         </div>
       </div>
-      <Modal onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus}>
+      <Modal id="movieModalWrapper" onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus}>
         <MovieModal buttonName="Submit" modalTitle="Add movie" />
       </Modal>
     </header>
