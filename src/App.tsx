@@ -6,11 +6,13 @@ import Routes from "./routes";
 import appStore from "./store";
 import { injectStyle } from "react-toastify/dist/inject-style";
 import { ToastContainer } from "react-toastify";
+import { SearchPage, MoviesPage, MoviePage, NotFoundPage } from "pages";
 
-const SearchPage = lazy(() => import("pages/SearchPage"));
-const MoviePage = lazy(() => import("pages/MoviePage"));
-const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
-const MoviesPage = lazy(() => import("pages/MoviesPage"));
+// WITH LAZY LOADING TESTS DOES NOT WORK
+// const SearchPage = lazy(() => import("pages/SearchPage"));
+// const MoviePage = lazy(() => import("pages/MoviePage"));
+// const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
+// const MoviesPage = lazy(() => import("pages/MoviesPage"));
 
 if (typeof window !== "undefined") {
   injectStyle();
@@ -23,15 +25,9 @@ const App = () => {
         <Suspense fallback={<div>Loading ...</div>}>
           <Router>
             <Switch>
-              <Route exact path={Routes.ROOT}>
-                <MoviesPage />
-              </Route>
-              <Route exact path={Routes.SEARCH}>
-                <SearchPage />
-              </Route>
-              <Route path={`${Routes.MOVIE}/:id`}>
-                <MoviePage />
-              </Route>
+              <Route exact path={Routes.ROOT} component={MoviesPage} />
+              <Route exact path={Routes.SEARCH} component={SearchPage} />
+              <Route path={`${Routes.MOVIE}/:id`} component={MoviePage} />
               <Route component={NotFoundPage} />
             </Switch>
             <ToastContainer />
