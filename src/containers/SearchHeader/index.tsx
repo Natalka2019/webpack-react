@@ -125,7 +125,7 @@ const SearchHeader: React.FC = () => {
             value={searchValue}
             onChange={onSearchChange}
           />
-          <Button id="search" name="SEARCH" className={styles.Header__searchButton} onClick={onSearch} />
+          <Button id="search" name="SEARCH" type="submit" className={styles.Header__searchButton} onClick={onSearch} />
         </div>
       </div>
       <Modal id="movieModalWrapper" onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus}>

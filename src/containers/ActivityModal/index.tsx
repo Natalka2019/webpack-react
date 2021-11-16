@@ -20,7 +20,7 @@ const ActivityModal: React.FC<Props> = ({ id, onDelete, onEdit }) => {
         className={clsx(styles.ActivityModal__button, styles.ActivityModal__button_delete)}
         onClick={() => onDelete()}
       />
-      <Button name="Edit" className={styles.ActivityModal__button} onClick={() => onEdit()} />
+      <Button name="Edit" type="submit" className={styles.ActivityModal__button} onClick={() => onEdit()} />
     </div>
   );
 };

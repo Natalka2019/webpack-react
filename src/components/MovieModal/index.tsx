@@ -3,7 +3,6 @@ import { FormInputField, Button, SelectComponent } from "components";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
 import { genres, genresTypes } from "common";
-import clsx from "clsx";
 import { useForm, Controller } from "react-hook-form";
 import * as actions from "store/actions";
 import { useDispatch } from "react-redux";
@@ -46,10 +45,7 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle, id }) => {
     mode: "onChange",
   });
 
-  const onSubmit = (
-    { values, closeModal }: { values?: any; closeModal: boolean },
-    e: any
-  ) => {
+  const onSubmit = ({ values, closeModal }: { values?: any; closeModal: boolean }, e: any) => {
     e.preventDefault();
     if (closeModal) {
       const movie = {
@@ -57,9 +53,7 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle, id }) => {
         id: values.id ? Number(values.id) : undefined,
         release_date: values.release_date.toISOString().split("T")[0],
         runtime: Number(values.runtime),
-        genres: values.genres.map(
-          (genre: { value: string; label: string }) => genre.value
-        ),
+        genres: values.genres.map((genre: { value: string; label: string }) => genre.value),
       };
       dispatch(actions.movieActions.addEditMovie(movie));
     } else {
@@ -74,19 +68,10 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle, id }) => {
       <div className={styles.MovieModal__title}>{modalTitle}</div>
       <form
         className={styles.MovieModal__form}
-        onSubmit={handleSubmit((values, e) =>
-          onSubmit({ values, closeModal: true }, e)
-        )}
+        onSubmit={handleSubmit((values, e) => onSubmit({ values, closeModal: true }, e))}
         id="movieModalForm"
       >
-        {initialValues.id && (
-          <FormInputField
-            name="id"
-            register={register}
-            label="Movie ID"
-            readOnly
-          />
-        )}
+        {initialValues.id && <FormInputField name="id" register={register} label="Movie ID" readOnly />}
         <FormInputField
           label="Title"
           register={register}
@@ -147,10 +132,7 @@ const MovieModal: React.FC<Props> = ({ movie, buttonName, modalTitle, id }) => {
             name="Reset"
             type="reset"
             onClick={(e) => onSubmit({ closeModal: false }, e)}
-            className={clsx(
-              styles.MovieModal__button,
-              styles.MovieModal__button_reset
-            )}
+            className={styles.MovieModal__button}
           />
           <Button
             name={buttonName}

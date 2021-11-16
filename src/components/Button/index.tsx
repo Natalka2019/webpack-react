@@ -11,22 +11,9 @@ interface Props {
   isDisabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({
-  name,
-  className,
-  onClick,
-  type = "button",
-  id = "",
-  isDisabled,
-}) => {
+const Button: React.FC<Props> = ({ name, className, onClick, type = "button", id = "", isDisabled }) => {
   return (
-    <button
-      className={clsx(styles.Button, className)}
-      onClick={onClick}
-      type={type}
-      id={id}
-      disabled={isDisabled}
-    >
+    <button className={clsx(styles.Button, className)} onClick={onClick} type={type} id={id} disabled={isDisabled}>
       {name}
     </button>
   );
