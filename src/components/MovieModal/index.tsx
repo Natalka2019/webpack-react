@@ -1,10 +1,12 @@
 import React from "react";
-import { FormInputField, Button, SelectComponent } from "components";
+import FormInputField from "../FormInputField";
+import Button from "../Button";
+import SelectComponent from "../SelectComponent";
 import { IMovie } from "models";
 import styles from "./styles.module.scss";
-import { genres, genresTypes } from "common";
+import { genres, genresTypes } from "../../common";
 import { useForm, Controller } from "react-hook-form";
-import * as actions from "store/actions";
+import * as actions from "../../store/actions";
 import { useDispatch } from "react-redux";
 import validationSchema from "./validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";

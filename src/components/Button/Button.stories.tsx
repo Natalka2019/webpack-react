@@ -13,8 +13,8 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Ordinary = Template.bind({});
+Ordinary.args = {
   type: "button",
   name: "Button",
 };

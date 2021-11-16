@@ -5,7 +5,7 @@ import * as actions from "../actions";
 import { IMovie, IMoviesRequestParams } from "models";
 import { RootState } from "store/reducers";
 import { toast } from "react-toastify";
-import { genresTypes } from "common";
+import { genresTypes } from "../../common";
 
 interface MoviesResponse {
   config: any;
@@ -30,8 +30,7 @@ interface MovieResponse {
   statusTest: string;
 }
 
-const moviesRequestParams = (state: RootState) =>
-  state.movieReducer.moviesRequestParams;
+const moviesRequestParams = (state: RootState) => state.movieReducer.moviesRequestParams;
 const movie = (state: RootState) => state.movieReducer.movie;
 
 export function* getMovies() {
@@ -52,10 +51,7 @@ export function* getMovies() {
   }
 
   try {
-    const response: MoviesResponse = yield call(
-      api.movies.getMovies,
-      queryString
-    );
+    const response: MoviesResponse = yield call(api.movies.getMovies, queryString);
     yield put(actions.movieActions.getMoviesSuccess(response.data));
   } catch (error: any) {
     yield put(actions.movieActions.getMoviesFailure(error));

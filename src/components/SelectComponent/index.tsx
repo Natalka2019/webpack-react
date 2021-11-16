@@ -50,10 +50,7 @@ const SelectComponent: FC<Props> = ({
 }) => {
   return (
     <div className={clsx(styles.SelectComponent, className)}>
-      {/* {label !== null && ( */}
-      {label && (
-        <label className={styles.SelectComponent__label}>{label}</label>
-      )}
+      {label && <label className={styles.SelectComponent__label}>{label}</label>}
       <Select
         styles={customStyles}
         classNamePrefix="select"

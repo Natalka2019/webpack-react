@@ -9,7 +9,7 @@
   border-radius: 50%;
   cursor: pointer;
 
-  &:after {
+  &::after {
     content: "•••";
     position: absolute;
     top: 50%;

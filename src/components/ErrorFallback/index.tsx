@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import sad_icon from "assets/sad_icon.png";
+import sad_icon from "../../assets/sad_icon.png";
 
 const ErrorFallback: React.FC = () => {
   return (
