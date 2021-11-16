@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { SearchResults, SearchHeader } from "containers";
-import { Footer } from "components";
+import { SearchResults, SearchHeader } from "@/containers";
+import { Footer } from "@/components";
 
 const MoviesPage: React.FC = () => {
   return (
