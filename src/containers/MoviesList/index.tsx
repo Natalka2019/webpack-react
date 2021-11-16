@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./styles.module.scss";
 import Poster from "../Poster";
 import { IMovie } from "models";
-import * as actions from "store/actions";
-import { RootState } from "store/reducers";
+import * as actions from "@/store/actions";
+import { RootState } from "@/store/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
