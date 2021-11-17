@@ -83,3 +83,29 @@ export default {
 const Template: ComponentStory<typeof MoviesList> = (args) => <MoviesList {...args} />;
 
 export const Default = Template.bind({});
+
+const noMoviesStore = {
+  getState: () => {
+    return {
+      movieReducer: {
+        movies: [],
+        moviesRequestParams: {
+          search: "",
+          limit: 12,
+          offset: 0,
+          sortBy: "release_date",
+          sortOrder: "desc",
+          searchBy: "title",
+          filter: ["All"],
+        },
+        moviesTotal: 30,
+      },
+    };
+  },
+  subscribe: () => 0,
+  dispatch: action("dispatch"),
+} as any;
+
+export const NoMovies = Template.bind({});
+
+NoMovies.decorators = [(story) => <Provider store={noMoviesStore}>{story()}</Provider>];
