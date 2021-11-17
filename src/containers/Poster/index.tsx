@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { RoundButton, Modal, MovieModal, DeleteModal } from "components";
-import { IMovie } from "models";
+import { RoundButton, Modal, MovieModal, DeleteModal } from "@/components";
+import { IMovie } from "@/models";
 import ActivityModal from "../ActivityModal";
 import Routes from "../../routes";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "store/actions";
-import { RootState } from "store/reducers";
+import * as actions from "@/store/actions";
+import { RootState } from "@/store/reducers";
 interface Props {
   movie: IMovie;
 }

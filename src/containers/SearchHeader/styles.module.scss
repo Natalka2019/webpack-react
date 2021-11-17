@@ -3,7 +3,7 @@
 .Header {
   height: 200px;
   box-sizing: border-box;
-  background: #000000bf url("assets/netflixBackground.jpg");
+  background: #000000bf url("@/assets/netflixBackground.jpg");
   background-blend-mode: darken;
   box-sizing: border-box;
   max-width: 1024px;
@@ -36,11 +36,6 @@
         align-items: center;
       }
     }
-  }
-
-  &__addButton {
-    color: $color--primary-coral;
-    background-color: rgba(245, 240, 240, 0.3);
   }
 
   &__title {

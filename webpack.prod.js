@@ -61,9 +61,7 @@ module.exports = merge(common, {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           name(module, chunks, cacheGroupKey) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )[1];
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
             return `vendors_${cacheGroupKey}.${packageName.replace("@", "")}`;
           },
         },
@@ -78,7 +76,7 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }), //This plugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS.
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new webpack.SourceMapDevToolPlugin({
       filename: "[name].js.map",
     }),

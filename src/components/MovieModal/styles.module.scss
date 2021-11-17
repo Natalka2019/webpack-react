@@ -30,12 +30,5 @@
   &__button {
     width: 100px;
     height: 30px;
-
-    &_reset {
-      background-color: transparent;
-      border: 1px solid $color--primary-coral;
-      color: $color--primary-coral;
-      margin-right: 20px;
-    }
   }
 }

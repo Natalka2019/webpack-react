@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
-import { SearchResults } from "containers";
-import { Footer } from "components";
+import { SearchResults } from "@/containers";
+import { Footer, Logo } from "@/components";
 import { useParams } from "react-router-dom";
 import { IMovie } from "models";
 import MovieDetails from "./components/MovieDetails";
-import * as actions from "store/actions";
-import { RootState } from "store/reducers";
-import { Logo } from "components";
+import * as actions from "@/store/actions";
+import { RootState } from "@/store/reducers";
 import clsx from "clsx";
 import { Search } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
@@ -28,17 +27,13 @@ const MoviePage: React.FC = () => {
     dispatch(actions.movieActions.getMovie(Number(id)));
   }, [id]);
 
-  const movie: IMovie | null = useSelector(
-    (state: RootState) => state.movieReducer.movie
-  );
+  const movie: IMovie | null = useSelector((state: RootState) => state.movieReducer.movie);
 
   const onSearch = () => {
     history.push(Routes.ROOT);
   };
 
-  const getMovieStatus = useSelector(
-    (state: RootState) => state.movieReducer.getMovieStatus
-  );
+  const getMovieStatus = useSelector((state: RootState) => state.movieReducer.getMovieStatus);
 
   let movieSection;
 
@@ -53,8 +48,7 @@ const MoviePage: React.FC = () => {
   if (getMovieStatus.error) {
     movieSection = (
       <div className={styles.errorContainer}>
-        This movie is unavailable now. Please, choose another one. Sorry for
-        inconvenience!
+        This movie is unavailable now. Please, choose another one. Sorry for inconvenience!
       </div>
     );
   }
@@ -66,26 +60,13 @@ const MoviePage: React.FC = () => {
   return (
     <div className={styles.MoviePage}>
       <div className={styles.MoviePage__movieDetails}>
-        <div
-          className={clsx(
-            styles.MoviePage__movieDetails__section,
-            styles.MoviePage__movieDetails__section_top
-          )}
-        >
+        <div className={clsx(styles.MoviePage__movieDetails__section, styles.MoviePage__movieDetails__section_top)}>
           <Logo />
-          <div
-            className={styles.MoviePage__movieDetails__searchIcon}
-            onClick={onSearch}
-          >
+          <div className={styles.MoviePage__movieDetails__searchIcon} onClick={onSearch}>
             <Search />
           </div>
         </div>
-        <div
-          className={clsx(
-            styles.MoviePage__movieDetails__section,
-            styles.MoviePage__movieDetails__section_bottom
-          )}
-        >
+        <div className={clsx(styles.MoviePage__movieDetails__section, styles.MoviePage__movieDetails__section_bottom)}>
           {movieSection}
         </div>
       </div>

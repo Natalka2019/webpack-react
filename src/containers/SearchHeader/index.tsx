@@ -1,10 +1,10 @@
 import React, { useCallback, useRef, useEffect, useState, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Logo, Button, InputField, Modal, MovieModal } from "components";
+import { Logo, Button, InputField, Modal, MovieModal } from "@/components";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import * as actions from "store/actions";
-import { RootState } from "store/reducers";
+import * as actions from "@/store/actions";
+import { RootState } from "@/store/reducers";
 import { useHistory } from "react-router-dom";
 import Routes from "../../routes";
 
@@ -125,7 +125,7 @@ const SearchHeader: React.FC = () => {
             value={searchValue}
             onChange={onSearchChange}
           />
-          <Button id="search" name="SEARCH" className={styles.Header__searchButton} onClick={onSearch} />
+          <Button id="search" name="SEARCH" type="submit" className={styles.Header__searchButton} onClick={onSearch} />
         </div>
       </div>
       <Modal id="movieModalWrapper" onCloseModal={onCloseMovieModal} isModalOpen={movieModalStatus}>
