@@ -1,0 +1,86 @@
+@import "../../variables.scss";
+
+.Animation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  font-size: 24px;
+  line-height: 1.3;
+  box-sizing: border-box;
+  padding: 20px;
+
+  color: $color--primary-white;
+  background-color: $color--primary-black;
+
+  &__logoWrapper {
+    text-decoration: none;
+    padding: 50px;
+  }
+
+  &__timer {
+    margin-top: 20px;
+  }
+
+  &__element {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    animation-name: stretch;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
+
+  &__sun {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffde00;
+    border-radius: 50%;
+    box-shadow: 0 0 0 20px #ffde0080, 0 0 0 40px #ffde0040, 0 0 0 60px #ffde0020, 0 0 0 80px #ffde0010,
+      0 0 0 100px #ffde0000, 0 0 40px 100px #ffde0010;
+    animation: sunrise 2s infinite linear forwards, rays 2s 2s infinite linear;
+  }
+}
+
+@keyframes sunrise {
+  0% {
+    box-shadow: none;
+  }
+}
+
+@keyframes rays {
+  0% {
+    box-shadow: 0 0 0 0 #ffde0080, 0 0 0 20px #ffde0080, 0 0 0 40px #ffde0040, 0 0 0 60px #ffde0020,
+      0 0 0 80px #ffde0010, 0 0 40px 100px #ffde0010;
+  }
+  100% {
+    box-shadow: 0 0 0 20px #ffde0080, 0 0 0 40px #ffde0040, 0 0 0 60px #ffde0020, 0 0 0 80px #ffde0010,
+      0 0 0 100px #ffde0000, 0 0 40px 100px #ffde0010;
+  }
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(0.1);
+    background-color: black;
+    border-radius: 100%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: black;
+  }
+}
