@@ -1,5 +1,6 @@
 # webpack-react
 
+Hello World! 
 mkdir new-react-app  
 cd new-react-app  
 git init. No need if you clone repository  
